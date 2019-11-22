@@ -65,7 +65,17 @@ namespace _7DaysToDialog
             }
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.txtStatement.Text = "";
+            this.lstResponses.Items.Clear();
+        }
 
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            frmNewResponse newResponse = new frmNewResponse();
+            newResponse.ShowDialog();
+        }
     }
 
     public class ListBoxItem

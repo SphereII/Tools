@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtSteamPath = new System.Windows.Forms.TextBox();
             this.btLoad = new System.Windows.Forms.Button();
             this.treeDialogs = new System.Windows.Forms.TreeView();
             this.grpDialog = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lstResponses = new System.Windows.Forms.ListBox();
             this.lblDialog = new System.Windows.Forms.Label();
             this.txtStatement = new System.Windows.Forms.RichTextBox();
-            this.lstResponses = new System.Windows.Forms.ListBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.grpDialog.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,26 +65,47 @@
             // 
             this.treeDialogs.Location = new System.Drawing.Point(32, 84);
             this.treeDialogs.Name = "treeDialogs";
-            this.treeDialogs.Size = new System.Drawing.Size(804, 408);
+            this.treeDialogs.Size = new System.Drawing.Size(409, 408);
             this.treeDialogs.TabIndex = 2;
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_AfterSelect);
             // 
             // grpDialog
             // 
+            this.grpDialog.Controls.Add(this.btnDelete);
+            this.grpDialog.Controls.Add(this.btnAddNew);
+            this.grpDialog.Controls.Add(this.button1);
             this.grpDialog.Controls.Add(this.lstResponses);
             this.grpDialog.Controls.Add(this.lblDialog);
             this.grpDialog.Controls.Add(this.txtStatement);
-            this.grpDialog.Location = new System.Drawing.Point(859, 84);
+            this.grpDialog.Location = new System.Drawing.Point(465, 84);
             this.grpDialog.Name = "grpDialog";
-            this.grpDialog.Size = new System.Drawing.Size(445, 408);
+            this.grpDialog.Size = new System.Drawing.Size(751, 408);
             this.grpDialog.TabIndex = 3;
             this.grpDialog.TabStop = false;
             this.grpDialog.Text = "Dialog";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Create New Conversation";
+            this.toolTip1.SetToolTip(this.button1, "Clear the form and start a new conversation");
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lstResponses
+            // 
+            this.lstResponses.FormattingEnabled = true;
+            this.lstResponses.Location = new System.Drawing.Point(184, 202);
+            this.lstResponses.Name = "lstResponses";
+            this.lstResponses.Size = new System.Drawing.Size(374, 134);
+            this.lstResponses.TabIndex = 2;
+            // 
             // lblDialog
             // 
             this.lblDialog.AutoSize = true;
-            this.lblDialog.Location = new System.Drawing.Point(326, 23);
+            this.lblDialog.Location = new System.Drawing.Point(181, 16);
             this.lblDialog.Name = "lblDialog";
             this.lblDialog.Size = new System.Drawing.Size(88, 13);
             this.lblDialog.TabIndex = 1;
@@ -87,19 +113,30 @@
             // 
             // txtStatement
             // 
-            this.txtStatement.Location = new System.Drawing.Point(40, 39);
+            this.txtStatement.Location = new System.Drawing.Point(184, 37);
             this.txtStatement.Name = "txtStatement";
-            this.txtStatement.Size = new System.Drawing.Size(374, 96);
+            this.txtStatement.Size = new System.Drawing.Size(504, 96);
             this.txtStatement.TabIndex = 0;
             this.txtStatement.Text = "";
             // 
-            // lstResponses
+            // btnAddNew
             // 
-            this.lstResponses.FormattingEnabled = true;
-            this.lstResponses.Location = new System.Drawing.Point(40, 257);
-            this.lstResponses.Name = "lstResponses";
-            this.lstResponses.Size = new System.Drawing.Size(374, 95);
-            this.lstResponses.TabIndex = 2;
+            this.btnAddNew.Location = new System.Drawing.Point(184, 173);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(122, 23);
+            this.btnAddNew.TabIndex = 4;
+            this.btnAddNew.Text = "Add New Response";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(414, 173);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(144, 23);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete Selected Response";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -128,6 +165,10 @@
         private System.Windows.Forms.Label lblDialog;
         private System.Windows.Forms.RichTextBox txtStatement;
         private System.Windows.Forms.ListBox lstResponses;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAddNew;
     }
 }
 

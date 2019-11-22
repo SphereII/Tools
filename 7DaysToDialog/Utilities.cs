@@ -24,6 +24,8 @@ namespace _7DaysToDialog
             {
                 if(child.Name.Contains("quest_entry"))
                     continue;
+                if (child.Name.Contains("#comment"))
+                    continue;
                 String strResponse_ID = child.Attributes["id"].Value;
                 String strXPath = String.Format("/dialogs/dialog[@id='{0}']/response[@id='{1}']", node.ParentNode.Attributes["id"].Value, strResponse_ID);
                 foreach(XmlNode responseNode in doc.SelectNodes(strXPath))
