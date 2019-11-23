@@ -35,19 +35,19 @@
             this.lblResponseID = new System.Windows.Forms.Label();
             this.lstRequirements = new System.Windows.Forms.ListBox();
             this.grpAddRequirement = new System.Windows.Forms.GroupBox();
-            this.cboVisibility = new System.Windows.Forms.ComboBox();
-            this.lblrequirementType = new System.Windows.Forms.Label();
-            this.lblVisibility = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtValue = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblOperator = new System.Windows.Forms.Label();
+            this.cboOperator = new System.Windows.Forms.ComboBox();
             this.btnAddRequirement = new System.Windows.Forms.Button();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblVisibility = new System.Windows.Forms.Label();
+            this.lblrequirementType = new System.Windows.Forms.Label();
+            this.cboVisibility = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.grpRequirements = new System.Windows.Forms.GroupBox();
             this.txtHelp = new System.Windows.Forms.RichTextBox();
-            this.cboOperator = new System.Windows.Forms.ComboBox();
-            this.lblOperator = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtDisplay = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -103,18 +103,77 @@
             this.grpAddRequirement.Controls.Add(this.cboRequirement);
             this.grpAddRequirement.Location = new System.Drawing.Point(12, 125);
             this.grpAddRequirement.Name = "grpAddRequirement";
-            this.grpAddRequirement.Size = new System.Drawing.Size(278, 483);
+            this.grpAddRequirement.Size = new System.Drawing.Size(594, 483);
             this.grpAddRequirement.TabIndex = 5;
             this.grpAddRequirement.TabStop = false;
             this.grpAddRequirement.Text = "Add Requirement";
             // 
-            // cboVisibility
+            // textBox1
             // 
-            this.cboVisibility.FormattingEnabled = true;
-            this.cboVisibility.Location = new System.Drawing.Point(9, 236);
-            this.cboVisibility.Name = "cboVisibility";
-            this.cboVisibility.Size = new System.Drawing.Size(245, 21);
-            this.cboVisibility.TabIndex = 1;
+            this.textBox1.Location = new System.Drawing.Point(270, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(236, 20);
+            this.textBox1.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(267, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Enter an ID ( Identifier )";
+            // 
+            // lblOperator
+            // 
+            this.lblOperator.AutoSize = true;
+            this.lblOperator.Location = new System.Drawing.Point(15, 170);
+            this.lblOperator.Name = "lblOperator";
+            this.lblOperator.Size = new System.Drawing.Size(96, 13);
+            this.lblOperator.TabIndex = 9;
+            this.lblOperator.Text = "Operator (Optional)";
+            // 
+            // cboOperator
+            // 
+            this.cboOperator.FormattingEnabled = true;
+            this.cboOperator.Location = new System.Drawing.Point(18, 186);
+            this.cboOperator.Name = "cboOperator";
+            this.cboOperator.Size = new System.Drawing.Size(236, 21);
+            this.cboOperator.TabIndex = 8;
+            // 
+            // btnAddRequirement
+            // 
+            this.btnAddRequirement.Location = new System.Drawing.Point(101, 284);
+            this.btnAddRequirement.Name = "btnAddRequirement";
+            this.btnAddRequirement.Size = new System.Drawing.Size(75, 23);
+            this.btnAddRequirement.TabIndex = 7;
+            this.btnAddRequirement.Text = "Add";
+            this.btnAddRequirement.UseVisualStyleBackColor = true;
+            // 
+            // txtValue
+            // 
+            this.txtValue.Location = new System.Drawing.Point(238, 259);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(236, 20);
+            this.txtValue.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(235, 243);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Enter a value";
+            // 
+            // lblVisibility
+            // 
+            this.lblVisibility.AutoSize = true;
+            this.lblVisibility.Location = new System.Drawing.Point(15, 80);
+            this.lblVisibility.Name = "lblVisibility";
+            this.lblVisibility.Size = new System.Drawing.Size(237, 13);
+            this.lblVisibility.TabIndex = 3;
+            this.lblVisibility.Text = "What happens when the requirement is not true?";
             // 
             // lblrequirementType
             // 
@@ -125,39 +184,13 @@
             this.lblrequirementType.TabIndex = 2;
             this.lblrequirementType.Text = "Pick a requirement type";
             // 
-            // lblVisibility
+            // cboVisibility
             // 
-            this.lblVisibility.AutoSize = true;
-            this.lblVisibility.Location = new System.Drawing.Point(6, 220);
-            this.lblVisibility.Name = "lblVisibility";
-            this.lblVisibility.Size = new System.Drawing.Size(237, 13);
-            this.lblVisibility.TabIndex = 3;
-            this.lblVisibility.Text = "What happens when the requirement is not true?";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 114);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Enter a value";
-            // 
-            // txtValue
-            // 
-            this.txtValue.Location = new System.Drawing.Point(18, 130);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(236, 20);
-            this.txtValue.TabIndex = 6;
-            // 
-            // btnAddRequirement
-            // 
-            this.btnAddRequirement.Location = new System.Drawing.Point(101, 284);
-            this.btnAddRequirement.Name = "btnAddRequirement";
-            this.btnAddRequirement.Size = new System.Drawing.Size(75, 23);
-            this.btnAddRequirement.TabIndex = 7;
-            this.btnAddRequirement.Text = "Add";
-            this.btnAddRequirement.UseVisualStyleBackColor = true;
+            this.cboVisibility.FormattingEnabled = true;
+            this.cboVisibility.Location = new System.Drawing.Point(18, 96);
+            this.cboVisibility.Name = "cboVisibility";
+            this.cboVisibility.Size = new System.Drawing.Size(245, 21);
+            this.cboVisibility.TabIndex = 1;
             // 
             // btnDelete
             // 
@@ -173,7 +206,7 @@
             // 
             this.grpRequirements.Controls.Add(this.lstRequirements);
             this.grpRequirements.Controls.Add(this.btnDelete);
-            this.grpRequirements.Location = new System.Drawing.Point(296, 242);
+            this.grpRequirements.Location = new System.Drawing.Point(676, 295);
             this.grpRequirements.Name = "grpRequirements";
             this.grpRequirements.Size = new System.Drawing.Size(305, 195);
             this.grpRequirements.TabIndex = 9;
@@ -189,39 +222,6 @@
             this.txtHelp.Size = new System.Drawing.Size(396, 252);
             this.txtHelp.TabIndex = 10;
             this.txtHelp.Text = resources.GetString("txtHelp.Text");
-            // 
-            // cboOperator
-            // 
-            this.cboOperator.FormattingEnabled = true;
-            this.cboOperator.Location = new System.Drawing.Point(18, 186);
-            this.cboOperator.Name = "cboOperator";
-            this.cboOperator.Size = new System.Drawing.Size(236, 21);
-            this.cboOperator.TabIndex = 8;
-            // 
-            // lblOperator
-            // 
-            this.lblOperator.AutoSize = true;
-            this.lblOperator.Location = new System.Drawing.Point(15, 170);
-            this.lblOperator.Name = "lblOperator";
-            this.lblOperator.Size = new System.Drawing.Size(96, 13);
-            this.lblOperator.TabIndex = 9;
-            this.lblOperator.Text = "Operator (Optional)";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(18, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Enter an ID ( Identifier )";
             // 
             // txtDisplay
             // 

@@ -1,0 +1,668 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.0": {
+      "Microsoft.Msagl/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        }
+      },
+      "Microsoft.Msagl.Drawing/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        }
+      },
+      "Microsoft.Msagl.GraphViewerGDI/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl.Drawing": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        }
+      },
+      "MindFusion.Diagramming/6.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.0/win": {
+      "Microsoft.Msagl/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        }
+      },
+      "Microsoft.Msagl.Drawing/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        }
+      },
+      "Microsoft.Msagl.GraphViewerGDI/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl.Drawing": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        }
+      },
+      "MindFusion.Diagramming/6.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.0/win-x64": {
+      "Microsoft.Msagl/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        }
+      },
+      "Microsoft.Msagl.Drawing/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        }
+      },
+      "Microsoft.Msagl.GraphViewerGDI/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl.Drawing": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        }
+      },
+      "MindFusion.Diagramming/6.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.0/win-x86": {
+      "Microsoft.Msagl/1.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.dll": {}
+        }
+      },
+      "Microsoft.Msagl.Drawing/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.Drawing.dll": {}
+        }
+      },
+      "Microsoft.Msagl.GraphViewerGDI/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Msagl.Drawing": "1.1.3"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll": {}
+        }
+      },
+      "MindFusion.Diagramming/6.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MindFusion.Barcodes.dll": {},
+          "lib/net40/MindFusion.Common.WinForms.dll": {},
+          "lib/net40/MindFusion.Common.dll": {},
+          "lib/net40/MindFusion.Diagramming.EffectsProvider.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Dxf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Excel.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Pdf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Swf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.Export.Wmf.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Draw.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Svg.dll": {},
+          "lib/net40/MindFusion.Diagramming.Import.Visio.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll": {},
+          "lib/net40/MindFusion.Diagramming.WinForms.dll": {},
+          "lib/net40/MindFusion.Diagramming.dll": {},
+          "lib/net40/MindFusion.Graphs.dll": {},
+          "lib/net40/MindFusion.Licensing.dll": {},
+          "lib/net40/MindFusion.Mapping.dll": {},
+          "lib/net40/MindFusion.Pdf.dll": {},
+          "lib/net40/MindFusion.Scripting.dll": {},
+          "lib/net40/MindFusion.Svg.dll": {},
+          "lib/net40/MindFusion.Swf.dll": {},
+          "lib/net40/MindFusion.Vsx.dll": {},
+          "lib/net40/MindFusion.Zip.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.Msagl/1.1.3": {
+      "sha512": "Oi/wGHtUk19l79Sx/8YNAWcfbKRwncTeO7zy4ELS33K4+Ln4tEkW3GuiklPrHWMAl519859fOZjUV/TsxI8y9w==",
+      "type": "package",
+      "path": "microsoft.msagl/1.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Msagl.XML",
+        "lib/net40/Microsoft.Msagl.dll",
+        "microsoft.msagl.1.1.3.nupkg.sha512",
+        "microsoft.msagl.nuspec"
+      ]
+    },
+    "Microsoft.Msagl.Drawing/1.1.3": {
+      "sha512": "ueSz0OwtpaB8022ooHNZabgHkrJKwIvi0pUvJMm96m6JncVSHQtOHz+LFAu32XKj/vxhnVgFY/dWkXQsq1y0zw==",
+      "type": "package",
+      "path": "microsoft.msagl.drawing/1.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Msagl.Drawing.XML",
+        "lib/net40/Microsoft.Msagl.Drawing.dll",
+        "microsoft.msagl.drawing.1.1.3.nupkg.sha512",
+        "microsoft.msagl.drawing.nuspec"
+      ]
+    },
+    "Microsoft.Msagl.GraphViewerGDI/1.1.3": {
+      "sha512": "nkfOp+bJC26natrloaLXhl7maMaYieZ7+KgADGYIFdwFTBYqm6ds3Y4vLy9C+im9iNtGMssN6XKRyyOCMcOXnw==",
+      "type": "package",
+      "path": "microsoft.msagl.graphviewergdi/1.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Msagl.GraphViewerGdi.XML",
+        "lib/net40/Microsoft.Msagl.GraphViewerGdi.dll",
+        "microsoft.msagl.graphviewergdi.1.1.3.nupkg.sha512",
+        "microsoft.msagl.graphviewergdi.nuspec"
+      ]
+    },
+    "MindFusion.Diagramming/6.6.0": {
+      "sha512": "LbGsiT4xRCJJQcOmvN1tThMR26LBQuAu/a95mIhiv+vGKjmKIKHpOGk2HiRbPVEetQEDR8FrtqP912zRE0R8uQ==",
+      "type": "package",
+      "path": "mindfusion.diagramming/6.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/MindFusion.Barcodes.dll",
+        "lib/net35/MindFusion.Common.WinForms.dll",
+        "lib/net35/MindFusion.Common.dll",
+        "lib/net35/MindFusion.Diagramming.EffectsProvider.dll",
+        "lib/net35/MindFusion.Diagramming.EffectsProvider.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Dxf.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Dxf.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Excel.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Excel.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Pdf.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Pdf.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Svg.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Svg.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Swf.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Swf.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Visio.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Visio.xml",
+        "lib/net35/MindFusion.Diagramming.Export.Wmf.dll",
+        "lib/net35/MindFusion.Diagramming.Export.Wmf.xml",
+        "lib/net35/MindFusion.Diagramming.Import.Draw.dll",
+        "lib/net35/MindFusion.Diagramming.Import.Draw.xml",
+        "lib/net35/MindFusion.Diagramming.Import.Svg.dll",
+        "lib/net35/MindFusion.Diagramming.Import.Svg.xml",
+        "lib/net35/MindFusion.Diagramming.Import.Visio.dll",
+        "lib/net35/MindFusion.Diagramming.Import.Visio.xml",
+        "lib/net35/MindFusion.Diagramming.WinForms.Controls.dll",
+        "lib/net35/MindFusion.Diagramming.WinForms.Controls.xml",
+        "lib/net35/MindFusion.Diagramming.WinForms.dll",
+        "lib/net35/MindFusion.Diagramming.WinForms.xml",
+        "lib/net35/MindFusion.Diagramming.dll",
+        "lib/net35/MindFusion.Diagramming.xml",
+        "lib/net35/MindFusion.Graphs.dll",
+        "lib/net35/MindFusion.Licensing.dll",
+        "lib/net35/MindFusion.Mapping.dll",
+        "lib/net35/MindFusion.Pdf.dll",
+        "lib/net35/MindFusion.Scripting.dll",
+        "lib/net35/MindFusion.Svg.dll",
+        "lib/net35/MindFusion.Swf.dll",
+        "lib/net35/MindFusion.Tools.ShapeDesigner.dll",
+        "lib/net35/MindFusion.Vsx.dll",
+        "lib/net35/MindFusion.Zip.dll",
+        "lib/net40/MindFusion.Barcodes.dll",
+        "lib/net40/MindFusion.Common.WinForms.dll",
+        "lib/net40/MindFusion.Common.dll",
+        "lib/net40/MindFusion.Diagramming.EffectsProvider.dll",
+        "lib/net40/MindFusion.Diagramming.EffectsProvider.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Dxf.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Dxf.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Excel.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Excel.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Pdf.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Pdf.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Svg.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Svg.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Swf.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Swf.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Visio.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Visio.xml",
+        "lib/net40/MindFusion.Diagramming.Export.Wmf.dll",
+        "lib/net40/MindFusion.Diagramming.Export.Wmf.xml",
+        "lib/net40/MindFusion.Diagramming.Import.Draw.dll",
+        "lib/net40/MindFusion.Diagramming.Import.Draw.xml",
+        "lib/net40/MindFusion.Diagramming.Import.Svg.dll",
+        "lib/net40/MindFusion.Diagramming.Import.Svg.xml",
+        "lib/net40/MindFusion.Diagramming.Import.Visio.dll",
+        "lib/net40/MindFusion.Diagramming.Import.Visio.xml",
+        "lib/net40/MindFusion.Diagramming.WinForms.Controls.dll",
+        "lib/net40/MindFusion.Diagramming.WinForms.Controls.xml",
+        "lib/net40/MindFusion.Diagramming.WinForms.dll",
+        "lib/net40/MindFusion.Diagramming.WinForms.xml",
+        "lib/net40/MindFusion.Diagramming.dll",
+        "lib/net40/MindFusion.Diagramming.xml",
+        "lib/net40/MindFusion.Graphs.dll",
+        "lib/net40/MindFusion.Licensing.dll",
+        "lib/net40/MindFusion.Mapping.dll",
+        "lib/net40/MindFusion.Pdf.dll",
+        "lib/net40/MindFusion.Scripting.dll",
+        "lib/net40/MindFusion.Svg.dll",
+        "lib/net40/MindFusion.Swf.dll",
+        "lib/net40/MindFusion.Tools.ShapeDesigner.dll",
+        "lib/net40/MindFusion.Vsx.dll",
+        "lib/net40/MindFusion.Zip.dll",
+        "lib/net45/MindFusion.Barcodes.dll",
+        "lib/net45/MindFusion.Common.WinForms.dll",
+        "lib/net45/MindFusion.Common.dll",
+        "lib/net45/MindFusion.Diagramming.EffectsProvider.dll",
+        "lib/net45/MindFusion.Diagramming.EffectsProvider.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Dxf.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Dxf.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Excel.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Excel.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Pdf.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Pdf.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Svg.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Svg.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Swf.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Swf.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Visio.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Visio.xml",
+        "lib/net45/MindFusion.Diagramming.Export.Wmf.dll",
+        "lib/net45/MindFusion.Diagramming.Export.Wmf.xml",
+        "lib/net45/MindFusion.Diagramming.Import.Draw.dll",
+        "lib/net45/MindFusion.Diagramming.Import.Draw.xml",
+        "lib/net45/MindFusion.Diagramming.Import.Svg.dll",
+        "lib/net45/MindFusion.Diagramming.Import.Svg.xml",
+        "lib/net45/MindFusion.Diagramming.Import.Visio.dll",
+        "lib/net45/MindFusion.Diagramming.Import.Visio.xml",
+        "lib/net45/MindFusion.Diagramming.WinForms.Controls.dll",
+        "lib/net45/MindFusion.Diagramming.WinForms.Controls.xml",
+        "lib/net45/MindFusion.Diagramming.WinForms.dll",
+        "lib/net45/MindFusion.Diagramming.WinForms.xml",
+        "lib/net45/MindFusion.Diagramming.dll",
+        "lib/net45/MindFusion.Diagramming.xml",
+        "lib/net45/MindFusion.Graphs.dll",
+        "lib/net45/MindFusion.Licensing.dll",
+        "lib/net45/MindFusion.Mapping.dll",
+        "lib/net45/MindFusion.Pdf.dll",
+        "lib/net45/MindFusion.Scripting.dll",
+        "lib/net45/MindFusion.Svg.dll",
+        "lib/net45/MindFusion.Swf.dll",
+        "lib/net45/MindFusion.Tools.ShapeDesigner.dll",
+        "lib/net45/MindFusion.Vsx.dll",
+        "lib/net45/MindFusion.Zip.dll",
+        "lib/netcoreapp3.0/MindFusion.Barcodes.dll",
+        "lib/netcoreapp3.0/MindFusion.Common.WinForms.dll",
+        "lib/netcoreapp3.0/MindFusion.Common.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.EffectsProvider.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.EffectsProvider.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Dxf.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Dxf.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Excel.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Excel.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Pdf.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Pdf.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Svg.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Svg.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Swf.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Swf.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Visio.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Visio.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Wmf.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Export.Wmf.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Draw.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Draw.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Svg.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Svg.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Visio.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.Import.Visio.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.WinForms.Controls.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.WinForms.Controls.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.WinForms.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.WinForms.xml",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.dll",
+        "lib/netcoreapp3.0/MindFusion.Diagramming.xml",
+        "lib/netcoreapp3.0/MindFusion.Graphs.dll",
+        "lib/netcoreapp3.0/MindFusion.Licensing.dll",
+        "lib/netcoreapp3.0/MindFusion.Mapping.dll",
+        "lib/netcoreapp3.0/MindFusion.Pdf.dll",
+        "lib/netcoreapp3.0/MindFusion.Scripting.dll",
+        "lib/netcoreapp3.0/MindFusion.Svg.dll",
+        "lib/netcoreapp3.0/MindFusion.Swf.dll",
+        "lib/netcoreapp3.0/MindFusion.Vsx.dll",
+        "lib/netcoreapp3.0/MindFusion.Zip.dll",
+        "mindfusion.diagramming.6.6.0.nupkg.sha512",
+        "mindfusion.diagramming.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.0": [
+      "Microsoft.Msagl >= 1.1.3",
+      "Microsoft.Msagl.Drawing >= 1.1.3",
+      "Microsoft.Msagl.GraphViewerGDI >= 1.1.3",
+      "MindFusion.Diagramming >= 6.6.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jkilpatrick\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\jkilpatrick\\Documents\\GitHub\\Tools\\7DaysToDialog\\7DaysToDialog.csproj",
+      "projectName": "7DaysToDialog",
+      "projectPath": "C:\\Users\\jkilpatrick\\Documents\\GitHub\\Tools\\7DaysToDialog\\7DaysToDialog.csproj",
+      "packagesPath": "C:\\Users\\jkilpatrick\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jkilpatrick\\Documents\\GitHub\\Tools\\7DaysToDialog\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\jkilpatrick\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net40"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net40": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net40": {
+        "dependencies": {
+          "Microsoft.Msagl": {
+            "target": "Package",
+            "version": "[1.1.3, )"
+          },
+          "Microsoft.Msagl.Drawing": {
+            "target": "Package",
+            "version": "[1.1.3, )"
+          },
+          "Microsoft.Msagl.GraphViewerGDI": {
+            "target": "Package",
+            "version": "[1.1.3, )"
+          },
+          "MindFusion.Diagramming": {
+            "target": "Package",
+            "version": "[6.6.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

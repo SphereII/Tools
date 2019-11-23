@@ -22,6 +22,7 @@ namespace _7DaysToDialog
             VisibilityTypes.Add("Hide");
             VisibilityTypes.Add("AlternateText");
 
+            RequirementTypes.Add("None");
             RequirementTypes.Add("Buff");
             RequirementTypes.Add("QuestStatus");
             RequirementTypes.Add("Skill");
@@ -38,6 +39,7 @@ namespace _7DaysToDialog
             RequirementTypes.Add("Hired, Mods");
             RequirementTypes.Add("PatrolSDX, Mods");
 
+            Operators.Add("None");
             Operators.Add("GTE");
             Operators.Add("GT");
             Operators.Add("LTE");
@@ -47,6 +49,10 @@ namespace _7DaysToDialog
             this.cboOperator.Items.Add(Operators.ToArray());
             this.cboRequirement.Items.AddRange(RequirementTypes.ToArray());
             this.cboVisibility.Items.AddRange(VisibilityTypes.ToArray());
+
+            this.cboRequirement.SelectedIndex = 0;
+            this.cboVisibility.SelectedIndex = 0;
+            this.cboOperator.SelectedIndex = 0;
             
         }
 

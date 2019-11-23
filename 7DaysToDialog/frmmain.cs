@@ -32,6 +32,9 @@ namespace _7DaysToDialog
                     TreeNodeUtilities.PopulateStatements(treeDialogs);
                 }
             }
+
+            frmConversation conversation = new frmConversation();
+            conversation.ShowDialog();
         }
 
         public void GenerateStatements()
