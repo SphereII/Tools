@@ -18,16 +18,68 @@ namespace _7DaysToDialog
         TreeNode ClickNode = null;
         XmlDocument doc = new XmlDocument();
 
+        List<String> lstOperators = new List<string>();
         public List<NPC> NPCs = new List<NPC>();
+
+        public List<String> VisibilityTypes = new List<string>();
+        public List<RequirementIem> RequirementTypes = new List<RequirementIem>();
+        public List<String> Operators = new List<string>();
 
         public frmMain()
         {
             InitializeComponent();
 
+
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];
+            ConfigureResponses();
         }
 
+     
+        public void ConfigureResponses()
+        {
+            VisibilityTypes.Clear();
+            VisibilityTypes.Add("Hide");
+            VisibilityTypes.Add("AlternateText");
 
+            Operators.Clear();
+            Operators.Add("None");
+            Operators.Add("GTE");
+            Operators.Add("GT");
+            Operators.Add("LTE");
+            Operators.Add("LT");
+            Operators.Add("EQ");
+
+            RequirementTypes.Clear();
+            RequirementTypes.Add( new RequirementIem("None", false, false, false));
+            RequirementTypes.Add(new RequirementIem("Buff", false, false, false));
+            RequirementTypes.Add(new RequirementIem("QuestStatus", false, false, false));
+            RequirementTypes.Add(new RequirementIem("Skill", false, false, false));
+            RequirementTypes.Add(new RequirementIem("Admin", false, false, false));
+
+            // Extensions enabled.
+            if(enabledExtensionsToolStripMenuItem.Checked)
+            {
+                RequirementTypes.Add(new RequirementIem("HasCVarSDX, Mods", true, true, true));
+                RequirementTypes.Add(new RequirementIem("HasBuffSDX, Mods", false, true, false));
+                RequirementTypes.Add(new RequirementIem("HasItemSDX, Mods", false, true, true));
+                RequirementTypes.Add(new RequirementIem("HasQuestSDX, Mods", false, false, false));
+                RequirementTypes.Add(new RequirementIem("HasBuffSDX, Mods", true, true, true));
+                RequirementTypes.Add(new RequirementIem("HasTaskSDX, Mods", false, true, false));
+
+                // For NPC's that are hired.
+                RequirementTypes.Add(new RequirementIem("Hired, Mods", false, true, false));
+                RequirementTypes.Add(new RequirementIem("PatrolSDX, Mods", true, true, true));
+            }
+
+            this.cboOperators.Items.Add(Operators.ToArray());
+            this.cboRequirements.Items.AddRange(RequirementTypes.ToArray());
+            this.cboVisibility.Items.AddRange(VisibilityTypes.ToArray());
+
+            this.cboRequirements.SelectedIndex = 0;
+            this.cboVisibility.SelectedIndex = 0;
+            this.cboOperators.SelectedIndex = 0;
+        }
+        
         private void chkResponseID_CheckedChanged(object sender, EventArgs e)
         {
             this.txtResponseID.ReadOnly = !chkResponseID.Checked;
@@ -493,6 +545,14 @@ namespace _7DaysToDialog
             }
             UpdateNPCs();
             this.treeDialogs.ExpandAll();
+            foreach(KeyValuePair<string, Statement> statement in GetCurrentNPC().Statements)
+            {
+                ComboboxItem item = new ComboboxItem();
+                item.Text = Utilities.GetLocalization( statement.Value.Text );
+                item.Value = statement.Key;
+
+                this.cmbStatements.Items.Add(item);
+            }
         }
         public void UpdateNPCs()
         {

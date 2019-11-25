@@ -14,6 +14,7 @@ namespace _7DaysToDialog
         public static Dictionary<string, string> Localization = new Dictionary<string, string>();
         public static Dictionary<string, string> LocalizationQuest = new Dictionary<string, string>();
 
+     
         static public String GetLocalization(String strText)
         {
             if (Localization.ContainsKey(strText))
@@ -66,5 +67,69 @@ namespace _7DaysToDialog
             return null;
         }
 
+    }
+
+    public class ComboboxItem
+    {
+        public ComboboxItem()
+        {
+        }
+        public ComboboxItem(String strText, object objValue)
+        {
+            Text = strText;
+            Value = objValue;
+        }
+        public string Text
+        {
+            get; set;
+        }
+        public object Value
+        {
+            get; set;
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+    }
+
+
+    public class RequirementIem
+    {
+        public struct RequirementType
+        {
+            public String Text;
+            public bool hasOperator;
+            public bool hasValue;
+            public bool hasID;
+        }
+
+        public RequirementIem()
+        {
+        }
+        public RequirementIem(String strText, bool hasOperator, bool hasValue, bool hasID )
+        {
+            Text = strText;
+            RequirementType Value = new RequirementType();
+            Value.Text = Text;
+            Value.hasID = hasID;
+            Value.hasOperator = hasOperator;
+            Value.hasValue = hasValue;
+
+        }
+        public string Text
+        {
+            get; set;
+        }
+        public RequirementType Value
+        {
+            get; set;
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }
