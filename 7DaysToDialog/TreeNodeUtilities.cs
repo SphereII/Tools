@@ -23,18 +23,9 @@ namespace _7DaysToDialog
         {
             foreach(XmlNode child_node in xml_node.ChildNodes)
             {
-                bool filter = false;
                 String strDisplay;
-                //if(Filter != null)
-                //{
-                //    foreach(String strFilter in Filter)
-                //        if(child_node.Name.Contains(strFilter))
-                //            filter = true;
-                //}
 
-                if(filter)
-                    continue;
-                if(child_node.Attributes == null)
+                if (child_node.Attributes == null)
                     continue;
                 if ( child_node.Attributes["text"] != null )
                     strDisplay = child_node.Name + " ( " + child_node.Attributes["text"].Value + " )";

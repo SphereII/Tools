@@ -1,0 +1,11 @@
+D:\Github\Tools\7DaysToDialog2\bin\Debug\7DaysToDialog2.exe.config
+D:\Github\Tools\7DaysToDialog2\bin\Debug\7DaysToDialog2.exe
+D:\Github\Tools\7DaysToDialog2\bin\Debug\7DaysToDialog2.pdb
+D:\Github\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.csprojAssemblyReference.cache
+D:\Github\Tools\7DaysToDialog2\obj\Debug\_7DaysToDialog2.Properties.Resources.resources
+D:\Github\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.csproj.GenerateResource.cache
+D:\Github\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.csproj.CoreCompileInputs.cache
+D:\Github\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.exe
+D:\Github\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.pdb
+D:\Github\Tools\7DaysToDialog2\obj\Debug\_7DaysToDialog.frmMain.resources
+D:\Github\Tools\7DaysToDialog2\obj\Debug\_7DaysToDialog2.frmSettings.resources
