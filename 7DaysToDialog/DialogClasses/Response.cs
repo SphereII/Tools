@@ -28,8 +28,7 @@ namespace _7DaysToDialog
 
         public void AddAction(Action myAction)
         {
-            if (Actions.Contains(myAction))
-                return;
+ 
             Actions.Add(myAction);
         }
 

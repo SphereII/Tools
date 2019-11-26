@@ -85,12 +85,14 @@
             // 
             // lblText
             // 
-            this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(71, 44);
+            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblText.Location = new System.Drawing.Point(12, 44);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(27, 13);
+            this.lblText.Size = new System.Drawing.Size(86, 13);
             this.lblText.TabIndex = 23;
             this.lblText.Text = "ID =";
+            this.lblText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblText.Visible = false;
             // 
             // rtHelp
             // 
@@ -105,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 433);
+            this.ClientSize = new System.Drawing.Size(494, 180);
             this.Controls.Add(this.rtHelp);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.btnClose);

@@ -101,6 +101,14 @@ namespace _7DaysToDialog
                 requirementNode.Tag = requirement;
                 targetNode.Nodes.Add(requirementNode);
             }
+
+            foreach(Action action in response.Actions)
+            {
+                TreeNode actionNode = new TreeNode();
+                actionNode.Text = action.ToString();
+                actionNode.Tag = action;
+                targetNode.Nodes.Add(actionNode);
+            }
             treeReplies.Nodes.Add(targetNode);
         }
 

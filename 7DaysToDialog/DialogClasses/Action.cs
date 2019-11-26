@@ -17,5 +17,10 @@ namespace _7DaysToDialog
             ActionType = strType;
             ID = strID;
         }
+
+        public override string ToString()
+        {
+            return "Action: " + ActionType + ": " + ID;
+        }
     }
 }

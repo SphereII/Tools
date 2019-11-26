@@ -52,7 +52,13 @@ namespace _7DaysToDialog
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            ActionItem item = this.cboActions.SelectedItem as ActionItem;
+            if(item != null)
+            {
+                action = new Action(item.Text, txtID.Text);
+           
+            }
+            this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -68,6 +74,7 @@ namespace _7DaysToDialog
             ActionItem item = this.cboActions.SelectedItem as ActionItem;
             if(item != null)
             {
+                this.rtHelp.Text = item.ToolTip;
                 if(string.IsNullOrEmpty(item.Value))
                 {
                     this.lblText.Visible = false;
@@ -79,6 +86,7 @@ namespace _7DaysToDialog
                     this.lblText.Visible = true;
                     this.txtID.Visible = true;
                     this.lblText.Text = item.Value;
+                  
                 }
             }
 
