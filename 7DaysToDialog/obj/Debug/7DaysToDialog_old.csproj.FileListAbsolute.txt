@@ -1,8 +1,0 @@
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog_old.csprojAssemblyReference.cache
-D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmMain.resources
-D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmNewResponse.resources
-D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.Properties.Resources.resources
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog_old.csproj.GenerateResource.cache
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog_old.csproj.CoreCompileInputs.cache
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.exe
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.pdb

@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7DaysToDialog_old", "7DaysToDialog_old.csproj", "{F60787BB-928F-4F41-82E0-A278F17CD94E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7DaysToDialog2", "..\7DaysToDialog2\7DaysToDialog2.csproj", "{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7DaysToDialog", "7DaysToDialog.csproj", "{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F60787BB-928F-4F41-82E0-A278F17CD94E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F60787BB-928F-4F41-82E0-A278F17CD94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F60787BB-928F-4F41-82E0-A278F17CD94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F60787BB-928F-4F41-82E0-A278F17CD94E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A52AC5AE-469D-43B0-BA17-02D4744DFBA1}
+		SolutionGuid = {E74B5B3B-5DED-4491-A5C4-BB247F9CC3FE}
 	EndGlobalSection
 EndGlobal

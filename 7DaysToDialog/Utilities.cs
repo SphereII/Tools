@@ -1,66 +1,114 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace _7DaysToDialog
 {
     public static class Utilities
     {
-        public static XmlDocument doc = new XmlDocument();
+        public static Dictionary<string, string> Localization = new Dictionary<string, string>();
+        public static Dictionary<string, string> LocalizationQuest = new Dictionary<string, string>();
 
-        static public Statement GenerateStatement(XmlNode node)
+        private static Random random = new Random();
+        public static string RandomString(int length)
         {
-            Statement statement = new Statement();
-            if(node == null)
-                return null;
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
-            statement.ID = Configure(node, "id");
-            statement.Text = Configure(node, "text");
-            statement.NextStatement = Configure(node, "nextstatement");
+        public static XmlAttribute GenerateAttribute(String strName, String strValue, XmlDocument doc)
+        {
+            XmlAttribute attribute = doc.CreateAttribute(strName);
+            attribute.Value = strValue;
+            return attribute;
 
-            foreach(XmlNode child in node)
+        }
+        static public String GetLocalization(String strText)
+        {
+            if (Localization.ContainsKey(strText))
+                return Localization[strText];
+            if (LocalizationQuest.ContainsKey(strText))
+                return LocalizationQuest[strText];
+            return strText;
+        }
+        public static void InitLocalization(String strPath)
+        {
+            if (File.Exists(Path.Combine(strPath, "Localization - Quest.txt")))
+                LocalizationQuest = LoadCsv(Path.Combine(strPath, "Localization - Quest.txt"));
+
+            if (File.Exists(Path.Combine(strPath, "Localization.txt")))
+                Localization = LoadCsv(Path.Combine(strPath, "Localization.txt"));
+        }
+        static private Dictionary<string, string> LoadCsv(String strFilename)
+        {
+            Dictionary<string, string> Temp = new Dictionary<string, string>();
+            TextFieldParser parser = new TextFieldParser(new StreamReader(strFilename));
+
+            parser.HasFieldsEnclosedInQuotes = true;
+            parser.SetDelimiters(",");
+
+            string[] fields;
+
+            while (!parser.EndOfData)
             {
-                if(child.Name.Contains("quest_entry"))
-                    continue;
-                if (child.Name.Contains("#comment"))
-                    continue;
-                String strResponse_ID = child.Attributes["id"].Value;
-                String strXPath = String.Format("/dialogs/dialog[@id='{0}']/response[@id='{1}']", node.ParentNode.Attributes["id"].Value, strResponse_ID);
-                foreach(XmlNode responseNode in doc.SelectNodes(strXPath))
-                {
-                    Response response = new Response();
-                    response.ID = Configure(responseNode, "id");
-                    response.Text = Configure(responseNode, "text");
-                    response.NextStatement = Configure(responseNode, "nextstatement");
-
-                    String requirementXPath = String.Format(strXPath + "/requirement");
-                    foreach(XmlNode requirement in doc.SelectNodes(requirementXPath))
-                    {
-                        String strRequirement_key = Configure(requirement, "id");
-                        Requirement require = new Requirement();
-                        require.Type = Configure(requirement, "type");
-                        require.Value = Configure(requirement, "value");
-                        require.requirementType = Configure(requirement, "requirementtype");
-                        require.Operator = Configure(requirement, "operator");
-                        response.AddRequirement(strRequirement_key, require);
-                    }
-                    statement.AddResponse(strResponse_ID, response);
-                }
+                fields = parser.ReadFields();
+                if (!Temp.ContainsKey(fields[0].ToString()))
+                    Temp.Add(fields[0], fields[4]);
             }
 
-            return statement;
+            parser.Close();
+
+            return Temp;
         }
-        static public String Configure(XmlNode node, String key)
+
+        static public TreeNode FromID(string itemId, TreeNode rootNode)
         {
-            String result = "";
-            if(node.Attributes[key] != null)
-                result = node.Attributes[key].Value;
-
-            return result;
-
+            foreach (TreeNode node in rootNode.Nodes)
+            {
+                if (node.Tag is Statement)
+                    if ((node.Tag as Statement).ID == itemId) 
+                        return node;
+                TreeNode next = FromID(itemId, node);
+                if (next != null)
+                    return next;
+            }
+            return null;
         }
 
     }
+
+    public class ComboboxItem
+    {
+        public ComboboxItem()
+        {
+        }
+        public ComboboxItem(String strText, object objValue)
+        {
+            Text = strText;
+            Value = objValue;
+        }
+        public string Text
+        {
+            get; set;
+        }
+        public object Value
+        {
+            get; set;
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+    }
+
+
+  
 }

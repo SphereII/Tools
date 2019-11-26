@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("7DaysToDiealog")]
+[assembly: AssemblyTitle("7DaysToDialog2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("7DaysToDiealog")]
+[assembly: AssemblyProduct("7DaysToDialog2")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f60787bb-928f-4f41-82e0-a278f17cd94e")]
+[assembly: Guid("ed475ddf-2e95-481f-9ba3-fb5b7fda25b7")]
 
 // Version information for an assembly consists of the following four values:
 //

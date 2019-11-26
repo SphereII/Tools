@@ -22,5 +22,17 @@ namespace _7DaysToDialog.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Extensions {
+            get {
+                return ((bool)(this["Extensions"]));
+            }
+            set {
+                this["Extensions"] = value;
+            }
+        }
     }
 }
