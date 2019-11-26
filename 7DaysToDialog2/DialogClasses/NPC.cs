@@ -89,9 +89,11 @@ namespace _7DaysToDialog
                         {
                             String strType = ReadAttribute(subNode, "type");
                             String strValue = ReadAttribute(subNode, "value");
-                            String strRequirementType = ReadAttribute(subNode, "requirementtype");
+                            String strRequirementType = ReadAttribute(subNode, "requirementType");
+                            String strRequireID = ReadAttribute(subNode, "id");
+
                             String strOperator = ReadAttribute(subNode, "operator");
-                            Requirement require = new Requirement(strType, strValue, strRequirementType, strOperator);
+                            Requirement require = new Requirement(strType, strValue, strRequireID, strRequirementType, strOperator);
                             response.AddRequirement(require);
                         }
 

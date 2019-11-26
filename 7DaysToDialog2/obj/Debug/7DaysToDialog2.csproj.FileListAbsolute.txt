@@ -20,3 +20,4 @@ C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog2\obj\Debug\7DaysToDial
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.csproj.CoreCompileInputs.cache
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.exe
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog2\obj\Debug\7DaysToDialog2.pdb
+D:\Github\Tools\7DaysToDialog2\obj\Debug\_7DaysToDialog.frmRequirement.resources

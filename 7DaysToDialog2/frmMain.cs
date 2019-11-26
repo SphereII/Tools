@@ -18,68 +18,15 @@ namespace _7DaysToDialog
         TreeNode ClickNode = null;
         XmlDocument doc = new XmlDocument();
 
-        List<String> lstOperators = new List<string>();
         public List<NPC> NPCs = new List<NPC>();
-
-        public List<String> VisibilityTypes = new List<string>();
-        public List<RequirementIem> RequirementTypes = new List<RequirementIem>();
-        public List<String> Operators = new List<string>();
 
         public frmMain()
         {
             InitializeComponent();
-
-
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];
-            ConfigureResponses();
+            this.treeDialogs.DrawMode = TreeViewDrawMode.OwnerDrawText;
         }
 
-     
-        public void ConfigureResponses()
-        {
-            VisibilityTypes.Clear();
-            VisibilityTypes.Add("Hide");
-            VisibilityTypes.Add("AlternateText");
-
-            Operators.Clear();
-            Operators.Add("None");
-            Operators.Add("GTE");
-            Operators.Add("GT");
-            Operators.Add("LTE");
-            Operators.Add("LT");
-            Operators.Add("EQ");
-
-            RequirementTypes.Clear();
-            RequirementTypes.Add( new RequirementIem("None", false, false, false));
-            RequirementTypes.Add(new RequirementIem("Buff", false, false, false));
-            RequirementTypes.Add(new RequirementIem("QuestStatus", false, false, false));
-            RequirementTypes.Add(new RequirementIem("Skill", false, false, false));
-            RequirementTypes.Add(new RequirementIem("Admin", false, false, false));
-
-            // Extensions enabled.
-            if(enabledExtensionsToolStripMenuItem.Checked)
-            {
-                RequirementTypes.Add(new RequirementIem("HasCVarSDX, Mods", true, true, true));
-                RequirementTypes.Add(new RequirementIem("HasBuffSDX, Mods", false, true, false));
-                RequirementTypes.Add(new RequirementIem("HasItemSDX, Mods", false, true, true));
-                RequirementTypes.Add(new RequirementIem("HasQuestSDX, Mods", false, false, false));
-                RequirementTypes.Add(new RequirementIem("HasBuffSDX, Mods", true, true, true));
-                RequirementTypes.Add(new RequirementIem("HasTaskSDX, Mods", false, true, false));
-
-                // For NPC's that are hired.
-                RequirementTypes.Add(new RequirementIem("Hired, Mods", false, true, false));
-                RequirementTypes.Add(new RequirementIem("PatrolSDX, Mods", true, true, true));
-            }
-
-            this.cboOperators.Items.Add(Operators.ToArray());
-            this.cboRequirements.Items.AddRange(RequirementTypes.ToArray());
-            this.cboVisibility.Items.AddRange(VisibilityTypes.ToArray());
-
-            this.cboRequirements.SelectedIndex = 0;
-            this.cboVisibility.SelectedIndex = 0;
-            this.cboOperators.SelectedIndex = 0;
-        }
-        
         private void chkResponseID_CheckedChanged(object sender, EventArgs e)
         {
             this.txtResponseID.ReadOnly = !chkResponseID.Checked;
@@ -121,32 +68,43 @@ namespace _7DaysToDialog
         }
 
 
-        private void UpdateNode(Response responseClass)
+        private void UpdateNode(Response responseClass )
         {
+            TreeNode targetNode = null;
+
+            // see if a node already exists for this response.
             foreach (TreeNode searchNode in this.treeReplies.Nodes)
             {
                 Response searchClass = searchNode.Tag as Response;
                 if (searchClass.ID == responseClass.ID)
                 {
-                    searchNode.Text = Utilities.GetLocalization(responseClass.Text);
-                    searchNode.ToolTipText = responseClass.ToString();
-                    searchNode.Tag = responseClass;
-                    return;
+                    targetNode = searchNode;
+                    break;
                 }
             }
-            TreeNode responseNode = new TreeNode();
-            responseNode.Text = Utilities.GetLocalization(responseClass.Text);
-            responseNode.ToolTipText = responseClass.ToString();
-            responseNode.Tag = responseClass;
+
+            // If a node doesn't exist, then create one. Remove the existing one.
+            if (targetNode != null)
+                this.treeReplies.Nodes.Remove(targetNode);
+
+                targetNode = new TreeNode();
+
+                targetNode.Text = Utilities.GetLocalization(responseClass.Text);
+            targetNode.ToolTipText = responseClass.ToString();
+            targetNode.Tag = responseClass;
             foreach (Requirement requirement in responseClass.Requirements)
             {
                 TreeNode requirementNode = new TreeNode();
                 requirementNode.Text = requirement.ToString();
-                responseNode.Nodes.Add(requirementNode);
+                requirementNode.Tag = requirement;
+                targetNode.Nodes.Add(requirementNode);
             }
-            this.treeReplies.Nodes.Add(responseNode);
+            this.treeReplies.Nodes.Add(targetNode);
+        }
 
-
+        public void RefreshReplies()
+        {
+        
         }
         private void treeReplies_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -181,28 +139,148 @@ namespace _7DaysToDialog
 
             foreach (NPC npc in NPCs)
             {
-                if (npc.Name == this.cmbNPCs.SelectedItem.ToString() )
-                {
+                if (npc.Name == this.cmbNPCs.SelectedItem.ToString())
                     return npc;
-                }
             }
             return null;
         }
 
+        private void GenerateDialogsContextMenu(TreeNode node)
+        {
+            DialogsContextMenu.Items.Clear();
+            
+            if (node.Tag is NPC)
+            {
+                DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Text));
+                DialogsContextMenu.Items.Add(new ToolStripSeparator());
+                DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
+            }
+            if (node.Tag is Statement)
+            {
+                DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Parent.Text));
+                DialogsContextMenu.Items.Add(new ToolStripSeparator());
+                DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
+            }
+        }
+
+        private void NewStatement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (ClickNode.Tag is NPC)
+                this.cmbNPCs.SelectedIndex = this.cmbNPCs.FindStringExact(ClickNode.Text);
+            else if (ClickNode.Tag is Statement)
+                this.cmbNPCs.SelectedIndex = this.cmbNPCs.FindStringExact(ClickNode.Parent.Text);
+            ClearForm(false);
+            this.rtbStatement.Focus();
+
+        }
         private void GenerateContextMenu(TreeNode node)
         {
             ResponsesMenu.Items.Clear();
             ResponsesMenu.Items.Insert(0, new ToolStripLabel(node.Text));
-            ResponsesMenu.Items.Insert(1, new ToolStripSeparator());
-            ResponsesMenu.Items.Add("Delete Response").Click += new EventHandler(RemoveResponse);
-            ResponsesMenu.Items.Add("Edit Response").Click += new EventHandler(EditResponse);
-            ResponsesMenu.Items.Add(new ToolStripSeparator());
-            ResponsesMenu.Items.Add("New Statement");
-            ResponsesMenu.Items.Add("Link To Existing Statement");
-            ResponsesMenu.Items.Add(new ToolStripSeparator());
-            ResponsesMenu.Items.Add("Add Requirement").Click += new EventHandler(RemoveResponse);
-            ResponsesMenu.Items.Add("Edit Requirement").Click += new EventHandler(RemoveResponse);
-            ResponsesMenu.Items.Add("Remove Requirement").Click += new EventHandler(RemoveResponse);
+            if ( node.Tag is Response)
+            {
+                ResponsesMenu.Items.Insert(1, new ToolStripSeparator());
+                ResponsesMenu.Items.Add("Delete Response").Click += new EventHandler(RemoveResponse);
+                ResponsesMenu.Items.Add("Edit Response").Click += new EventHandler(EditResponse);
+                ResponsesMenu.Items.Add(new ToolStripSeparator());
+                ResponsesMenu.Items.Add("Add Requirement").Click += new EventHandler(AddRequirement);
+                ResponsesMenu.Items.Add("Add Action").Click += new EventHandler(AddAction);
+                ResponsesMenu.Items.Add("Add Quest Entry").Click += new EventHandler(AddQuestEntry);
+            }
+            if (node.Tag is Requirement) 
+            {
+                ResponsesMenu.Items.Add("Edit Requirement").Click += new EventHandler(EditRequirement);
+                ResponsesMenu.Items.Add("Remove Requirement").Click += new EventHandler(RemoveRequirement);
+            }
+            if (node.Tag is Action)
+            {
+                ResponsesMenu.Items.Add("Edit Action").Click += new EventHandler(AddAction);
+                ResponsesMenu.Items.Add("Remove Action").Click += new EventHandler(AddAction);
+            }
+
+            if (node.Tag is QuestEntry)
+            {
+                ResponsesMenu.Items.Add("Edit QuestEntry").Click += new EventHandler(AddQuestEntry);
+                ResponsesMenu.Items.Add("Remove QuestEntry").Click += new EventHandler(AddQuestEntry);
+            }
+
+        }
+
+        private void AddAction(object sender, EventArgs e)
+        {
+
+        }
+        private void AddQuestEntry(object sender, EventArgs e)
+        {
+
+        }
+        private void AddRequirement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            frmRequirement frm = new frmRequirement();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                Response response = ClickNode.Tag as Response;
+                foreach (Requirement require in response.Requirements)
+                {
+                    if (require.Hash == frm.requirement.Hash)
+                        return;
+                }
+                response.AddRequirement(frm.requirement);
+                UpdateNode(response);
+                ClickNode = null;
+            }
+
+        }
+
+        private void EditRequirement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            Requirement requirement = ClickNode.Tag as Requirement;
+            if (requirement == null)
+                return;
+
+            frmRequirement frm = new frmRequirement();
+            frm.SetRequirement(requirement);
+
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                Response response = ClickNode.Parent.Tag as Response;
+                if (response == null)
+                    return;
+
+
+                response.AddRequirement(frm.requirement);
+                UpdateNode(response);
+                ClickNode = null;
+            }
+
+        }
+
+        private void RemoveRequirement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            Requirement requirement = ClickNode.Tag as Requirement;
+            if (requirement == null)
+                return;
+            Response response = ClickNode.Parent.Tag as Response;
+            if (response == null)
+                return;
+
+            response.Requirements.Remove(requirement);
+            this.treeReplies.Nodes.Remove(ClickNode);
+            ClickNode = null;
         }
         private void RemoveResponse(object sender, EventArgs e)
         {
@@ -220,7 +298,6 @@ namespace _7DaysToDialog
                         keyValuePair.Value.Responses.Remove(response.ID);
                     }
 
-
             ClickNode = null;
         }
 
@@ -231,14 +308,15 @@ namespace _7DaysToDialog
 
             this.btnAdd.Text = "Save";
             Response response = ClickNode.Tag as Response;
+            if (response == null)
+                return;
             this.txtResponse.Text = Utilities.GetLocalization(response.Text);
             this.txtResponseID.Text = response.ID;
         }
 
         private void treeDialogs_Click(object sender, EventArgs e)
         {
-    
-
+        
 
         }
 
@@ -247,7 +325,16 @@ namespace _7DaysToDialog
         {
             if (e.Button == MouseButtons.Right)
             {
+                    Point ClickPoint = new Point(e.X, e.Y);
+                    ClickNode = treeDialogs.GetNodeAt(ClickPoint);
+                    if (ClickNode == null)
+                        return;
 
+                    this.treeDialogs.SelectedNode = ClickNode;
+                    GenerateDialogsContextMenu(ClickNode);
+                    Point ScreenPoint = treeDialogs.PointToScreen(ClickPoint);
+                    Point FormPoint = this.PointToClient(ScreenPoint);
+                    DialogsContextMenu.Show(this, FormPoint);
             }
             if (e.Button == MouseButtons.Left)
             {
@@ -260,11 +347,30 @@ namespace _7DaysToDialog
                     return;
 
                 this.treeReplies.SelectedNode = ClickNode;
-                SetStatement();
+                if (ClickNode.Tag is Statement)
+                {
+                    SetStatement(ClickNode.Tag as Statement);
+                }
 
             }
         }
 
+        private void SetStatement(Statement statement)
+        {
+            if (statement == null)
+                return;
+
+            this.grpConversation.Visible = true;
+            this.rtbStatement.Text = Utilities.GetLocalization(statement.Text);
+            this.treeReplies.Nodes.Clear();
+            foreach (KeyValuePair<string, Response> response in statement.Responses)
+                UpdateNode(response.Value);
+
+            //  this.treeDialogs.Focus();
+            this.txtResponse.Focus();
+            this.txtResponse.Text = "";
+            this.txtResponseID.Text = "";
+        }
         private void SetStatement()
         {
             if (ClickNode == null)
@@ -276,15 +382,7 @@ namespace _7DaysToDialog
                     if (npc.Name == ClickNode.Parent.Text)
                     {
                         Statement statement = ClickNode.Tag as Statement;
-                        if (statement == null)
-                            return;
-                        String strStatementKey = statement.ID;
-                        if (!npc.Statements.ContainsKey(strStatementKey))
-                            continue;
-                        this.rtbStatement.Text = Utilities.GetLocalization(npc.Statements[strStatementKey].Text);
-                        this.treeReplies.Nodes.Clear();
-                        foreach (KeyValuePair<string, Response> response in npc.Statements[strStatementKey].Responses)
-                            UpdateNode(response.Value);
+                        SetStatement(statement);
 
                         // If there's no replies, then it's just an empty statement that returns back to the main statement.
                         //if (this.treeReplies.Nodes.Count == 0)
@@ -303,11 +401,6 @@ namespace _7DaysToDialog
                     }
                 }
             }
-            this.treeDialogs.Focus();
-            this.txtResponse.Text = "";
-            this.txtResponseID.Text = "";
-
-
         }
 
 
@@ -339,6 +432,7 @@ namespace _7DaysToDialog
 
                 ClickNode = itemNode;
                 this.treeDialogs.SelectedNode = ClickNode;
+                
                 SetStatement();
             }
         }
@@ -364,13 +458,10 @@ namespace _7DaysToDialog
                     strFile = openFileDialog.FileName;
                     doc.Load(strFile);
                     foreach (XmlNode dialogNode in doc.SelectNodes("//dialog"))
-                        //foreach (XmlNode dialogNode in node.ChildNodes)
-                            NPCs.Add(new NPC(dialogNode));
+                        NPCs.Add(new NPC(dialogNode));
 
                     Utilities.InitLocalization(Path.GetDirectoryName( strFile ));
                     RebuildTreeNode();
-
-
                 }
             }
 
@@ -466,6 +557,9 @@ namespace _7DaysToDialog
                                 requireNode.Attributes.Append(GenerateAttribute("value", require.Value, saveDoc));
                                 requireNode.Attributes.Append(GenerateAttribute("requirementType", require.requirementType, saveDoc));
                                 requireNode.Attributes.Append(GenerateAttribute("operator", require.Operator, saveDoc));
+                                requireNode.Attributes.Append(GenerateAttribute("id", require.ID, saveDoc));
+                                requireNode.Attributes.Append(GenerateAttribute("Hash", require.Hash, saveDoc));
+
                                 responseNode.AppendChild(requireNode);
 
                             }
@@ -516,8 +610,9 @@ namespace _7DaysToDialog
                 newNPC.Statements.Add("start", start);
                 this.treeDialogs.Nodes.Add(newNPC.Name);
                 RebuildTreeNode();
+              //  SetStatement(newNPC.Statements["start"]);
 
-               
+
             }
         }
         void RebuildTreeNode()
@@ -527,6 +622,7 @@ namespace _7DaysToDialog
             {
                 TreeNode npcNode = new TreeNode();
                 npcNode.Text = npc.Name;
+                npcNode.Tag = npc;
                 foreach (KeyValuePair<string, Statement> statement in npc.Statements)
                 {
                     TreeNode statementNode = new TreeNode();
@@ -537,6 +633,14 @@ namespace _7DaysToDialog
                         TreeNode responseNode = new TreeNode();
                         responseNode.Text = Utilities.GetLocalization(response.Value.Text) + " ( " + response.Value.ID + " )";
                         responseNode.Tag = response.Value;
+
+                        foreach (Requirement requirement in response.Value.Requirements)
+                        {
+                            TreeNode requirementNode = new TreeNode();
+                            requirementNode.Tag = requirement;
+                            responseNode.Nodes.Add(requirementNode);
+                        }
+
                         //  statementNode.Nodes.Add(responseNode);
                     }
                     npcNode.Nodes.Add(statementNode);
@@ -643,6 +747,46 @@ namespace _7DaysToDialog
         {
             Properties.Settings.Default["Extensions"] = enabledExtensionsToolStripMenuItem.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void lblStatements_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbStatements_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddRequirement_Click(object sender, EventArgs e)
+        {
+            frmRequirement frm = new frmRequirement();
+            frm.Text = "Add New Requirement for " + this.txtResponse.Text;
+            frm.ShowDialog();
+        }
+
+        private void treeDialogs_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            if (e.Node == null) return;
+
+            // if treeview's HideSelection property is "True", 
+            // this will always returns "False" on unfocused treeview
+            var selected = (e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected;
+            var unfocused = !e.Node.TreeView.Focused;
+
+            // we need to do owner drawing only on a selected node
+            // and when the treeview is unfocused, else let the OS do it for us
+            if (selected && unfocused)
+            {
+                var font = e.Node.NodeFont ?? e.Node.TreeView.Font;
+                e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+                TextRenderer.DrawText(e.Graphics, e.Node.Text, font, e.Bounds, SystemColors.HighlightText, TextFormatFlags.GlyphOverhangPadding);
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
         }
     }
 }

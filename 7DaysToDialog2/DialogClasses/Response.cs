@@ -34,8 +34,18 @@ namespace _7DaysToDialog
 
         public void AddRequirement(Requirement requirement)
         {
-            if(Requirements.Contains(requirement))
-                return;
+            foreach (Requirement temp in Requirements)
+            {
+                if (temp.Hash == requirement.Hash)
+                {
+                    temp.ID = requirement.ID;
+                    temp.Operator = requirement.Operator;
+                    temp.requirementType = requirement.requirementType;
+                    temp.Type = requirement.Type;
+                    temp.Value = requirement.Value;
+                    return;
+                }
+            }
             Requirements.Add(requirement);
         }
         public Response()

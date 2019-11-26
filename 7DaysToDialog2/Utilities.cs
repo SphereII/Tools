@@ -95,41 +95,5 @@ namespace _7DaysToDialog
     }
 
 
-    public class RequirementIem
-    {
-        public struct RequirementType
-        {
-            public String Text;
-            public bool hasOperator;
-            public bool hasValue;
-            public bool hasID;
-        }
-
-        public RequirementIem()
-        {
-        }
-        public RequirementIem(String strText, bool hasOperator, bool hasValue, bool hasID )
-        {
-            Text = strText;
-            RequirementType Value = new RequirementType();
-            Value.Text = Text;
-            Value.hasID = hasID;
-            Value.hasOperator = hasOperator;
-            Value.hasValue = hasValue;
-
-        }
-        public string Text
-        {
-            get; set;
-        }
-        public RequirementType Value
-        {
-            get; set;
-        }
-
-        public override string ToString()
-        {
-            return Text;
-        }
-    }
+  
 }

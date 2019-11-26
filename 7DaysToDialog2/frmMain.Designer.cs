@@ -33,23 +33,17 @@
             this.cmbNPCs = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.grpAddNewResponse = new System.Windows.Forms.GroupBox();
-            this.lblVisibility = new System.Windows.Forms.Label();
-            this.cboVisibility = new System.Windows.Forms.ComboBox();
-            this.lblOperators = new System.Windows.Forms.Label();
-            this.cboOperators = new System.Windows.Forms.ComboBox();
-            this.lblRequirements = new System.Windows.Forms.Label();
-            this.cboRequirements = new System.Windows.Forms.ComboBox();
             this.lblStatements = new System.Windows.Forms.Label();
             this.cmbStatements = new System.Windows.Forms.ComboBox();
-            this.chkResponseID = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblNewResponse = new System.Windows.Forms.Label();
-            this.txtResponseID = new System.Windows.Forms.TextBox();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.grpResponses = new System.Windows.Forms.GroupBox();
             this.treeReplies = new System.Windows.Forms.TreeView();
+            this.chkResponseID = new System.Windows.Forms.CheckBox();
             this.grpNPC = new System.Windows.Forms.GroupBox();
             this.rtbStatement = new System.Windows.Forms.RichTextBox();
+            this.txtResponseID = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ResponsesMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.treeDialogs = new System.Windows.Forms.TreeView();
@@ -59,20 +53,18 @@
             this.closeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledExtensionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNewNPC = new System.Windows.Forms.Button();
             this.txtAddNewNPC = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.grpResponses.SuspendLayout();
             this.grpNPC.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpConversation
@@ -81,15 +73,14 @@
             this.grpConversation.Controls.Add(this.btnSave);
             this.grpConversation.Controls.Add(this.grpAddNewResponse);
             this.grpConversation.Controls.Add(this.grpResponses);
-            this.grpConversation.Controls.Add(this.chkResponseID);
             this.grpConversation.Controls.Add(this.grpNPC);
-            this.grpConversation.Controls.Add(this.txtResponseID);
             this.grpConversation.Location = new System.Drawing.Point(419, 27);
             this.grpConversation.Name = "grpConversation";
-            this.grpConversation.Size = new System.Drawing.Size(750, 607);
+            this.grpConversation.Size = new System.Drawing.Size(552, 544);
             this.grpConversation.TabIndex = 0;
             this.grpConversation.TabStop = false;
             this.grpConversation.Text = "Conversation";
+            this.grpConversation.Visible = false;
             // 
             // cmbNPCs
             // 
@@ -111,109 +102,42 @@
             // 
             // grpAddNewResponse
             // 
-            this.grpAddNewResponse.Controls.Add(this.cboVisibility);
-            this.grpAddNewResponse.Controls.Add(this.lblVisibility);
-            this.grpAddNewResponse.Controls.Add(this.panel1);
-            this.grpAddNewResponse.Controls.Add(this.lblRequirements);
-            this.grpAddNewResponse.Controls.Add(this.cboRequirements);
             this.grpAddNewResponse.Controls.Add(this.lblStatements);
             this.grpAddNewResponse.Controls.Add(this.cmbStatements);
+            this.grpAddNewResponse.Controls.Add(this.txtResponseID);
             this.grpAddNewResponse.Controls.Add(this.btnAdd);
+            this.grpAddNewResponse.Controls.Add(this.chkResponseID);
             this.grpAddNewResponse.Controls.Add(this.lblNewResponse);
             this.grpAddNewResponse.Controls.Add(this.txtResponse);
             this.grpAddNewResponse.Location = new System.Drawing.Point(17, 318);
             this.grpAddNewResponse.Name = "grpAddNewResponse";
-            this.grpAddNewResponse.Size = new System.Drawing.Size(718, 283);
+            this.grpAddNewResponse.Size = new System.Drawing.Size(518, 218);
             this.grpAddNewResponse.TabIndex = 2;
             this.grpAddNewResponse.TabStop = false;
             this.grpAddNewResponse.Text = "Add New Response";
             // 
-            // lblVisibility
-            // 
-            this.lblVisibility.AutoSize = true;
-            this.lblVisibility.Location = new System.Drawing.Point(397, 71);
-            this.lblVisibility.Name = "lblVisibility";
-            this.lblVisibility.Size = new System.Drawing.Size(127, 13);
-            this.lblVisibility.TabIndex = 10;
-            this.lblVisibility.Text = "If the requirement is false:";
-            // 
-            // cboVisibility
-            // 
-            this.cboVisibility.FormattingEnabled = true;
-            this.cboVisibility.Location = new System.Drawing.Point(409, 89);
-            this.cboVisibility.Name = "cboVisibility";
-            this.cboVisibility.Size = new System.Drawing.Size(77, 21);
-            this.cboVisibility.TabIndex = 9;
-            // 
-            // lblOperators
-            // 
-            this.lblOperators.AutoSize = true;
-            this.lblOperators.Location = new System.Drawing.Point(14, 10);
-            this.lblOperators.Name = "lblOperators";
-            this.lblOperators.Size = new System.Drawing.Size(249, 13);
-            this.lblOperators.TabIndex = 8;
-            this.lblOperators.Text = "Extra condition for the operational Value ( operator )";
-            // 
-            // cboOperators
-            // 
-            this.cboOperators.FormattingEnabled = true;
-            this.cboOperators.Location = new System.Drawing.Point(17, 26);
-            this.cboOperators.Name = "cboOperators";
-            this.cboOperators.Size = new System.Drawing.Size(221, 21);
-            this.cboOperators.TabIndex = 7;
-            // 
-            // lblRequirements
-            // 
-            this.lblRequirements.AutoSize = true;
-            this.lblRequirements.Location = new System.Drawing.Point(397, 25);
-            this.lblRequirements.Name = "lblRequirements";
-            this.lblRequirements.Size = new System.Drawing.Size(220, 13);
-            this.lblRequirements.TabIndex = 6;
-            this.lblRequirements.Text = "Show this Response only when the following:";
-            // 
-            // cboRequirements
-            // 
-            this.cboRequirements.FormattingEnabled = true;
-            this.cboRequirements.Location = new System.Drawing.Point(409, 43);
-            this.cboRequirements.Name = "cboRequirements";
-            this.cboRequirements.Size = new System.Drawing.Size(238, 21);
-            this.cboRequirements.TabIndex = 5;
-            // 
             // lblStatements
             // 
             this.lblStatements.AutoSize = true;
-            this.lblStatements.Location = new System.Drawing.Point(7, 71);
+            this.lblStatements.Location = new System.Drawing.Point(4, 142);
             this.lblStatements.Name = "lblStatements";
             this.lblStatements.Size = new System.Drawing.Size(168, 13);
             this.lblStatements.TabIndex = 4;
             this.lblStatements.Text = "Link this response to a statement. ";
+            this.lblStatements.Click += new System.EventHandler(this.lblStatements_Click);
             // 
             // cmbStatements
             // 
             this.cmbStatements.FormattingEnabled = true;
-            this.cmbStatements.Location = new System.Drawing.Point(7, 89);
+            this.cmbStatements.Location = new System.Drawing.Point(0, 158);
             this.cmbStatements.Name = "cmbStatements";
-            this.cmbStatements.Size = new System.Drawing.Size(383, 21);
+            this.cmbStatements.Size = new System.Drawing.Size(498, 21);
             this.cmbStatements.TabIndex = 3;
-            // 
-            // chkResponseID
-            // 
-            this.chkResponseID.AutoSize = true;
-            this.chkResponseID.Checked = true;
-            this.chkResponseID.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkResponseID.Location = new System.Drawing.Point(549, 191);
-            this.chkResponseID.Name = "chkResponseID";
-            this.chkResponseID.Size = new System.Drawing.Size(166, 17);
-            this.chkResponseID.TabIndex = 2;
-            this.chkResponseID.Text = "Auto Generate Response ID?";
-            this.toolTip1.SetToolTip(this.chkResponseID, "Keep this checked to auto-generate an ID used to link the statements. Or unselect" +
-        ", and enter your own unique ID.");
-            this.chkResponseID.UseVisualStyleBackColor = true;
-            this.chkResponseID.CheckedChanged += new System.EventHandler(this.chkResponseID_CheckedChanged);
+            this.cmbStatements.SelectedIndexChanged += new System.EventHandler(this.cmbStatements_SelectedIndexChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(623, 161);
+            this.btnAdd.Location = new System.Drawing.Point(210, 185);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -224,25 +148,17 @@
             // lblNewResponse
             // 
             this.lblNewResponse.AutoSize = true;
-            this.lblNewResponse.Location = new System.Drawing.Point(4, 25);
+            this.lblNewResponse.Location = new System.Drawing.Point(6, 25);
             this.lblNewResponse.Name = "lblNewResponse";
             this.lblNewResponse.Size = new System.Drawing.Size(195, 13);
             this.lblNewResponse.TabIndex = 1;
             this.lblNewResponse.Text = "What would you like to say to the NPC?";
             // 
-            // txtResponseID
-            // 
-            this.txtResponseID.Location = new System.Drawing.Point(541, 226);
-            this.txtResponseID.Name = "txtResponseID";
-            this.txtResponseID.ReadOnly = true;
-            this.txtResponseID.Size = new System.Drawing.Size(165, 20);
-            this.txtResponseID.TabIndex = 2;
-            // 
             // txtResponse
             // 
-            this.txtResponse.Location = new System.Drawing.Point(7, 44);
+            this.txtResponse.Location = new System.Drawing.Point(9, 44);
             this.txtResponse.Name = "txtResponse";
-            this.txtResponse.Size = new System.Drawing.Size(383, 20);
+            this.txtResponse.Size = new System.Drawing.Size(500, 20);
             this.txtResponse.TabIndex = 0;
             this.txtResponse.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtResponse_KeyUp);
             // 
@@ -265,6 +181,21 @@
             this.treeReplies.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeReplies_NodeMouseClick);
             this.treeReplies.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeReplies_NodeMouseDoubleClick);
             // 
+            // chkResponseID
+            // 
+            this.chkResponseID.AutoSize = true;
+            this.chkResponseID.Checked = true;
+            this.chkResponseID.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkResponseID.Location = new System.Drawing.Point(9, 70);
+            this.chkResponseID.Name = "chkResponseID";
+            this.chkResponseID.Size = new System.Drawing.Size(166, 17);
+            this.chkResponseID.TabIndex = 2;
+            this.chkResponseID.Text = "Auto Generate Response ID?";
+            this.toolTip1.SetToolTip(this.chkResponseID, "Keep this checked to auto-generate an ID used to link the statements. Or unselect" +
+        ", and enter your own unique ID.");
+            this.chkResponseID.UseVisualStyleBackColor = true;
+            this.chkResponseID.CheckedChanged += new System.EventHandler(this.chkResponseID_CheckedChanged);
+            // 
             // grpNPC
             // 
             this.grpNPC.Controls.Add(this.rtbStatement);
@@ -283,6 +214,14 @@
             this.rtbStatement.TabIndex = 0;
             this.rtbStatement.Text = "";
             // 
+            // txtResponseID
+            // 
+            this.txtResponseID.Location = new System.Drawing.Point(7, 93);
+            this.txtResponseID.Name = "txtResponseID";
+            this.txtResponseID.ReadOnly = true;
+            this.txtResponseID.Size = new System.Drawing.Size(165, 20);
+            this.txtResponseID.TabIndex = 2;
+            // 
             // ResponsesMenu
             // 
             this.ResponsesMenu.Name = "ResponsesMenu";
@@ -290,11 +229,13 @@
             // 
             // treeDialogs
             // 
+            this.treeDialogs.HideSelection = false;
             this.treeDialogs.Location = new System.Drawing.Point(22, 72);
             this.treeDialogs.Name = "treeDialogs";
             this.treeDialogs.ShowNodeToolTips = true;
-            this.treeDialogs.Size = new System.Drawing.Size(391, 476);
+            this.treeDialogs.Size = new System.Drawing.Size(391, 499);
             this.treeDialogs.TabIndex = 1;
+            this.treeDialogs.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeDialogs_DrawNode);
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_AfterSelect);
             this.treeDialogs.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeDialogs_NodeMouseClick);
             this.treeDialogs.Click += new System.EventHandler(this.treeDialogs_Click);
@@ -306,7 +247,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1181, 24);
+            this.menuStrip.Size = new System.Drawing.Size(984, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -317,7 +258,6 @@
             this.closeFileToolStripMenuItem,
             this.toolStripSeparator2,
             this.saveFileToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -327,44 +267,38 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openFileToolStripMenuItem.Text = "&Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // closeFileToolStripMenuItem
             // 
             this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeFileToolStripMenuItem.Text = "&Close File";
             this.closeFileToolStripMenuItem.Click += new System.EventHandler(this.closeFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveFileToolStripMenuItem.Text = "Save File";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -381,7 +315,7 @@
             // 
             this.enabledExtensionsToolStripMenuItem.CheckOnClick = true;
             this.enabledExtensionsToolStripMenuItem.Name = "enabledExtensionsToolStripMenuItem";
-            this.enabledExtensionsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.enabledExtensionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.enabledExtensionsToolStripMenuItem.Text = "Enabled Extensions";
             this.enabledExtensionsToolStripMenuItem.ToolTipText = "When enabled, additional features from 0-SphereIICore are available.";
             this.enabledExtensionsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.enabledExtensionsToolStripMenuItem_CheckedChanged);
@@ -404,20 +338,16 @@
             this.txtAddNewNPC.TabIndex = 4;
             this.txtAddNewNPC.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAddNewNPC_KeyUp);
             // 
-            // panel1
+            // DialogsContextMenu
             // 
-            this.panel1.Controls.Add(this.cboOperators);
-            this.panel1.Controls.Add(this.lblOperators);
-            this.panel1.Location = new System.Drawing.Point(7, 161);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 100);
-            this.panel1.TabIndex = 9;
+            this.DialogsContextMenu.Name = "ResponsesMenu";
+            this.DialogsContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 646);
+            this.ClientSize = new System.Drawing.Size(984, 589);
             this.Controls.Add(this.btnAddNewNPC);
             this.Controls.Add(this.txtAddNewNPC);
             this.Controls.Add(this.treeDialogs);
@@ -427,15 +357,12 @@
             this.Name = "frmMain";
             this.Text = "7 Days To Dialog";
             this.grpConversation.ResumeLayout(false);
-            this.grpConversation.PerformLayout();
             this.grpAddNewResponse.ResumeLayout(false);
             this.grpAddNewResponse.PerformLayout();
             this.grpResponses.ResumeLayout(false);
             this.grpNPC.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,7 +390,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button btnAddNewNPC;
@@ -474,13 +400,7 @@
         private System.Windows.Forms.ToolStripMenuItem enabledExtensionsToolStripMenuItem;
         private System.Windows.Forms.Label lblStatements;
         private System.Windows.Forms.ComboBox cmbStatements;
-        private System.Windows.Forms.Label lblRequirements;
-        private System.Windows.Forms.ComboBox cboRequirements;
-        private System.Windows.Forms.Label lblVisibility;
-        private System.Windows.Forms.ComboBox cboVisibility;
-        private System.Windows.Forms.Label lblOperators;
-        private System.Windows.Forms.ComboBox cboOperators;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ContextMenuStrip DialogsContextMenu;
     }
 }
 
