@@ -591,8 +591,13 @@ namespace _7DaysToDialog
                     {
                         XmlNode npcNode = saveDoc.CreateElement("dialog");
                         XmlAttribute npcID = saveDoc.CreateAttribute("id");
+                        XmlAttribute startStatement = saveDoc.CreateAttribute("startstatementid");
+                        startStatement.Value = "start";
+                        npcNode.Attributes.Append(startStatement);
+
                         npcID.Value = npc.Name;
                         npcNode.Attributes.Append(npcID);
+
                         append.AppendChild(npcNode);
 
                         foreach(KeyValuePair<string, Statement> statement in npc.Statements)
