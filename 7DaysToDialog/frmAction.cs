@@ -12,7 +12,7 @@ namespace _7DaysToDialog
 {
     public partial class frmAction : Form
     {
-        public Action action;
+        public Action action = new Action();
 
         public frmAction()
         {
@@ -55,12 +55,26 @@ namespace _7DaysToDialog
             ActionItem item = this.cboActions.SelectedItem as ActionItem;
             if(item != null)
             {
-                action = new Action(item.Text, txtID.Text);
-           
+                action.ActionType = item.Text;
+                if (this.txtID.Visible)
+                    action.ID = this.txtID.Text;
+                else
+                    action.ID = "";
+
+                if (String.IsNullOrEmpty(action.Hash))
+                    action.Hash = "Action_" + Utilities.RandomString(8).GetHashCode();
+                this.DialogResult = DialogResult.OK;
             }
             this.Close();
         }
 
+        public void SetAction(Action action)
+        {
+            this.cboActions.SelectedIndex = this.cboActions.FindStringExact(action.ActionType);
+            this.txtID.Text = action.ID;
+            this.action.Hash = action.Hash;
+            this.txtID.Visible = true;
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

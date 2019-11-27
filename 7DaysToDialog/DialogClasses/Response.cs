@@ -26,10 +26,18 @@ namespace _7DaysToDialog
             return this.ID + " : " + this.Text;
         }
 
-        public void AddAction(Action myAction)
+        public void AddAction(Action action)
         {
- 
-            Actions.Add(myAction);
+            foreach (Action temp in Actions)
+            {
+                if (temp.Hash == action.Hash)
+                {
+                    temp.ID = action.ID;
+                    temp.ActionType = action.ActionType;
+                    return;
+                }
+            }
+            Actions.Add(action);
         }
 
         public XmlNode GenerateXMLNode(XmlDocument doc)

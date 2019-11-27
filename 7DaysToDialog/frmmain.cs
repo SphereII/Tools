@@ -215,8 +215,9 @@ namespace _7DaysToDialog
             }
             if(node.Tag is Action)
             {
-                ResponsesMenu.Items.Add("Edit Action").Click += new EventHandler(AddAction);
-                ResponsesMenu.Items.Add("Remove Action").Click += new EventHandler(AddAction);
+                ResponsesMenu.Items.Add("Add Action").Click += new EventHandler(AddAction);
+                ResponsesMenu.Items.Add("Edit Action").Click += new EventHandler(EditAction);
+                ResponsesMenu.Items.Add("Remove Action").Click += new EventHandler(RemoveAction);
             }
 
             if(node.Tag is QuestEntry)
@@ -247,6 +248,49 @@ namespace _7DaysToDialog
                 UpdateNode(response);
                 ClickNode = null;
             }
+        }
+
+        private void EditAction(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            Action action = ClickNode.Tag as Action;
+            if (action == null)
+                return;
+
+            frmAction frm = new frmAction();
+            frm.SetAction(action);
+
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                Response response = ClickNode.Parent.Tag as Response;
+                if (response == null)
+                    return;
+
+                response.AddAction(frm.action);
+                UpdateNode(response);
+                ClickNode = null;
+            }
+
+        }
+
+        private void RemoveAction(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            Action action = ClickNode.Tag as Action;
+            if (action == null)
+                return;
+            Response response = ClickNode.Parent.Tag as Response;
+            if (response == null)
+                return;
+
+            response.Actions.Remove(action);
+            treeReplies.Nodes.Remove(ClickNode);
+            ClickNode = null;
         }
         private void AddQuestEntry(object sender, EventArgs e)
         {
@@ -379,8 +423,8 @@ namespace _7DaysToDialog
                     return;
 
                 treeReplies.SelectedNode = ClickNode;
-                if(ClickNode.Tag is Statement)
-                    SetStatement(ClickNode.Tag as Statement);
+                //if(ClickNode.Tag is Statement)
+                //    SetStatement(ClickNode.Tag as Statement);
             }
         }
 
@@ -396,12 +440,12 @@ namespace _7DaysToDialog
                 UpdateNode(response.Value);
 
            
-            foreach(TreeNode node in this.treeDialogs.Nodes)
-            {
-                TreeNode myNode = Utilities.FromID(statement.ID, node);
-                if(myNode != null)
-                    this.treeDialogs.SelectedNode = myNode;
-            }
+            //foreach(TreeNode node in this.treeDialogs.Nodes)
+            //{
+            //    TreeNode myNode = Utilities.FromID(statement.ID, node);
+            //    if(myNode != null)
+            //        this.treeDialogs.SelectedNode = myNode;
+            //}
             txtResponse.Focus();
             txtResponse.Text = "";
             txtResponseID.Text = "";
@@ -467,7 +511,7 @@ namespace _7DaysToDialog
                 ClickNode = itemNode;
                 treeDialogs.SelectedNode = ClickNode;
 
-                SetStatement();
+             
             }
         }
 
@@ -547,8 +591,13 @@ namespace _7DaysToDialog
                     {
                         XmlNode npcNode = saveDoc.CreateElement("dialog");
                         XmlAttribute npcID = saveDoc.CreateAttribute("id");
+                        XmlAttribute startStatement = saveDoc.CreateAttribute("startstatementid");
+                        startStatement.Value = "start";
+                        npcNode.Attributes.Append(startStatement);
+
                         npcID.Value = npc.Name;
                         npcNode.Attributes.Append(npcID);
+
                         append.AppendChild(npcNode);
 
                         foreach(KeyValuePair<string, Statement> statement in npc.Statements)
@@ -711,18 +760,6 @@ namespace _7DaysToDialog
             }
         }
 
-        private void txtAddNewNPC_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-                btnAddNewNPC_Click(null, null);
-        }
-
-        private void txtResponse_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-                btnAdd_Click(null, null);
-        }
-
         private void enabledExtensionsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default["Extensions"] = enabledExtensionsToolStripMenuItem.Checked;
@@ -761,6 +798,27 @@ namespace _7DaysToDialog
             if(treeDialogs.Nodes[0] != null)
                 treeDialogs.SelectedNode = treeDialogs.Nodes[0];
 
+        }
+
+        private void txtAddNewNPC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                btnAddNewNPC_Click(null, null);
+            }
+        }
+
+        private void txtResponse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+
+                btnAdd_Click(null, null);
+            }
         }
     }
 }
