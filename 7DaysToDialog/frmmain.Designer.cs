@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grpConversation = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.cmbNPCs = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.grpAddNewResponse = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,6 @@
             this.btnAddNewNPC = new System.Windows.Forms.Button();
             this.txtAddNewNPC = new System.Windows.Forms.TextBox();
             this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnCancel = new System.Windows.Forms.Button();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.grpResponses.SuspendLayout();
@@ -83,6 +83,16 @@
             this.grpConversation.TabStop = false;
             this.grpConversation.Text = "Conversation";
             this.grpConversation.Visible = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(87, 19);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cmbNPCs
             // 
@@ -183,7 +193,7 @@
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.Size = new System.Drawing.Size(500, 20);
             this.txtResponse.TabIndex = 0;
-            this.txtResponse.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtResponse_KeyUp);
+            this.txtResponse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResponse_KeyDown);
             // 
             // grpResponses
             // 
@@ -335,22 +345,12 @@
             this.txtAddNewNPC.Name = "txtAddNewNPC";
             this.txtAddNewNPC.Size = new System.Drawing.Size(166, 20);
             this.txtAddNewNPC.TabIndex = 4;
-            this.txtAddNewNPC.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAddNewNPC_KeyUp);
+            this.txtAddNewNPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddNewNPC_KeyDown);
             // 
             // DialogsContextMenu
             // 
             this.DialogsContextMenu.Name = "ResponsesMenu";
             this.DialogsContextMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(87, 19);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmMain
             // 

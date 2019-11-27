@@ -10,3 +10,15 @@ C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialo
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog2.exe
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog2.pdb
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmAction.resources
+D:\Github\Tools\7DaysToDialog\bin\Debug\7DaysToDialog2.exe.config
+D:\Github\Tools\7DaysToDialog\bin\Debug\7DaysToDialog2.exe
+D:\Github\Tools\7DaysToDialog\bin\Debug\7DaysToDialog2.pdb
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csprojAssemblyReference.cache
+D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmAction.resources
+D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmMain.resources
+D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmRequirement.resources
+D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog2.Properties.Resources.resources
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.GenerateResource.cache
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CoreCompileInputs.cache
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog2.exe
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog2.pdb
