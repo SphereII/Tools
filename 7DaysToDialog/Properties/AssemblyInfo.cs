@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("7DaysToDialog2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("7 Days To Dialog")]
+[assembly: AssemblyDescription("A Dialog Generator for 7 Days To Die")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("7DaysToDialog2")]
+[assembly: AssemblyCompany("SohereII Software")]
+[assembly: AssemblyProduct("7 Days To Dialog")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

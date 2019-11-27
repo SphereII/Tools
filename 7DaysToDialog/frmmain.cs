@@ -17,10 +17,15 @@ namespace _7DaysToDialog
         public frmMain()
         {
             InitializeComponent();
+
+            // Updates the menu with the correct setting
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];
 
             // Set the drawmode for tree dialog. This helps keep the selected node highlighted.
             treeDialogs.DrawMode = TreeViewDrawMode.OwnerDrawText;
+            treeReplies.DrawMode = TreeViewDrawMode.OwnerDrawText;
+
+            rdoUseExisting_CheckedChanged(null, null);
         }
 
         private void chkResponseID_CheckedChanged(object sender, EventArgs e)
@@ -56,15 +61,30 @@ namespace _7DaysToDialog
             response.ID = txtResponseID.Text.Trim();
             response.Text = txtResponse.Text;
 
-            ComboboxItem NextStatement = cmbStatements.SelectedItem as ComboboxItem;
-            if(NextStatement != null && NextStatement.Text != "None")
-                response.NextStatement = NextStatement.Value.ToString(); // Statement_key
-
+            if(this.rdoUseExisting.Checked)
+            {
+                ComboboxItem NextStatement = cmbStatements.SelectedItem as ComboboxItem;
+                if(NextStatement != null && NextStatement.Text != "None")
+                    response.NextStatement = NextStatement.Value.ToString(); // Statement_key
+            }
+            else
+            {
+                if(this.txtCreateNewStatement.TextLength > 0)
+                {
+                    String strKey = "statement_" + this.txtCreateNewStatement.Text.ToString().GetHashCode();
+                    Statement newStatement = new Statement(strKey, this.txtCreateNewStatement.Text, "");
+                    GetCurrentNPC().AddStatement(newStatement);
+                    response.NextStatement = strKey;
+                    RebuildTreeNode();
+                }
+            }
             UpdateNode(response);
 
             txtResponse.Text = "";
             txtResponseID.Text = "";
             btnAdd.Text = "Add";
+            this.txtCreateNewStatement.Text = "";
+            this.cmbStatements.SelectedIndex = 0;
 
             btnSave_Click(null, null);
         }
@@ -164,15 +184,44 @@ namespace _7DaysToDialog
                 DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Text));
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
+                DialogsContextMenu.Items.Add("Remove NPC").Click += new EventHandler(RemoveNPC);
             }
             if(node.Tag is Statement)
             {
                 DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Parent.Text));
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
+                DialogsContextMenu.Items.Add("Delete Statement").Click += new EventHandler(DeleteStatement);
             }
         }
 
+        public void DeleteStatement(object sender, EventArgs e)
+        {
+            if(ClickNode == null)
+                return;
+
+            if(ClickNode.Tag is Statement)
+            {
+                Statement statement = ClickNode.Tag as Statement;
+                NPC npc = ClickNode.Parent.Tag as NPC;
+                if(npc != null)
+                {
+                    npc.Statements.Remove(statement.ID);
+                }
+            }
+
+            RebuildTreeNode();
+
+        }
+        public void RemoveNPC(object sender, EventArgs e)
+        {
+            if(ClickNode == null)
+                return;
+
+            if(ClickNode.Tag is NPC)
+                NPCs.Remove(ClickNode.Tag as NPC);
+            RebuildTreeNode();
+        }
         private void NewStatement(object sender, EventArgs e)
         {
             if(ClickNode == null)
@@ -185,7 +234,7 @@ namespace _7DaysToDialog
             ClearForm(false);
             grpConversation.Visible = true;
             rtbStatement.Focus();
-            String strKey = "statement_" + Utilities.RandomString(8).GetHashCode();
+            String strKey = "statement_" + Utilities.RandomString().GetHashCode();
             rtbStatement.Tag = strKey;
             Statement newStatement = new Statement(strKey, "New Statement", "");
             GetCurrentNPC().AddStatement(newStatement);
@@ -388,6 +437,21 @@ namespace _7DaysToDialog
                 return;
             txtResponse.Text = Utilities.GetLocalization(response.Text);
             txtResponseID.Text = response.ID;
+
+            if(string.IsNullOrEmpty(response.NextStatement))
+                this.cmbStatements.SelectedIndex = 0;
+            else
+            {
+                foreach(ComboboxItem item in this.cmbStatements.Items)
+                {
+                    if(item.Value.ToString() == response.NextStatement)
+                    {
+                        this.cmbStatements.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+
         }
 
         private void treeDialogs_Click(object sender, EventArgs e)
@@ -434,7 +498,8 @@ namespace _7DaysToDialog
                 return;
 
             grpConversation.Visible = true;
-            rtbStatement.Text = Utilities.GetLocalization(statement.Text);
+            rtbStatement.Text = Utilities.GetLocalization(statement.Text).Trim();
+            rtbStatement.Tag = statement.ID;
             treeReplies.Nodes.Clear();
             foreach(KeyValuePair<string, Response> response in statement.Responses)
                 UpdateNode(response.Value);
@@ -635,13 +700,19 @@ namespace _7DaysToDialog
                 treeDialogs.Nodes.Add(newNPC.Name);
                 RebuildTreeNode();
                 SetStatement(newNPC.Statements["start"]);
-
-
             }
+            else
+            {
+                MessageBox.Show("Please enter in a new NPC name, and press the Add NPC Button.");
+            }
+            this.txtAddNewNPC.Text = "";
         }
         void RebuildTreeNode()
         {
             treeDialogs.Nodes.Clear();
+            if(NPCs.Count == 0)
+                return;
+
             foreach(NPC npc in NPCs)
             {
                 TreeNode npcNode = new TreeNode(npc.Name);
@@ -671,6 +742,8 @@ namespace _7DaysToDialog
                 }
                 treeDialogs.Nodes.Add(npcNode);
             }
+
+            
             UpdateNPCs();
             treeDialogs.ExpandAll();
 
@@ -711,7 +784,7 @@ namespace _7DaysToDialog
 
             String strKey = rtbStatement.Tag.ToString();
         
-            Statement newStatement = new Statement(strKey, rtbStatement.Text, "");
+            Statement newStatement = new Statement(strKey, rtbStatement.Text.TrimEnd(), "");
             foreach(TreeNode node in treeReplies.Nodes)
             {
                 Response response = node.Tag as Response;
@@ -819,6 +892,88 @@ namespace _7DaysToDialog
 
                 btnAdd_Click(null, null);
             }
+        }
+
+        private void rdoUseExisting_CheckedChanged(object sender, EventArgs e)
+        {
+            this.pnlCreateNew.Visible = false;
+            this.pnlLinkExisting.Visible = false;
+            if(this.rdoCreateNew.Checked)
+                this.pnlCreateNew.Visible = true;
+            else
+                this.pnlLinkExisting.Visible = true;
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            if ( this.treeReplies.SelectedNode != null )
+                MoveNode(this.treeReplies, this.treeReplies.SelectedNode, true);
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            if(this.treeReplies.SelectedNode != null)
+                MoveNode(this.treeReplies, this.treeReplies.SelectedNode, false);
+
+        }
+
+        public void MoveNode(TreeView tv, TreeNode node, bool up)
+        {
+
+            if((node.PrevNode == null) && up)
+            {
+                return;
+            }
+
+            if((node.NextNode == null) && !up)
+            {
+                return;
+            }
+
+            int newIndex = up ? node.Index - 1 : node.Index + 1;
+
+            var nodes = tv.Nodes;
+            if(node.Parent != null)
+            {
+                nodes = node.Parent.Nodes;
+            }
+
+            nodes.Remove(node);
+            nodes.Insert(newIndex, node);
+            this.treeReplies.SelectedNode = node;
+            Statement statement = GetCurrentNPC().Statements[this.rtbStatement.Tag.ToString()];
+            statement.Responses = new Dictionary<string, Response>();
+            foreach(TreeNode myNode in this.treeReplies.Nodes)
+            {
+                if ( myNode.Tag is Response)
+                    statement.AddResponse(myNode.Tag as Response);
+            }
+
+        }
+
+        private void treeReplies_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            if(e.Node == null)
+                return;
+
+            // if treeview's HideSelection property is "True", 
+            // this will always returns "False" on unfocused treeview
+            var selected = (e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected;
+            var unfocused = !e.Node.TreeView.Focused;
+
+            // we need to do owner drawing only on a selected node
+            // and when the treeview is unfocused, else let the OS do it for us
+            if(selected && unfocused)
+            {
+                var font = e.Node.NodeFont ?? e.Node.TreeView.Font;
+                e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+                TextRenderer.DrawText(e.Graphics, e.Node.Text, font, e.Bounds, SystemColors.HighlightText, TextFormatFlags.GlyphOverhangPadding);
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
+
         }
     }
 }

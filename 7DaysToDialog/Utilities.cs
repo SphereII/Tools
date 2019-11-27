@@ -16,7 +16,7 @@ namespace _7DaysToDialog
         public static Dictionary<string, string> LocalizationQuest = new Dictionary<string, string>();
 
         private static Random random = new Random();
-        public static string RandomString(int length)
+        public static string RandomString(int length = 16)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)

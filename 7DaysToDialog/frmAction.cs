@@ -62,7 +62,7 @@ namespace _7DaysToDialog
                     action.ID = "";
 
                 if (String.IsNullOrEmpty(action.Hash))
-                    action.Hash = "Action_" + Utilities.RandomString(8).GetHashCode();
+                    action.Hash = "Action_" + Utilities.RandomString().GetHashCode();
                 this.DialogResult = DialogResult.OK;
             }
             this.Close();

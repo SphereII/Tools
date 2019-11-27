@@ -13,11 +13,13 @@ namespace _7DaysToDialog
         public Dictionary<string, Statement> Statements = new Dictionary<string, Statement>();
         public Dictionary<string, Response> Responses = new Dictionary<string, Response>();
         
+        // Creating a new NPC
         public NPC(String strName )
         {
             this.Name = strName;
         }
 
+        // Used when initializing a NPC from an XML file
         public NPC(XmlNode node)
         {
             this.Name = ReadAttribute(node, "id");
@@ -25,6 +27,7 @@ namespace _7DaysToDialog
             PopulateStatements(node);
         }
 
+        // Safely read in an attribute from the XML file, returns nothing if no attribute and value.
         public string ReadAttribute(XmlNode node, String strAttribute)
         {
             if (node == null || node.Attributes == null)
@@ -34,20 +37,25 @@ namespace _7DaysToDialog
             return node.Attributes[strAttribute].Value;
         }
 
+        // Add or update an existing response.
         public void AddResponse(Response response)
         {
+            // Check if the response already exists, and if so, update it.
             foreach(KeyValuePair<string, Response> temp in Responses)
             {
                 if(temp.Value.ID == response.ID)
                 {
                     temp.Value.NextStatement = response.NextStatement;
                     temp.Value.Text = response.Text;
+                    temp.Value.Requirements = response.Requirements;
+                    temp.Value.Actions = response.Actions;
                     return;
                 }
             }
-
             Responses.Add(response.ID, response);
         }
+
+        // Add or update an existing statement.
         public void AddStatement(Statement statement)
         {
             foreach(KeyValuePair<string, Statement> temp in Statements)
@@ -59,13 +67,13 @@ namespace _7DaysToDialog
                     temp.Value.Responses = statement.Responses;
                     temp.Value.PreviousStatement = statement.PreviousStatement;
                     temp.Value.QuestEntries = statement.QuestEntries;
-                    
                     return;
                 }
             }
-       
             Statements.Add(statement.ID, statement);
         }
+
+        // reads an imported XML's node and populates the NPC
         public void PopulateStatements(XmlNode node)
         {
             String strID;
@@ -102,6 +110,7 @@ namespace _7DaysToDialog
             }
         }
 
+        // Reads an imported NPC and populates its responses.
         public void PopulateResponses(XmlNode node)
         {
             String strID;

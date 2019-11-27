@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAction));
             this.lblPerformAction = new System.Windows.Forms.Label();
             this.cboActions = new System.Windows.Forms.ComboBox();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -115,6 +116,7 @@
             this.Controls.Add(this.lblPerformAction);
             this.Controls.Add(this.cboActions);
             this.Controls.Add(this.txtID);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAction";
             this.Text = "Add Action";
             this.ResumeLayout(false);

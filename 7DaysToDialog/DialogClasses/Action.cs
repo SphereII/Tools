@@ -12,17 +12,20 @@ namespace _7DaysToDialog
         public String ActionType;
         public String ID;
 
+        // Used when moving and copying around an action.
         public Action()
         {
-
         }
+
+        // Generate a Hash when the information is all passed in, indicating its a new one.
         public Action(String strType, String strID)
         {
             ActionType = strType;
             ID = strID;
-            Hash = "Action_" + Utilities.RandomString(8).GetHashCode();
+            Hash = "Action_" + Utilities.RandomString().GetHashCode();
         }
 
+        // Used to display in the TreeNodes
         public override string ToString()
         {
             return "Action: " + ActionType + ": " + ID;

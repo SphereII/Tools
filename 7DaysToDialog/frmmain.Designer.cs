@@ -29,13 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.grpConversation = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.cmbNPCs = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.grpAddNewResponse = new System.Windows.Forms.GroupBox();
-            this.lblStatements = new System.Windows.Forms.Label();
+            this.pnlCreateNew = new System.Windows.Forms.Panel();
+            this.txtCreateNewStatement = new System.Windows.Forms.TextBox();
+            this.lblnewStatement = new System.Windows.Forms.Label();
+            this.pnlLinkExisting = new System.Windows.Forms.Panel();
             this.cmbStatements = new System.Windows.Forms.ComboBox();
+            this.lblStatements = new System.Windows.Forms.Label();
+            this.rdoCreateNew = new System.Windows.Forms.RadioButton();
+            this.rdoUseExisting = new System.Windows.Forms.RadioButton();
             this.txtResponseID = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.chkResponseID = new System.Windows.Forms.CheckBox();
@@ -61,11 +68,21 @@
             this.btnAddNewNPC = new System.Windows.Forms.Button();
             this.txtAddNewNPC = new System.Windows.Forms.TextBox();
             this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
+            this.pnlCreateNew.SuspendLayout();
+            this.pnlLinkExisting.SuspendLayout();
             this.grpResponses.SuspendLayout();
             this.grpNPC.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpConversation
@@ -76,9 +93,10 @@
             this.grpConversation.Controls.Add(this.grpAddNewResponse);
             this.grpConversation.Controls.Add(this.grpResponses);
             this.grpConversation.Controls.Add(this.grpNPC);
-            this.grpConversation.Location = new System.Drawing.Point(419, 27);
+            this.grpConversation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpConversation.Location = new System.Drawing.Point(0, 0);
             this.grpConversation.Name = "grpConversation";
-            this.grpConversation.Size = new System.Drawing.Size(552, 544);
+            this.grpConversation.Size = new System.Drawing.Size(553, 641);
             this.grpConversation.TabIndex = 0;
             this.grpConversation.TabStop = false;
             this.grpConversation.Text = "Conversation";
@@ -86,7 +104,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(87, 19);
+            this.btnCancel.Location = new System.Drawing.Point(308, 596);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
@@ -97,14 +115,14 @@
             // cmbNPCs
             // 
             this.cmbNPCs.FormattingEnabled = true;
-            this.cmbNPCs.Location = new System.Drawing.Point(333, 18);
+            this.cmbNPCs.Location = new System.Drawing.Point(414, 21);
             this.cmbNPCs.Name = "cmbNPCs";
             this.cmbNPCs.Size = new System.Drawing.Size(121, 21);
             this.cmbNPCs.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(6, 19);
+            this.btnSave.Location = new System.Drawing.Point(191, 596);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -114,8 +132,10 @@
             // 
             // grpAddNewResponse
             // 
-            this.grpAddNewResponse.Controls.Add(this.lblStatements);
-            this.grpAddNewResponse.Controls.Add(this.cmbStatements);
+            this.grpAddNewResponse.Controls.Add(this.pnlCreateNew);
+            this.grpAddNewResponse.Controls.Add(this.pnlLinkExisting);
+            this.grpAddNewResponse.Controls.Add(this.rdoCreateNew);
+            this.grpAddNewResponse.Controls.Add(this.rdoUseExisting);
             this.grpAddNewResponse.Controls.Add(this.txtResponseID);
             this.grpAddNewResponse.Controls.Add(this.btnAdd);
             this.grpAddNewResponse.Controls.Add(this.chkResponseID);
@@ -123,31 +143,89 @@
             this.grpAddNewResponse.Controls.Add(this.txtResponse);
             this.grpAddNewResponse.Location = new System.Drawing.Point(17, 318);
             this.grpAddNewResponse.Name = "grpAddNewResponse";
-            this.grpAddNewResponse.Size = new System.Drawing.Size(518, 218);
+            this.grpAddNewResponse.Size = new System.Drawing.Size(518, 251);
             this.grpAddNewResponse.TabIndex = 2;
             this.grpAddNewResponse.TabStop = false;
             this.grpAddNewResponse.Text = "Add New Response";
             // 
-            // lblStatements
+            // pnlCreateNew
             // 
-            this.lblStatements.AutoSize = true;
-            this.lblStatements.Location = new System.Drawing.Point(4, 142);
-            this.lblStatements.Name = "lblStatements";
-            this.lblStatements.Size = new System.Drawing.Size(168, 13);
-            this.lblStatements.TabIndex = 4;
-            this.lblStatements.Text = "Link this response to a statement. ";
+            this.pnlCreateNew.Controls.Add(this.txtCreateNewStatement);
+            this.pnlCreateNew.Controls.Add(this.lblnewStatement);
+            this.pnlCreateNew.Location = new System.Drawing.Point(9, 95);
+            this.pnlCreateNew.Name = "pnlCreateNew";
+            this.pnlCreateNew.Size = new System.Drawing.Size(503, 93);
+            this.pnlCreateNew.TabIndex = 9;
+            // 
+            // txtCreateNewStatement
+            // 
+            this.txtCreateNewStatement.Location = new System.Drawing.Point(60, 26);
+            this.txtCreateNewStatement.Multiline = true;
+            this.txtCreateNewStatement.Name = "txtCreateNewStatement";
+            this.txtCreateNewStatement.Size = new System.Drawing.Size(437, 58);
+            this.txtCreateNewStatement.TabIndex = 6;
+            // 
+            // lblnewStatement
+            // 
+            this.lblnewStatement.AutoSize = true;
+            this.lblnewStatement.Location = new System.Drawing.Point(9, 10);
+            this.lblnewStatement.Name = "lblnewStatement";
+            this.lblnewStatement.Size = new System.Drawing.Size(117, 13);
+            this.lblnewStatement.TabIndex = 5;
+            this.lblnewStatement.Text = "Create New Statement:";
+            // 
+            // pnlLinkExisting
+            // 
+            this.pnlLinkExisting.Controls.Add(this.cmbStatements);
+            this.pnlLinkExisting.Controls.Add(this.lblStatements);
+            this.pnlLinkExisting.Location = new System.Drawing.Point(9, 95);
+            this.pnlLinkExisting.Name = "pnlLinkExisting";
+            this.pnlLinkExisting.Size = new System.Drawing.Size(503, 87);
+            this.pnlLinkExisting.TabIndex = 8;
             // 
             // cmbStatements
             // 
             this.cmbStatements.FormattingEnabled = true;
-            this.cmbStatements.Location = new System.Drawing.Point(0, 158);
+            this.cmbStatements.Location = new System.Drawing.Point(60, 26);
             this.cmbStatements.Name = "cmbStatements";
-            this.cmbStatements.Size = new System.Drawing.Size(498, 21);
+            this.cmbStatements.Size = new System.Drawing.Size(437, 21);
             this.cmbStatements.TabIndex = 3;
+            // 
+            // lblStatements
+            // 
+            this.lblStatements.AutoSize = true;
+            this.lblStatements.Location = new System.Drawing.Point(9, 10);
+            this.lblStatements.Name = "lblStatements";
+            this.lblStatements.Size = new System.Drawing.Size(97, 13);
+            this.lblStatements.TabIndex = 4;
+            this.lblStatements.Text = "Existing Statement:";
+            // 
+            // rdoCreateNew
+            // 
+            this.rdoCreateNew.AutoSize = true;
+            this.rdoCreateNew.Location = new System.Drawing.Point(174, 71);
+            this.rdoCreateNew.Name = "rdoCreateNew";
+            this.rdoCreateNew.Size = new System.Drawing.Size(132, 17);
+            this.rdoCreateNew.TabIndex = 7;
+            this.rdoCreateNew.Text = "Create New Statement";
+            this.rdoCreateNew.UseVisualStyleBackColor = true;
+            // 
+            // rdoUseExisting
+            // 
+            this.rdoUseExisting.AutoSize = true;
+            this.rdoUseExisting.Checked = true;
+            this.rdoUseExisting.Location = new System.Drawing.Point(21, 71);
+            this.rdoUseExisting.Name = "rdoUseExisting";
+            this.rdoUseExisting.Size = new System.Drawing.Size(147, 17);
+            this.rdoUseExisting.TabIndex = 6;
+            this.rdoUseExisting.TabStop = true;
+            this.rdoUseExisting.Text = "Link to Existing Statement";
+            this.rdoUseExisting.UseVisualStyleBackColor = true;
+            this.rdoUseExisting.CheckedChanged += new System.EventHandler(this.rdoUseExisting_CheckedChanged);
             // 
             // txtResponseID
             // 
-            this.txtResponseID.Location = new System.Drawing.Point(7, 93);
+            this.txtResponseID.Location = new System.Drawing.Point(291, 217);
             this.txtResponseID.Name = "txtResponseID";
             this.txtResponseID.ReadOnly = true;
             this.txtResponseID.Size = new System.Drawing.Size(165, 20);
@@ -155,7 +233,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(210, 185);
+            this.btnAdd.Location = new System.Drawing.Point(209, 214);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -168,7 +246,7 @@
             this.chkResponseID.AutoSize = true;
             this.chkResponseID.Checked = true;
             this.chkResponseID.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkResponseID.Location = new System.Drawing.Point(9, 70);
+            this.chkResponseID.Location = new System.Drawing.Point(290, 194);
             this.chkResponseID.Name = "chkResponseID";
             this.chkResponseID.Size = new System.Drawing.Size(166, 17);
             this.chkResponseID.TabIndex = 2;
@@ -197,6 +275,8 @@
             // 
             // grpResponses
             // 
+            this.grpResponses.Controls.Add(this.btnDown);
+            this.grpResponses.Controls.Add(this.btnUp);
             this.grpResponses.Controls.Add(this.treeReplies);
             this.grpResponses.Location = new System.Drawing.Point(17, 152);
             this.grpResponses.Name = "grpResponses";
@@ -207,10 +287,12 @@
             // 
             // treeReplies
             // 
-            this.treeReplies.Location = new System.Drawing.Point(7, 19);
+            this.treeReplies.HideSelection = false;
+            this.treeReplies.Location = new System.Drawing.Point(38, 19);
             this.treeReplies.Name = "treeReplies";
-            this.treeReplies.Size = new System.Drawing.Size(500, 129);
+            this.treeReplies.Size = new System.Drawing.Size(469, 129);
             this.treeReplies.TabIndex = 0;
+            this.treeReplies.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeReplies_DrawNode);
             this.treeReplies.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeReplies_NodeMouseClick);
             this.treeReplies.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeReplies_NodeMouseDoubleClick);
             // 
@@ -239,11 +321,14 @@
             // 
             // treeDialogs
             // 
+            this.treeDialogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeDialogs.HideSelection = false;
-            this.treeDialogs.Location = new System.Drawing.Point(22, 72);
+            this.treeDialogs.Location = new System.Drawing.Point(0, 37);
             this.treeDialogs.Name = "treeDialogs";
             this.treeDialogs.ShowNodeToolTips = true;
-            this.treeDialogs.Size = new System.Drawing.Size(391, 499);
+            this.treeDialogs.Size = new System.Drawing.Size(422, 599);
             this.treeDialogs.TabIndex = 1;
             this.treeDialogs.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeDialogs_DrawNode);
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_AfterSelect);
@@ -331,7 +416,7 @@
             // 
             // btnAddNewNPC
             // 
-            this.btnAddNewNPC.Location = new System.Drawing.Point(194, 44);
+            this.btnAddNewNPC.Location = new System.Drawing.Point(180, 8);
             this.btnAddNewNPC.Name = "btnAddNewNPC";
             this.btnAddNewNPC.Size = new System.Drawing.Size(102, 23);
             this.btnAddNewNPC.TabIndex = 3;
@@ -341,7 +426,7 @@
             // 
             // txtAddNewNPC
             // 
-            this.txtAddNewNPC.Location = new System.Drawing.Point(22, 46);
+            this.txtAddNewNPC.Location = new System.Drawing.Point(8, 8);
             this.txtAddNewNPC.Name = "txtAddNewNPC";
             this.txtAddNewNPC.Size = new System.Drawing.Size(166, 20);
             this.txtAddNewNPC.TabIndex = 4;
@@ -352,26 +437,87 @@
             this.DialogsContextMenu.Name = "ResponsesMenu";
             this.DialogsContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 24);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 643);
+            this.splitter1.TabIndex = 5;
+            this.splitter1.TabStop = false;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeDialogs);
+            this.splitContainer1.Panel1.Controls.Add(this.txtAddNewNPC);
+            this.splitContainer1.Panel1.Controls.Add(this.btnAddNewNPC);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.grpConversation);
+            this.splitContainer1.Size = new System.Drawing.Size(981, 643);
+            this.splitContainer1.SplitterDistance = 422;
+            this.splitContainer1.TabIndex = 6;
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackgroundImage = global::_7DaysToDialog.Properties.Resources.down_arrow_6;
+            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDown.Location = new System.Drawing.Point(9, 77);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(23, 23);
+            this.btnDown.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnDown, "Move the selected response down");
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackgroundImage = global::_7DaysToDialog.Properties.Resources.up_arrow_7;
+            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUp.Location = new System.Drawing.Point(9, 48);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(23, 23);
+            this.btnUp.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnUp, "Move the selected response up");
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 589);
-            this.Controls.Add(this.btnAddNewNPC);
-            this.Controls.Add(this.txtAddNewNPC);
-            this.Controls.Add(this.treeDialogs);
+            this.ClientSize = new System.Drawing.Size(984, 667);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.menuStrip);
-            this.Controls.Add(this.grpConversation);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmMain";
             this.Text = "7 Days To Dialog";
             this.grpConversation.ResumeLayout(false);
             this.grpAddNewResponse.ResumeLayout(false);
             this.grpAddNewResponse.PerformLayout();
+            this.pnlCreateNew.ResumeLayout(false);
+            this.pnlCreateNew.PerformLayout();
+            this.pnlLinkExisting.ResumeLayout(false);
+            this.pnlLinkExisting.PerformLayout();
             this.grpResponses.ResumeLayout(false);
             this.grpNPC.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,6 +557,16 @@
         private System.Windows.Forms.ComboBox cmbStatements;
         private System.Windows.Forms.ContextMenuStrip DialogsContextMenu;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox txtCreateNewStatement;
+        private System.Windows.Forms.Label lblnewStatement;
+        private System.Windows.Forms.RadioButton rdoCreateNew;
+        private System.Windows.Forms.RadioButton rdoUseExisting;
+        private System.Windows.Forms.Panel pnlCreateNew;
+        private System.Windows.Forms.Panel pnlLinkExisting;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button btnDown;
     }
 }
 
