@@ -49,6 +49,8 @@
             this.lblNewResponse = new System.Windows.Forms.Label();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.grpResponses = new System.Windows.Forms.GroupBox();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
             this.treeReplies = new System.Windows.Forms.TreeView();
             this.grpNPC = new System.Windows.Forms.GroupBox();
             this.rtbStatement = new System.Windows.Forms.RichTextBox();
@@ -70,8 +72,8 @@
             this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.version0002ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.pnlCreateNew.SuspendLayout();
@@ -285,6 +287,30 @@
             this.grpResponses.TabStop = false;
             this.grpResponses.Text = "You Can Say...";
             // 
+            // btnDown
+            // 
+            this.btnDown.BackgroundImage = global::_7DaysToDialog.Properties.Resources.down_arrow_6;
+            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDown.Location = new System.Drawing.Point(9, 77);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(23, 23);
+            this.btnDown.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnDown, "Move the selected response down");
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackgroundImage = global::_7DaysToDialog.Properties.Resources.up_arrow_7;
+            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUp.Location = new System.Drawing.Point(9, 48);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(23, 23);
+            this.btnUp.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnUp, "Move the selected response up");
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
             // treeReplies
             // 
             this.treeReplies.HideSelection = false;
@@ -339,7 +365,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.settingsToolStripMenuItem});
+            this.settingsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(984, 24);
@@ -409,7 +436,7 @@
             // 
             this.enabledExtensionsToolStripMenuItem.CheckOnClick = true;
             this.enabledExtensionsToolStripMenuItem.Name = "enabledExtensionsToolStripMenuItem";
-            this.enabledExtensionsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.enabledExtensionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.enabledExtensionsToolStripMenuItem.Text = "Enabled Extensions";
             this.enabledExtensionsToolStripMenuItem.ToolTipText = "When enabled, additional features from 0-SphereIICore are available.";
             this.enabledExtensionsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.enabledExtensionsToolStripMenuItem_CheckedChanged);
@@ -466,29 +493,19 @@
             this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 6;
             // 
-            // btnDown
+            // helpToolStripMenuItem
             // 
-            this.btnDown.BackgroundImage = global::_7DaysToDialog.Properties.Resources.down_arrow_6;
-            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDown.Location = new System.Drawing.Point(9, 77);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(23, 23);
-            this.btnDown.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.btnDown, "Move the selected response down");
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.version0002ToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // btnUp
+            // version0002ToolStripMenuItem
             // 
-            this.btnUp.BackgroundImage = global::_7DaysToDialog.Properties.Resources.up_arrow_7;
-            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUp.Location = new System.Drawing.Point(9, 48);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(23, 23);
-            this.btnUp.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.btnUp, "Move the selected response up");
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            this.version0002ToolStripMenuItem.Name = "version0002ToolStripMenuItem";
+            this.version0002ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.version0002ToolStripMenuItem.Text = "Version: 0.0.0.2";
             // 
             // frmMain
             // 
@@ -567,6 +584,8 @@
         private System.Windows.Forms.Panel pnlLinkExisting;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem version0002ToolStripMenuItem;
     }
 }
 
