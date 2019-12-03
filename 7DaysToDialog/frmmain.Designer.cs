@@ -106,29 +106,29 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(308, 596);
+            this.btnCancel.Location = new System.Drawing.Point(355, 16);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(180, 23);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Cancel Conversation";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cmbNPCs
             // 
             this.cmbNPCs.FormattingEnabled = true;
-            this.cmbNPCs.Location = new System.Drawing.Point(414, 21);
+            this.cmbNPCs.Location = new System.Drawing.Point(11, 18);
             this.cmbNPCs.Name = "cmbNPCs";
-            this.cmbNPCs.Size = new System.Drawing.Size(121, 21);
+            this.cmbNPCs.Size = new System.Drawing.Size(174, 21);
             this.cmbNPCs.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(191, 596);
+            this.btnSave.Location = new System.Drawing.Point(191, 16);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(161, 23);
             this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Save Conversation";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -143,7 +143,7 @@
             this.grpAddNewResponse.Controls.Add(this.chkResponseID);
             this.grpAddNewResponse.Controls.Add(this.lblNewResponse);
             this.grpAddNewResponse.Controls.Add(this.txtResponse);
-            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 318);
+            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 375);
             this.grpAddNewResponse.Name = "grpAddNewResponse";
             this.grpAddNewResponse.Size = new System.Drawing.Size(518, 251);
             this.grpAddNewResponse.TabIndex = 2;
@@ -235,7 +235,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(209, 214);
+            this.btnAdd.Location = new System.Drawing.Point(210, 214);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -282,7 +282,7 @@
             this.grpResponses.Controls.Add(this.treeReplies);
             this.grpResponses.Location = new System.Drawing.Point(17, 152);
             this.grpResponses.Name = "grpResponses";
-            this.grpResponses.Size = new System.Drawing.Size(518, 160);
+            this.grpResponses.Size = new System.Drawing.Size(518, 217);
             this.grpResponses.TabIndex = 1;
             this.grpResponses.TabStop = false;
             this.grpResponses.Text = "You Can Say...";
@@ -291,7 +291,7 @@
             // 
             this.btnDown.BackgroundImage = global::_7DaysToDialog.Properties.Resources.down_arrow_6;
             this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDown.Location = new System.Drawing.Point(9, 77);
+            this.btnDown.Location = new System.Drawing.Point(9, 92);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(23, 23);
             this.btnDown.TabIndex = 2;
@@ -316,7 +316,7 @@
             this.treeReplies.HideSelection = false;
             this.treeReplies.Location = new System.Drawing.Point(38, 19);
             this.treeReplies.Name = "treeReplies";
-            this.treeReplies.Size = new System.Drawing.Size(469, 129);
+            this.treeReplies.Size = new System.Drawing.Size(469, 192);
             this.treeReplies.TabIndex = 0;
             this.treeReplies.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeReplies_DrawNode);
             this.treeReplies.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeReplies_NodeMouseClick);

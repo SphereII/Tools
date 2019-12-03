@@ -13,6 +13,8 @@ namespace _7DaysToDialog
         XmlDocument doc = new XmlDocument();
 
         public List<NPC> NPCs = new List<NPC>();
+        public Statement Temporary = null;
+        public NPC SelectedNPC = null;
 
         public frmMain()
         {
@@ -185,15 +187,73 @@ namespace _7DaysToDialog
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
                 DialogsContextMenu.Items.Add("Remove NPC").Click += new EventHandler(RemoveNPC);
+                DialogsContextMenu.Items.Add("Paste Statement").Click += new EventHandler(PasteStatement);
+                DialogsContextMenu.Items.Add(new ToolStripSeparator());
+                DialogsContextMenu.Items.Add("Save NPC").Click += new EventHandler(SaveNPC);
             }
-            if(node.Tag is Statement)
+            if (node.Tag is Statement)
             {
                 DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Parent.Text));
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
                 DialogsContextMenu.Items.Add("Delete Statement").Click += new EventHandler(DeleteStatement);
+                DialogsContextMenu.Items.Add("Copy Statement").Click += new EventHandler(CopyStatement);
+
+
             }
         }
+
+        public void SaveNPC(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (ClickNode.Tag is NPC)
+            {
+                SelectedNPC = ClickNode.Tag as NPC;
+                saveFileToolStripMenuItem_Click(null, null);
+            }
+        }
+        public void CopyStatement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (ClickNode.Tag is Statement)
+            {
+                Temporary = ClickNode.Tag as Statement;
+                SelectedNPC = ClickNode.Parent.Tag as NPC;
+            }
+        }
+
+
+        public void PasteStatement(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (Temporary == null)
+                return;
+
+            if (ClickNode.Tag is NPC)
+            {
+                NPC myNPC = ClickNode.Tag as NPC;
+                myNPC.AddStatement(Temporary);
+                foreach (KeyValuePair<string, Response> keyValuePair in Temporary.Responses)
+                {
+                    if ( SelectedNPC.Statements.ContainsKey( keyValuePair.Key ))
+                        myNPC.AddStatement(SelectedNPC.Statements[keyValuePair.Key]);
+                    if (SelectedNPC.Responses.ContainsKey(keyValuePair.Key))
+                        myNPC.AddResponse(SelectedNPC.Responses[keyValuePair.Key]);
+                }
+                Temporary = null;
+                SelectedNPC = null;
+                RebuildTreeNode();
+
+            }
+        }
+
+
 
         public void DeleteStatement(object sender, EventArgs e)
         {
@@ -629,13 +689,17 @@ namespace _7DaysToDialog
             ClearForm(true);
         }
 
+        
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using(SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.InitialDirectory = "c:\\";
                 saveFileDialog.Filter = "dialogs.xml files (*.xml)|*.xml";
-                saveFileDialog.Title = "Save an dialogs";
+                if ( SelectedNPC == null )
+                    saveFileDialog.Title = "Save Dialogs.xml";
+                else
+                    saveFileDialog.Title = "Saving " + SelectedNPC.Name;
                 saveFileDialog.FilterIndex = 2;
                 saveFileDialog.RestoreDirectory = true;
 
@@ -654,6 +718,9 @@ namespace _7DaysToDialog
 
                     foreach(NPC npc in NPCs)
                     {
+                        // 
+                        if (SelectedNPC != null && SelectedNPC != npc)
+                            continue;
                         XmlNode npcNode = saveDoc.CreateElement("dialog");
                         XmlAttribute npcID = saveDoc.CreateAttribute("id");
                         XmlAttribute startStatement = saveDoc.CreateAttribute("startstatementid");
@@ -675,7 +742,7 @@ namespace _7DaysToDialog
                     }
                 }
             }
-
+            SelectedNPC = null;
         }
 
 
