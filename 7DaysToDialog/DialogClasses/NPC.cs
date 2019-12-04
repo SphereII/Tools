@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace _7DaysToDialog
 {
-    public class NPC
+    [Serializable]
+    public class NPC 
     {
         public String Name;
         public Dictionary<string, Statement> Statements = new Dictionary<string, Statement>();
@@ -18,6 +21,36 @@ namespace _7DaysToDialog
         {
             this.Name = strName;
         }
+
+        public static T DeepClone<T>(T obj)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, obj);
+                ms.Position = 0;
+
+                return (T)formatter.Deserialize(ms);
+            }
+        }
+
+        //public NPC Clone( String strName)
+        //{
+        //    NPC newNPC = new NPC(strName);
+
+        //    // Check if the response already exists, and if so, update it.
+        //    foreach (KeyValuePair<string, Response> temp in Responses)
+        //    {
+        //        Response tempResponse = new Response(temp.Value.ID, temp.Value.Text, temp.Value.NextStatement));
+        //        newNPC.AddResponse(tempResponse);
+                   
+        //    }
+
+        //    foreach (KeyValuePair<string, Statement> temp in Statements)
+        //        newNPC.AddStatement(new Statement(temp.Value.ID, temp.Value.Text, temp.Value.NextStatement));
+
+        //    return newNPC;
+        //}
 
         // Used when initializing a NPC from an XML file
         public NPC(XmlNode node)
@@ -130,7 +163,7 @@ namespace _7DaysToDialog
                         {
                             String strType = ReadAttribute(subNode, "type");
                             String strValue = ReadAttribute(subNode, "value");
-                            String strRequirementType = ReadAttribute(subNode, "requirementType");
+                            String strRequirementType = ReadAttribute(subNode, "requirementtype");
                             String strRequireID = ReadAttribute(subNode, "id");
 
                             String strOperator = ReadAttribute(subNode, "operator");

@@ -6,6 +6,7 @@ using System.Xml;
 
 namespace _7DaysToDialog
 {
+    [Serializable]
     public class Response
     {
         public String ID;
@@ -52,7 +53,7 @@ namespace _7DaysToDialog
                 XmlNode requireNode = doc.CreateElement("requirement");
                 requireNode.Attributes.Append(Utilities.GenerateAttribute("type", require.Type, doc));
                 requireNode.Attributes.Append(Utilities.GenerateAttribute("value", require.Value, doc));
-                requireNode.Attributes.Append(Utilities.GenerateAttribute("requirementType", require.requirementType, doc));
+                requireNode.Attributes.Append(Utilities.GenerateAttribute("requirementtype", require.requirementType, doc));
                 requireNode.Attributes.Append(Utilities.GenerateAttribute("operator", require.Operator, doc));
                 requireNode.Attributes.Append(Utilities.GenerateAttribute("id", require.ID, doc));
                 requireNode.Attributes.Append(Utilities.GenerateAttribute("Hash", require.Hash, doc));

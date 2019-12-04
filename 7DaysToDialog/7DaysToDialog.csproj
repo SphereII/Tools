@@ -86,6 +86,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRename.Designer.cs">
+      <DependentUpon>frmRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRequirement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRename.resx">
+      <DependentUpon>frmRename.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRequirement.resx">
       <DependentUpon>frmRequirement.cs</DependentUpon>

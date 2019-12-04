@@ -5,6 +5,7 @@ using System.Text;
 
 namespace _7DaysToDialog
 {
+    [Serializable]
     public class Requirement
     {
         public String ID;

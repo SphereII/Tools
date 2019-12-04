@@ -36,6 +36,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
             this.rtHelp = new System.Windows.Forms.RichTextBox();
+            this.cboOperators = new System.Windows.Forms.ComboBox();
+            this.lblOperator = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPerformAction
@@ -58,7 +60,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(113, 38);
+            this.txtID.Location = new System.Drawing.Point(113, 75);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(140, 20);
             this.txtID.TabIndex = 19;
@@ -66,7 +68,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(178, 78);
+            this.btnClose.Location = new System.Drawing.Point(178, 106);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 22;
@@ -76,7 +78,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(74, 78);
+            this.btnSave.Location = new System.Drawing.Point(74, 106);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 21;
@@ -87,7 +89,7 @@
             // lblText
             // 
             this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblText.Location = new System.Drawing.Point(12, 44);
+            this.lblText.Location = new System.Drawing.Point(12, 81);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(86, 13);
             this.lblText.TabIndex = 23;
@@ -104,11 +106,32 @@
             this.rtHelp.TabIndex = 24;
             this.rtHelp.Text = "";
             // 
+            // cboOperators
+            // 
+            this.cboOperators.FormattingEnabled = true;
+            this.cboOperators.Location = new System.Drawing.Point(113, 44);
+            this.cboOperators.Name = "cboOperators";
+            this.cboOperators.Size = new System.Drawing.Size(140, 21);
+            this.cboOperators.TabIndex = 25;
+            // 
+            // lblOperator
+            // 
+            this.lblOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOperator.Location = new System.Drawing.Point(21, 52);
+            this.lblOperator.Name = "lblOperator";
+            this.lblOperator.Size = new System.Drawing.Size(86, 13);
+            this.lblOperator.TabIndex = 26;
+            this.lblOperator.Text = "Operator:";
+            this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblOperator.Visible = false;
+            // 
             // frmAction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 180);
+            this.Controls.Add(this.lblOperator);
+            this.Controls.Add(this.cboOperators);
             this.Controls.Add(this.rtHelp);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.btnClose);
@@ -134,5 +157,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.RichTextBox rtHelp;
+        private System.Windows.Forms.ComboBox cboOperators;
+        private System.Windows.Forms.Label lblOperator;
     }
 }

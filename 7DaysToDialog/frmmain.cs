@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -23,13 +24,19 @@ namespace _7DaysToDialog
             // Updates the menu with the correct setting
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];
 
-            // Set the drawmode for tree dialog. This helps keep the selected node highlighted.
             treeDialogs.DrawMode = TreeViewDrawMode.OwnerDrawText;
             treeReplies.DrawMode = TreeViewDrawMode.OwnerDrawText;
 
             rdoUseExisting_CheckedChanged(null, null);
         }
 
+        private void OpenFile_Click(object sender, EventArgs e)
+        {
+            String strFilename = sender.ToString().Remove(0,4);
+                
+                if (File.Exists(strFilename))
+                OpenFile(strFilename);
+        }
         private void chkResponseID_CheckedChanged(object sender, EventArgs e)
         {
             txtResponseID.ReadOnly = !chkResponseID.Checked;
@@ -37,6 +44,7 @@ namespace _7DaysToDialog
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             if(txtResponse.Text.Length < 1)
             {
                 MessageBox.Show("Please enter in what you'd like to say to the NPC");
@@ -60,6 +68,11 @@ namespace _7DaysToDialog
 
             // Generate a new response.
             Response response = new Response();
+
+            if (btnAdd.Text == "Save" && txtResponseID.Tag is Response)
+            {
+                response = txtResponseID.Tag as Response;
+            }
             response.ID = txtResponseID.Text.Trim();
             response.Text = txtResponse.Text;
 
@@ -74,7 +87,7 @@ namespace _7DaysToDialog
                 if(this.txtCreateNewStatement.TextLength > 0)
                 {
                     String strKey = "statement_" + this.txtCreateNewStatement.Text.ToString().GetHashCode();
-                    Statement newStatement = new Statement(strKey, this.txtCreateNewStatement.Text, "");
+                    Statement newStatement = new Statement(strKey, this.txtCreateNewStatement.Text, this.rtbStatement.Tag as String, this.rtbStatement.Tag as String);
                     GetCurrentNPC().AddStatement(newStatement);
                     response.NextStatement = strKey;
                     RebuildTreeNode();
@@ -108,10 +121,13 @@ namespace _7DaysToDialog
                 }
             }
 
+            int NodePosition = 0;
             // If a node doesn't exist, then create one. Remove the existing one.
-            if(targetNode != null)
+            if (targetNode != null)
+            {
+                NodePosition = targetNode.Index;
                 treeReplies.Nodes.Remove(targetNode);
-
+            }
             targetNode = new TreeNode();
             targetNode.Text = Utilities.GetLocalization(response.Text);
             targetNode.ToolTipText = response.ToString();
@@ -131,7 +147,8 @@ namespace _7DaysToDialog
                 actionNode.Tag = action;
                 targetNode.Nodes.Add(actionNode);
             }
-            treeReplies.Nodes.Add(targetNode);
+            treeReplies.Nodes.Insert(NodePosition, targetNode);
+            treeReplies.Update();
         }
 
         public void RefreshReplies()
@@ -144,7 +161,7 @@ namespace _7DaysToDialog
             {
                 Point ClickPoint = new Point(e.X, e.Y);
                 ClickNode = treeReplies.GetNodeAt(ClickPoint);
-                if(ClickNode == null)
+                if (ClickNode == null)
                     return;
 
                 treeReplies.SelectedNode = ClickNode;
@@ -186,8 +203,11 @@ namespace _7DaysToDialog
                 DialogsContextMenu.Items.Insert(0, new ToolStripLabel(node.Text));
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("New Statement").Click += new EventHandler(NewStatement);
-                DialogsContextMenu.Items.Add("Remove NPC").Click += new EventHandler(RemoveNPC);
                 DialogsContextMenu.Items.Add("Paste Statement").Click += new EventHandler(PasteStatement);
+                DialogsContextMenu.Items.Add(new ToolStripSeparator());
+                DialogsContextMenu.Items.Add("Remove NPC").Click += new EventHandler(RemoveNPC);
+                DialogsContextMenu.Items.Add("Clone NPC").Click += new EventHandler(CloneNPC);
+                DialogsContextMenu.Items.Add("Rename NPC").Click += new EventHandler(RenameNPC);
                 DialogsContextMenu.Items.Add(new ToolStripSeparator());
                 DialogsContextMenu.Items.Add("Save NPC").Click += new EventHandler(SaveNPC);
             }
@@ -203,6 +223,50 @@ namespace _7DaysToDialog
             }
         }
 
+        public void RenameNPC(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (ClickNode.Tag is NPC)
+            {
+                SelectedNPC = ClickNode.Tag as NPC;
+                frmRename frmRenameNPC = new frmRename();
+                frmRenameNPC.NPCName = SelectedNPC.Name;
+                frmRenameNPC.ShowDialog();
+                if (frmRenameNPC.DialogResult == DialogResult.OK)
+                {
+                    foreach (NPC npc in NPCs)
+                    {
+                        if (npc.Name == SelectedNPC.Name)
+                        {
+                            npc.Name = frmRenameNPC.NPCName;
+                            break;
+                        }
+                    }
+                }
+                SelectedNPC = null;
+                RebuildTreeNode();
+
+            }
+        }
+        public void CloneNPC(object sender, EventArgs e)
+        {
+            if (ClickNode == null)
+                return;
+
+            if (ClickNode.Tag is NPC)
+            {
+                SelectedNPC = ClickNode.Tag as NPC;
+                NPC newNPC = NPC.DeepClone(SelectedNPC);
+                newNPC.Name = SelectedNPC.Name + " ( Clone " + NPCs.Count + " )";
+                //NPC newNPC = SelectedNPC.Clone( strName );
+                NPCs.Add(newNPC);
+                SelectedNPC = null;
+                RebuildTreeNode();
+
+            }
+        }
         public void SaveNPC(object sender, EventArgs e)
         {
             if (ClickNode == null)
@@ -310,6 +374,7 @@ namespace _7DaysToDialog
             if(node.Tag is Response)
             {
                 ResponsesMenu.Items.Insert(1, new ToolStripSeparator());
+                ResponsesMenu.Items.Add("Add New Response").Click += new EventHandler(NewResponse);
                 ResponsesMenu.Items.Add("Delete Response").Click += new EventHandler(RemoveResponse);
                 ResponsesMenu.Items.Add("Edit Response").Click += new EventHandler(EditResponse);
                 ResponsesMenu.Items.Add(new ToolStripSeparator());
@@ -337,6 +402,18 @@ namespace _7DaysToDialog
 
         }
 
+        private void NewResponse(object sender, EventArgs e)
+        {
+            NPC currentNPC = GetCurrentNPC();
+            txtResponse.Text = "";
+            txtResponseID.Text = "";
+            btnAdd.Text = "Add";
+            this.txtCreateNewStatement.Text = "";
+            this.cmbNPCs.SelectedIndex = this.cmbNPCs.FindStringExact(currentNPC.Name);
+            this.cmbStatements.SelectedIndex = 0;
+            //btnSave_Click(null, null);
+            
+        }
         private void AddAction(object sender, EventArgs e)
         {
             if(ClickNode == null)
@@ -497,6 +574,7 @@ namespace _7DaysToDialog
                 return;
             txtResponse.Text = Utilities.GetLocalization(response.Text);
             txtResponseID.Text = response.ID;
+            txtResponseID.Tag = response;
 
             if(string.IsNullOrEmpty(response.NextStatement))
                 this.cmbStatements.SelectedIndex = 0;
@@ -543,12 +621,12 @@ namespace _7DaysToDialog
                 if(ClickNode == null)
                     return;
 
-                if(ClickNode.Parent == null)
+                if (ClickNode.Parent == null)
                     return;
 
                 treeReplies.SelectedNode = ClickNode;
-                //if(ClickNode.Tag is Statement)
-                //    SetStatement(ClickNode.Tag as Statement);
+                if(ClickNode.Tag is Statement)
+                    SetStatement(ClickNode.Tag as Statement);
             }
         }
 
@@ -561,7 +639,7 @@ namespace _7DaysToDialog
             rtbStatement.Text = Utilities.GetLocalization(statement.Text).Trim();
             rtbStatement.Tag = statement.ID;
             treeReplies.Nodes.Clear();
-            foreach(KeyValuePair<string, Response> response in statement.Responses)
+            foreach(KeyValuePair<string, Response> response in statement.Responses.Reverse())
                 UpdateNode(response.Value);
 
            
@@ -574,6 +652,7 @@ namespace _7DaysToDialog
             txtResponse.Focus();
             txtResponse.Text = "";
             txtResponseID.Text = "";
+            this.cmbStatements.SelectedIndex = 0;
         }
         private void SetStatement()
         {
@@ -640,33 +719,27 @@ namespace _7DaysToDialog
             }
         }
 
+        public void OpenFile(String strFileName)
+        {
+            doc.Load(strFileName);
+            Properties.Settings.Default["LastPath"] = Path.GetDirectoryName( strFileName);
+            Properties.Settings.Default.Save();
+
+            foreach (XmlNode dialogNode in doc.SelectNodes("//dialog"))
+                NPCs.Add(new NPC(dialogNode));
+
+            Utilities.InitLocalization(Path.GetDirectoryName(strFileName));
+            RebuildTreeNode();
+
+            if (!Properties.Settings.Default["Recent"].ToString().Contains(strFileName))
+            {
+                Properties.Settings.Default["Recent"] += ";" + strFileName;
+                Properties.Settings.Default.Save();
+            }
+        }
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string strFile;
-            using(OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                String strDefaultFolder = @"C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Data\Config";
-                if(Directory.Exists(strDefaultFolder))
-                    openFileDialog.InitialDirectory = strDefaultFolder;
-                else
-                    openFileDialog.InitialDirectory = "c:\\";
-
-                openFileDialog.Filter = "dialogs.xml files (*.xml)|*.xml";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if(openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    strFile = openFileDialog.FileName;
-                    doc.Load(strFile);
-                    foreach(XmlNode dialogNode in doc.SelectNodes("//dialog"))
-                        NPCs.Add(new NPC(dialogNode));
-
-                    Utilities.InitLocalization(Path.GetDirectoryName(strFile));
-                    RebuildTreeNode();
-                }
-            }
+   
 
         }
 
@@ -694,14 +767,18 @@ namespace _7DaysToDialog
         {
             using(SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.InitialDirectory = "c:\\";
+                String strLastPath = Properties.Settings.Default["LastPath"].ToString();
+                if ( String.IsNullOrEmpty( strLastPath ))
+                    saveFileDialog.InitialDirectory = "c:\\";
+                else
+                    saveFileDialog.InitialDirectory = strLastPath;
                 saveFileDialog.Filter = "dialogs.xml files (*.xml)|*.xml";
                 if ( SelectedNPC == null )
                     saveFileDialog.Title = "Save Dialogs.xml";
                 else
                     saveFileDialog.Title = "Saving " + SelectedNPC.Name;
                 saveFileDialog.FilterIndex = 2;
-                saveFileDialog.RestoreDirectory = true;
+              //  saveFileDialog.RestoreDirectory = true;
 
                 if(saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -834,12 +911,16 @@ namespace _7DaysToDialog
         // Update the NPC combo box
         public void UpdateNPCs()
         {
+            NPC currentNPC = GetCurrentNPC();
             cmbNPCs.Items.Clear();
             foreach(NPC npc in NPCs)
                 cmbNPCs.Items.Add(npc.Name);
 
             if(cmbNPCs.Items.Count > 0)
                 cmbNPCs.SelectedIndex = 0;
+
+            if (currentNPC != null)
+                cmbNPCs.SelectedIndex = cmbNPCs.FindStringExact(currentNPC.Name);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -858,12 +939,15 @@ namespace _7DaysToDialog
                 if(response == null)
                     continue;
 
-
                 newStatement.AddResponse(response.ID, response);
                 npc.AddResponse(response);
-
             }
 
+            if (treeReplies.Nodes.Count == 0)
+            {
+                MessageBox.Show("This statement does not have any responses. You could get stuck in an empty dialog session. Please make a generic response and reference an other statement.", "Missing Return Statement", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             npc.AddStatement(newStatement);
             RebuildTreeNode();
         }
@@ -1041,6 +1125,104 @@ namespace _7DaysToDialog
                 e.DrawDefault = true;
             }
 
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] recents = Properties.Settings.Default["Recent"].ToString().Split(';');
+            while (recents.Length > 5)
+            {
+                recents = recents.Skip(1).ToArray();
+            }
+
+            List<ToolStripItem> removeItems = new List<ToolStripItem>();
+            if (this.fileToolStripMenuItem.HasDropDownItems)
+            {
+
+                foreach (var temp in this.fileToolStripMenuItem.DropDownItems)
+                {
+                    ToolStripMenuItem item = temp as ToolStripMenuItem;
+                    if (item != null )
+                    {
+                        if (item.Text.Contains("): "))
+                            removeItems.Add(item);
+                    }
+                }
+                if (removeItems != null)
+                {
+                    foreach (ToolStripItem item in removeItems)
+                        this.fileToolStripMenuItem.DropDownItems.Remove(item);
+                }
+            }
+            int Counter = 1;
+            foreach (string strRecent in recents.Reverse())
+            {
+                if (string.IsNullOrEmpty(strRecent))
+                    continue;
+                ToolStripMenuItem item = new ToolStripMenuItem(strRecent);
+                item.Size = new System.Drawing.Size(180, 22);
+                item.Text = Counter + "): " + strRecent;
+                item.Name = strRecent;
+                item.Click += new System.EventHandler(OpenFile_Click);
+                this.fileToolStripMenuItem.DropDownItems.Add(item);
+                Counter++;
+            }
+            // Populate the recent in the correct order
+            foreach (string strRecent in recents)
+                Properties.Settings.Default["Recent"] += ";" + strRecent;
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void dialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string strFile;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                String strDefaultFolder = @"C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Data\Config";
+                if (Directory.Exists(strDefaultFolder))
+                    openFileDialog.InitialDirectory = strDefaultFolder;
+                else
+                    openFileDialog.InitialDirectory = "c:\\";
+
+                openFileDialog.Filter = "dialogs.xml files (*.xml)|*.xml";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    strFile = openFileDialog.FileName;
+                    OpenFile(strFile);
+                    String strFolder = Path.GetDirectoryName(strFile);
+                    Utilities.InitLocalization(strFolder);
+
+                }
+            }
+        }
+
+        private void localizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string strFile;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                String strDefaultFolder = @"C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Data\Config";
+                if (Directory.Exists(strDefaultFolder))
+                    openFileDialog.InitialDirectory = strDefaultFolder;
+                else
+                    openFileDialog.InitialDirectory = "c:\\";
+
+                openFileDialog.Filter = "Localization files (*.txt)|*.txt";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    strFile = openFileDialog.FileName;
+                    Utilities.InitLocalization(strFile);
+                }
+            }
         }
     }
 }

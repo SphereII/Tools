@@ -22,3 +22,4 @@ D:\Github\Tools\7DaysToDialog\bin\Debug\7DaysToDialog.pdb
 D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.Properties.Resources.resources
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.exe
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.pdb
+D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmRename.resources

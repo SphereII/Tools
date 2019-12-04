@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _7DaysToDialog
 {
+    [Serializable]
     public class QuestEntry
     {
         public String QuestType;

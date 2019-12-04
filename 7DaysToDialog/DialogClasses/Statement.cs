@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace _7DaysToDialog
 {
-
+    [Serializable]
     public class Statement
     {
         public String ID;
@@ -27,7 +27,7 @@ namespace _7DaysToDialog
             statementNode.Attributes.Append(Utilities.GenerateAttribute("id", ID, doc));
             statementNode.Attributes.Append(Utilities.GenerateAttribute("text", Text, doc));
             statementNode.Attributes.Append(Utilities.GenerateAttribute("nextstatementid", NextStatement, doc));
-            statementNode.Attributes.Append(Utilities.GenerateAttribute("previousstatement", PreviousStatement, doc));
+          //  statementNode.Attributes.Append(Utilities.GenerateAttribute("previousstatement", PreviousStatement, doc));
 
             foreach(KeyValuePair<string, Response> response in Responses)
             {

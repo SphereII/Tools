@@ -34,5 +34,29 @@ namespace _7DaysToDialog.Properties {
                 this["Extensions"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Recent {
+            get {
+                return ((string)(this["Recent"]));
+            }
+            set {
+                this["Recent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastPath {
+            get {
+                return ((string)(this["LastPath"]));
+            }
+            set {
+                this["LastPath"] = value;
+            }
+        }
     }
 }

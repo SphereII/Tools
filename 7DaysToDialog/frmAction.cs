@@ -18,6 +18,13 @@ namespace _7DaysToDialog
         {
             InitializeComponent();
 
+            this.cboOperators.Items.Clear();
+            this.cboOperators.Items.Add("set");
+            this.cboOperators.Items.Add("add");
+            this.cboOperators.Items.Add("sub");
+            this.cboOperators.SelectedIndex = 0;
+            this.cboOperators.Visible = false;
+
             this.cboActions.Items.Clear();
 
             // An action is a drop down value and description.
@@ -48,6 +55,9 @@ namespace _7DaysToDialog
                 item = new ActionItem("ExecuteCommandSDX, Mods", "NPC Command:", "Valid Options:  TellMe, Showaffection, FollowMe, StayHere, GuardHere, Wander, SetPatrol, Patrol, Hire, OpenInventory, Loot, Dismiss");
                 this.cboActions.Items.Add(item);
 
+                item = new ActionItem("AddCVar, Mods", "CVar: ", "Enter a CVar and its value.");
+                this.cboActions.Items.Add(item);
+
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -74,6 +84,8 @@ namespace _7DaysToDialog
             this.txtID.Text = action.ID;
             this.action.Hash = action.Hash;
             this.txtID.Visible = true;
+
+        
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -101,6 +113,17 @@ namespace _7DaysToDialog
                     this.txtID.Visible = true;
                     this.lblText.Text = item.Value;
                   
+                }
+
+                if (item.Text.Contains("AddCVar"))
+                {
+                    this.lblOperator.Visible = true;
+                    this.cboOperators.Visible = true;
+                }
+                else
+                {
+                    this.lblOperator.Visible = false;
+                    this.cboOperators.Visible = false;
                 }
             }
 

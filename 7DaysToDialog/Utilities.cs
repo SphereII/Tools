@@ -23,6 +23,13 @@ namespace _7DaysToDialog
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        public static System.String CutStart(this System.String s, System.String what)
+        {
+            if (s.StartsWith(what))
+                return s.Substring(what.Length);
+            else
+                return s;
+        }
         public static XmlAttribute GenerateAttribute(String strName, String strValue, XmlDocument doc)
         {
             XmlAttribute attribute = doc.CreateAttribute(strName);
@@ -40,6 +47,9 @@ namespace _7DaysToDialog
         }
         public static void InitLocalization(String strPath)
         {
+            if (File.Exists(strPath))
+                Localization = LoadCsv(strPath);
+
             if (File.Exists(Path.Combine(strPath, "Localization - Quest.txt")))
                 LocalizationQuest = LoadCsv(Path.Combine(strPath, "Localization - Quest.txt"));
 
