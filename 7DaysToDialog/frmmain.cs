@@ -4,6 +4,7 @@ using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using AutoUpdaterDotNET;
@@ -19,7 +20,7 @@ namespace _7DaysToDialog
         public Statement Temporary = null;
         public NPC SelectedNPC = null;
 
-        String strUpdateURL = "https://raw.githubusercontent.com/7D2DModLauncher/ThickInstaller/master/AutoUpdate.xml";
+        String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/Debug/AutoUpdate.xml";
         public frmMain()
         {
             InitializeComponent();

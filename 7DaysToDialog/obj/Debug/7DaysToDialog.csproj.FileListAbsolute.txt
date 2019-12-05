@@ -4,7 +4,6 @@ C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDial
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.GenerateResource.cache
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CoreCompileInputs.cache
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmAction.resources
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csprojAssemblyReference.cache
 D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmAction.resources
 D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmMain.resources
 D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmRequirement.resources
@@ -23,3 +22,7 @@ D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.Properties.Resources.reso
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.exe
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.pdb
 D:\Github\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmRename.resources
+D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.dll
+D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.pdb
+D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.xml
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CopyComplete
