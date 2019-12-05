@@ -26,4 +26,3 @@ D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.dll
 D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.pdb
 D:\Github\Tools\7DaysToDialog\bin\Debug\AutoUpdater.NET.xml
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CopyComplete
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csprojAssemblyReference.cache
