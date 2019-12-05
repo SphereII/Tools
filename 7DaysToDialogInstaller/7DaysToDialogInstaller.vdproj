@@ -157,20 +157,6 @@
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A07C4912A4804FF0ACF2E1412BCE6BC5"
-            {
-            "Name" = "8:Primary output from 7DaysToDialog (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_EC5C3C4BE1404FC9A87711B3701A07C9"
-            "FileType" = "3:2"
-            "InstallAction" = "3:2"
-            "Arguments" = "8:INSTALLER"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_B529802B_4A7E_4362_97B5_585F04A80643"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
         }
         "DefaultFeature"
         {
@@ -332,15 +318,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{C52FADC5-D7C2-4470-8324-07E6D47097BB}"
-        "PackageCode" = "8:{4ADE8FB2-514B-4FB7-9617-B6019ACE71A2}"
+        "ProductCode" = "8:{39F5E166-3D53-4103-9A3F-6D35582A99DB}"
+        "PackageCode" = "8:{C63FAD66-BA9F-43B2-8680-48919F665C64}"
         "UpgradeCode" = "8:{649EFE8B-8E1A-4F14-94DC-38A80E9F6961}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.9"
+        "ProductVersion" = "8:1.0.10"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -356,7 +342,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:REM CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
+        "PostBuildEvent" = "8:CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
