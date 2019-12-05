@@ -32,7 +32,6 @@ namespace _7DaysToDialog
             {
                 AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
                 AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-                AutoUpdater.AppCastURL = strUpdateURL;
                 AutoUpdater.Start(strUpdateURL);
             }
             lblVersion.Text = "Version: " + Assembly.GetEntryAssembly().GetName().Version.ToString();

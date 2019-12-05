@@ -26,4 +26,3 @@ D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CoreCompileInputs.c
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CopyComplete
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.exe
 D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.pdb
-D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csprojAssemblyReference.cache
