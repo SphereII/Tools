@@ -25,7 +25,7 @@ namespace _7DaysToDialog
         {
             InitializeComponent();
 
-          //  if (Utilities.IsInVisualStudio == false)
+            if (Utilities.IsInVisualStudio == false)
             {
                 AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
                 AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;

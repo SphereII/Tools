@@ -95,34 +95,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_02C0BD7BB49441D7A46E59BC057A83EF"
-            {
-            "Name" = "8:Primary output from 7DaysToDialog (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_6D525395EFF94EA18EEB825F91615804"
-            "FileType" = "3:2"
-            "InstallAction" = "3:2"
-            "Arguments" = "8:INSTALLER"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_4C6C27F5_521D_4BC5_AAAC_1C4B45E40ACA"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_987B9907DB4A40AEB639635D12AFFD3F"
-            {
-            "Name" = "8:Primary output from 7DaysToDialog (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_6D525395EFF94EA18EEB825F91615804"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_A1E689FA_5B28_4A9A_99E2_B4B0C3A37555"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
         }
         "DefaultFeature"
         {
@@ -284,15 +256,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{2799CF62-A995-4B75-AB4F-30EA1344CF9E}"
-        "PackageCode" = "8:{E2FA2B90-9F1B-475C-820C-DC639C0C869D}"
+        "ProductCode" = "8:{CE500642-942F-4171-8C0C-2E3DF1C3D843}"
+        "PackageCode" = "8:{B350AB17-7059-483D-896D-3EF3F482566A}"
         "UpgradeCode" = "8:{649EFE8B-8E1A-4F14-94DC-38A80E9F6961}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -308,7 +280,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:REM CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
+        "PostBuildEvent" = "8:CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
