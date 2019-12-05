@@ -90,7 +90,7 @@ namespace _7DaysToDialog
             {
                 fields = parser.ReadFields();
                 if (!Temp.ContainsKey(fields[0].ToString()))
-                    Temp.Add(fields[0], fields[4]);
+                    Temp.Add(fields[0], fields[5]);
             }
 
             parser.Close();
