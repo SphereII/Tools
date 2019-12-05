@@ -271,7 +271,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_685A08478A5C4D1990E3F7CB71FDDA0C"
             {
             "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:ProgramMenuFolder"
@@ -282,7 +282,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_8221BCFB17584B50BD9E1D256CB20187"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -319,7 +319,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
         "ProductCode" = "8:{39F5E166-3D53-4103-9A3F-6D35582A99DB}"
-        "PackageCode" = "8:{C63FAD66-BA9F-43B2-8680-48919F665C64}"
+        "PackageCode" = "8:{F2D89212-C629-46EE-B716-439B2E9EB280}"
         "UpgradeCode" = "8:{649EFE8B-8E1A-4F14-94DC-38A80E9F6961}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
