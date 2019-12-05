@@ -285,7 +285,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
         "ProductCode" = "8:{2B971F3F-8C8E-46F2-97BE-7CF492563275}"
-        "PackageCode" = "8:{81C64264-571F-4851-914A-474A853079DF}"
+        "PackageCode" = "8:{F68EACA7-1F21-4A0F-9F5F-9101EF829FB6}"
         "UpgradeCode" = "8:{649EFE8B-8E1A-4F14-94DC-38A80E9F6961}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -416,7 +416,7 @@
             "Target" = "8:_6D525395EFF94EA18EEB825F91615804"
             "Folder" = "8:_685A08478A5C4D1990E3F7CB71FDDA0C"
             "WorkingFolder" = "8:_A523BB5DA18C4986A759C38B0763B665"
-            "Icon" = "8:"
+            "Icon" = "8:_1288C812447A47DFA6BD83EEFA8CDA53"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D81D66334A744E6BA48093A3151384F4"
@@ -430,7 +430,7 @@
             "Target" = "8:_6D525395EFF94EA18EEB825F91615804"
             "Folder" = "8:_8221BCFB17584B50BD9E1D256CB20187"
             "WorkingFolder" = "8:_A523BB5DA18C4986A759C38B0763B665"
-            "Icon" = "8:"
+            "Icon" = "8:_1288C812447A47DFA6BD83EEFA8CDA53"
             "Feature" = "8:"
             }
         }
