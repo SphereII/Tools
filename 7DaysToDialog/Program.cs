@@ -34,7 +34,7 @@ namespace _7DaysToDialog
                 Application.SetCompatibleTextRenderingDefault(false);
 
 
-                Application.Run(new frmMain());
+                Application.Run(new frmMain(args));
             }
             catch (Exception ex)
             {

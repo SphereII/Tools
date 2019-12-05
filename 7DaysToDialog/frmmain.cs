@@ -21,14 +21,18 @@ namespace _7DaysToDialog
         public NPC SelectedNPC = null;
 
         String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml";
-        public frmMain()
+        public frmMain(String[] args)
         {
             InitializeComponent();
+            String strParameterFile = "";
+            if (args.Length > 0)
+                strParameterFile = args[0].ToString();
 
-            if (Utilities.IsInVisualStudio == false)
+         //   if (Utilities.IsInVisualStudio == false)
             {
                 AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
                 AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+                AutoUpdater.AppCastURL = strUpdateURL;
                 AutoUpdater.Start(strUpdateURL);
             }
             lblVersion.Text = "Version: " + Assembly.GetEntryAssembly().GetName().Version.ToString();
@@ -1326,6 +1330,11 @@ namespace _7DaysToDialog
                     Utilities.InitLocalization(strFile);
                 }
             }
+        }
+
+        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.Start(strUpdateURL);
         }
     }
 }
