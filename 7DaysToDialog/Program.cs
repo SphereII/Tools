@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoUpdaterDotNET;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,33 +14,18 @@ namespace _7DaysToDialog
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
-            try
-            {
-                if (args.Length == 1 && args[0] == "INSTALLER")
-                {
-                    try
-                    {
-                        Process.Start("explorer.exe", Application.ExecutablePath);
-                    }
-                    catch (Exception exx)
-                    {
-                    }
+            //String strUpdateURL = "https://pastebin.com/raw/9auBiFn7";
+            String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml";
+            AutoUpdater.ReportErrors = true;
+            AutoUpdater.Start(strUpdateURL);
 
-                    return;
-                }
-
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
 
-                Application.Run(new frmMain(args));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error Starting Application: " + ex.ToString());
-            }
+            Application.Run(new frmMain());
         }
     }
 }

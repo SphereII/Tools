@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Deployment.Application;
+
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
-using AutoUpdaterDotNET;
+
 
 namespace _7DaysToDialog
 {
@@ -20,20 +20,11 @@ namespace _7DaysToDialog
         public Statement Temporary = null;
         public NPC SelectedNPC = null;
 
-        String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml";
-        public frmMain(String[] args)
+      
+        public frmMain()
         {
             InitializeComponent();
-            String strParameterFile = "";
-            if (args.Length > 0)
-                strParameterFile = args[0].ToString();
-
-         //   if (Utilities.IsInVisualStudio == false)
-            {
-                AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
-                AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-                AutoUpdater.Start(strUpdateURL);
-            }
+     
             lblVersion.Text = "Version: " + Assembly.GetEntryAssembly().GetName().Version.ToString();
 
             // Updates the menu with the correct setting
@@ -46,78 +37,6 @@ namespace _7DaysToDialog
             InitMenu();
         }
 
-        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
-        {
-            String strCurrentVersion = args.CurrentVersion.ToString();
-            if (args != null)
-            {
-                // If this is the one ClickInstaller, force it.
-                if (ApplicationDeployment.IsNetworkDeployed)
-                {
-                    args.Mandatory = true;
-                    args.IsUpdateAvailable = true;
-
-                }
-                if (args.IsUpdateAvailable)
-                {
-                    DialogResult dialogResult;
-                    if (args.Mandatory)
-                    {
-                        dialogResult =
-                            MessageBox.Show(
-                                $@"There is new version {strCurrentVersion} available. You are using version {args.InstalledVersion}. This is required update. Press Ok to begin updating the application.", @"Update Available",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        dialogResult =
-                            MessageBox.Show(
-                                $@"There is new version {strCurrentVersion} available. You are using version {
-                                        args.InstalledVersion
-                                    }. Do you want to update the application now?", @"Update Available",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Information);
-                    }
-
-                    // Uncomment the following line if you want to show standard update dialog instead.
-                    AutoUpdater.ShowUpdateForm();
-
-                    if (dialogResult.Equals(DialogResult.Yes))
-                    {
-                        try
-                        {
-                            if (AutoUpdater.DownloadUpdate())
-                            {
-                                Application.Exit();
-                            }
-                        }
-                        catch (Exception exception)
-                        {
-                            MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                //else
-                //{
-                //    UpdateStatusLabel("No Updates Available.");
-                //}
-
-            }
-            else
-            {
-                MessageBox.Show(
-                        @"There is a problem reaching update server please check your internet connection and try again later.",
-                        @"Update check failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-        private void AutoUpdater_ApplicationExitEvent()
-        {
-            Application.Restart();
-        }
         private void OpenFile_Click(object sender, EventArgs e)
         {
             String strFilename = sender.ToString().Remove(0,4);
@@ -1331,9 +1250,5 @@ namespace _7DaysToDialog
             }
         }
 
-        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AutoUpdater.Start(strUpdateURL);
-        }
     }
 }
