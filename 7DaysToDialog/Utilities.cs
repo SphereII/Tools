@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,14 +28,17 @@ namespace _7DaysToDialog
         {
             get
             {
-                bool inIDE = false;
-                string[] args = System.Environment.GetCommandLineArgs();
-                if (args != null && args.Length > 0)
-                {
-                    string prgName = args[0].ToUpper();
-                    inIDE = prgName.EndsWith("VSHOST.EXE");
-                }
-                return inIDE;
+
+                return Debugger.IsAttached;
+
+                //bool inIDE = false;
+                //string[] args = System.Environment.GetCommandLineArgs();
+                //if (args != null && args.Length > 0)
+                //{
+                //    string prgName = args[0].ToUpper();
+                //    inIDE = prgName.EndsWith("VSHOST.EXE");
+                //}
+                //return inIDE;
             }
         }
         public static System.String CutStart(this System.String s, System.String what)
