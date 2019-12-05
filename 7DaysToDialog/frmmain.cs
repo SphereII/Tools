@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using AutoUpdaterDotNET;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -1250,5 +1250,11 @@ namespace _7DaysToDialog
             }
         }
 
+        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.ReportErrors = true;
+            AutoUpdater.Start("https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml");
+
+        }
     }
 }
