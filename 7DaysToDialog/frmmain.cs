@@ -25,13 +25,13 @@ namespace _7DaysToDialog
         {
             InitializeComponent();
 
-            lblVersion.Text = "Version: "+  Assembly.GetEntryAssembly().GetName().Version.ToString();
             if (Utilities.IsInVisualStudio == false)
             {
                 AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
                 AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
                 AutoUpdater.Start(strUpdateURL);
             }
+            lblVersion.Text = "Version: " + Assembly.GetEntryAssembly().GetName().Version.ToString();
 
             // Updates the menu with the correct setting
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];

@@ -22,55 +22,19 @@
         "Entry"
         {
         "MsmKey" = "8:_55F051E7A15913054649C89083F9BAD6"
-        "OwnerKey" = "8:_EC5C3C4BE1404FC9A87711B3701A07C9"
+        "OwnerKey" = "8:_6D525395EFF94EA18EEB825F91615804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_55F051E7A15913054649C89083F9BAD6"
-        "OwnerKey" = "8:_81E4D51EA9994C0F8340A362B4EE8CF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_55F051E7A15913054649C89083F9BAD6"
-        "OwnerKey" = "8:_A8723403BEE0441F9440E2FDC349C76B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_81E4D51EA9994C0F8340A362B4EE8CF3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A8723403BEE0441F9440E2FDC349C76B"
+        "MsmKey" = "8:_6D525395EFF94EA18EEB825F91615804"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
-        "OwnerKey" = "8:_EC5C3C4BE1404FC9A87711B3701A07C9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
-        "OwnerKey" = "8:_81E4D51EA9994C0F8340A362B4EE8CF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
-        "OwnerKey" = "8:_A8723403BEE0441F9440E2FDC349C76B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC5C3C4BE1404FC9A87711B3701A07C9"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6D525395EFF94EA18EEB825F91615804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,25 +46,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_81E4D51EA9994C0F8340A362B4EE8CF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A8723403BEE0441F9440E2FDC349C76B"
+        "OwnerKey" = "8:_6D525395EFF94EA18EEB825F91615804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC5C3C4BE1404FC9A87711B3701A07C9"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -143,6 +95,34 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_02C0BD7BB49441D7A46E59BC057A83EF"
+            {
+            "Name" = "8:Primary output from 7DaysToDialog (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_6D525395EFF94EA18EEB825F91615804"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:INSTALLER"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_4C6C27F5_521D_4BC5_AAAC_1C4B45E40ACA"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_987B9907DB4A40AEB639635D12AFFD3F"
+            {
+            "Name" = "8:Primary output from 7DaysToDialog (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_6D525395EFF94EA18EEB825F91615804"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_A1E689FA_5B28_4A9A_99E2_B4B0C3A37555"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -304,15 +284,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{1044575C-3124-40DA-B5E2-0993337E1BF3}"
-        "PackageCode" = "8:{72188AD7-FD2A-4529-B5D6-B9DE9229C07B}"
+        "ProductCode" = "8:{2B971F3F-8C8E-46F2-97BE-7CF492563275}"
+        "PackageCode" = "8:{81C64264-571F-4851-914A-474A853079DF}"
         "UpgradeCode" = "8:{649EFE8B-8E1A-4F14-94DC-38A80E9F6961}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.11"
+        "ProductVersion" = "8:1.0.13"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -328,7 +308,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
+        "PostBuildEvent" = "8:REM CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
@@ -425,6 +405,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B1B66D0A4A5D4E10908843AC33A8A279"
+            {
+            "Name" = "8:Shortcut to Primary output from 7DaysToDialog (Active)"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_6D525395EFF94EA18EEB825F91615804"
+            "Folder" = "8:_685A08478A5C4D1990E3F7CB71FDDA0C"
+            "WorkingFolder" = "8:_A523BB5DA18C4986A759C38B0763B665"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D81D66334A744E6BA48093A3151384F4"
+            {
+            "Name" = "8:Shortcut to Primary output from 7DaysToDialog (Active)"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_6D525395EFF94EA18EEB825F91615804"
+            "Folder" = "8:_8221BCFB17584B50BD9E1D256CB20187"
+            "WorkingFolder" = "8:_A523BB5DA18C4986A759C38B0763B665"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -824,63 +832,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81E4D51EA9994C0F8340A362B4EE8CF3"
-            {
-            "SourcePath" = "8:..\\7DaysToDialog\\obj\\Debug\\7DaysToDialog.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_685A08478A5C4D1990E3F7CB71FDDA0C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A8723403BEE0441F9440E2FDC349C76B"
-            {
-            "SourcePath" = "8:..\\7DaysToDialog\\obj\\Debug\\7DaysToDialog.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8221BCFB17584B50BD9E1D256CB20187"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EC5C3C4BE1404FC9A87711B3701A07C9"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6D525395EFF94EA18EEB825F91615804"
             {
             "SourcePath" = "8:..\\7DaysToDialog\\obj\\Debug\\7DaysToDialog.exe"
             "TargetName" = "8:"
