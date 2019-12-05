@@ -18,7 +18,7 @@ namespace _7DaysToDialog
         {
             //String strUpdateURL = "https://pastebin.com/raw/9auBiFn7";
             String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml";
-            AutoUpdater.ReportErrors = true;
+          //  AutoUpdater.ReportErrors = true;
             AutoUpdater.Start(strUpdateURL);
 
             Application.EnableVisualStyles();

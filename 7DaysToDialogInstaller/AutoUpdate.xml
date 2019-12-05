@@ -1,6 +1,6 @@
 <item>
-    <version>1.0.2</version>
-    <url>https://github.com/SphereII/Tools/blob/master/7DaysToDialogInstaller/Debug/7DaysToDialogInstaller.msi?raw=true</url>
+  <version>1.0.3</version>
+  <url>https://github.com/SphereII/Tools/blob/master/7DaysToDialogInstaller/Debug/7DaysToDialogInstaller.msi?raw=true</url>
   <mandatory>true</mandatory>
 
 </item>
