@@ -20,7 +20,7 @@ namespace _7DaysToDialog
         public Statement Temporary = null;
         public NPC SelectedNPC = null;
 
-        String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/Debug/AutoUpdate.xml";
+        String strUpdateURL = "https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml";
         public frmMain()
         {
             InitializeComponent();

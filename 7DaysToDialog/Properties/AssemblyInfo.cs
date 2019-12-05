@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("7 Days To Dialog")]
 [assembly: AssemblyDescription("A Dialog Generator for 7 Days To Die")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SohereII Software")]
+[assembly: AssemblyCompany("SphereII Software")]
 [assembly: AssemblyProduct("7 Days To Dialog")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -32,6 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyFileVersion("1.0.0.*")]
+[assembly: AssemblyVersion("1.0.3.*")]
 
