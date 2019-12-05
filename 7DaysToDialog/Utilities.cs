@@ -23,6 +23,20 @@ namespace _7DaysToDialog
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        public static bool IsInVisualStudio
+        {
+            get
+            {
+                bool inIDE = false;
+                string[] args = System.Environment.GetCommandLineArgs();
+                if (args != null && args.Length > 0)
+                {
+                    string prgName = args[0].ToUpper();
+                    inIDE = prgName.EndsWith("VSHOST.EXE");
+                }
+                return inIDE;
+            }
+        }
         public static System.String CutStart(this System.String s, System.String what)
         {
             if (s.StartsWith(what))
@@ -32,6 +46,8 @@ namespace _7DaysToDialog
         }
         public static XmlAttribute GenerateAttribute(String strName, String strValue, XmlDocument doc)
         {
+            if (String.IsNullOrEmpty(strValue))
+                return null;
             XmlAttribute attribute = doc.CreateAttribute(strName);
             attribute.Value = strValue;
             return attribute;

@@ -95,14 +95,26 @@ namespace _7DaysToDialog
                 this.cboVisibility.SelectedIndex = this.cboVisibility.FindStringExact(req.requirementType);
                 this.cboRequirements.SelectedIndex = this.cboRequirements.FindStringExact(req.Type);
 
-                if (!String.IsNullOrEmpty(req.Operator))
-                    this.cboOperators.SelectedIndex = this.cboOperators.FindStringExact(req.Operator);
+            if (!String.IsNullOrEmpty(req.Operator))
+            {
 
-                if (!String.IsNullOrEmpty(req.Value))
-                    this.txtValue.Text = req.Value;
+                this.cboOperators.SelectedIndex = this.cboOperators.FindStringExact(req.Operator);
+                this.cboOperators.Visible = true;
+                this.lblOperator.Visible = true;
+            }
 
-                if (!String.IsNullOrEmpty(req.ID))
-                    this.txtID.Text = req.ID;
+            if (!String.IsNullOrEmpty(req.Value))
+            {
+                this.lblValue.Visible = true;
+                this.txtValue.Visible = true;
+                this.txtValue.Text = req.Value;
+            }
+            if (!String.IsNullOrEmpty(req.ID))
+            {
+                this.lblID.Visible = true;
+                this.txtID.Visible = true;
+                this.txtID.Text = req.ID;
+            }
 
             requirement.Hash = req.Hash;
         }

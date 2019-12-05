@@ -132,6 +132,8 @@ namespace _7DaysToDialog
                         {
                             String strType = ReadAttribute(responseEntry, "type");
                             String listindex = ReadAttribute(responseEntry, "listindex");
+                            if (string.IsNullOrEmpty(listindex))
+                                listindex = "1";
                             QuestEntry newquestEntry = new QuestEntry(strType, listindex);
                             statement.AddQuest(listindex, newquestEntry);
 
@@ -154,6 +156,8 @@ namespace _7DaysToDialog
                 if (child.Name.Contains("response"))
                 {
                     strID = ReadAttribute(child, "id");
+                    if (string.IsNullOrEmpty(strID))
+                        strID = "response_" + Utilities.RandomString().GetHashCode();
                     strText = ReadAttribute(child, "text");
                     strNext = ReadAttribute(child, "nextstatementid");
                     Response response = new Response(strID, strText, strNext);
@@ -175,7 +179,9 @@ namespace _7DaysToDialog
                         {
                             String strType = ReadAttribute(subNode, "type");
                             String strActionID = ReadAttribute(subNode, "id");
-                            Action newAction = new Action(strType, strActionID);
+                            String strValue = ReadAttribute(subNode, "value");
+                            String strOperator = ReadAttribute(subNode, "operator");
+                            Action newAction = new Action(strType, strActionID, strValue, strOperator);
                             response.AddAction(newAction);
                         }
                     }

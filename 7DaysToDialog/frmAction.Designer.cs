@@ -38,6 +38,8 @@
             this.rtHelp = new System.Windows.Forms.RichTextBox();
             this.cboOperators = new System.Windows.Forms.ComboBox();
             this.lblOperator = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.txtCount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblPerformAction
@@ -60,7 +62,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(113, 75);
+            this.txtID.Location = new System.Drawing.Point(113, 68);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(140, 20);
             this.txtID.TabIndex = 19;
@@ -68,7 +70,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(178, 106);
+            this.btnClose.Location = new System.Drawing.Point(178, 125);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 22;
@@ -78,7 +80,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(74, 106);
+            this.btnSave.Location = new System.Drawing.Point(74, 125);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 21;
@@ -89,7 +91,7 @@
             // lblText
             // 
             this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblText.Location = new System.Drawing.Point(12, 81);
+            this.lblText.Location = new System.Drawing.Point(21, 75);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(86, 13);
             this.lblText.TabIndex = 23;
@@ -109,7 +111,7 @@
             // cboOperators
             // 
             this.cboOperators.FormattingEnabled = true;
-            this.cboOperators.Location = new System.Drawing.Point(113, 44);
+            this.cboOperators.Location = new System.Drawing.Point(113, 37);
             this.cboOperators.Name = "cboOperators";
             this.cboOperators.Size = new System.Drawing.Size(140, 21);
             this.cboOperators.TabIndex = 25;
@@ -117,7 +119,7 @@
             // lblOperator
             // 
             this.lblOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOperator.Location = new System.Drawing.Point(21, 52);
+            this.lblOperator.Location = new System.Drawing.Point(21, 45);
             this.lblOperator.Name = "lblOperator";
             this.lblOperator.Size = new System.Drawing.Size(86, 13);
             this.lblOperator.TabIndex = 26;
@@ -125,11 +127,32 @@
             this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblOperator.Visible = false;
             // 
+            // lblCount
+            // 
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCount.Location = new System.Drawing.Point(21, 101);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(86, 13);
+            this.lblCount.TabIndex = 28;
+            this.lblCount.Text = "Count  =";
+            this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCount.Visible = false;
+            // 
+            // txtCount
+            // 
+            this.txtCount.Location = new System.Drawing.Point(113, 94);
+            this.txtCount.Name = "txtCount";
+            this.txtCount.Size = new System.Drawing.Size(140, 20);
+            this.txtCount.TabIndex = 27;
+            this.txtCount.Visible = false;
+            // 
             // frmAction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 180);
+            this.Controls.Add(this.lblCount);
+            this.Controls.Add(this.txtCount);
             this.Controls.Add(this.lblOperator);
             this.Controls.Add(this.cboOperators);
             this.Controls.Add(this.rtHelp);
@@ -159,5 +182,7 @@
         private System.Windows.Forms.RichTextBox rtHelp;
         private System.Windows.Forms.ComboBox cboOperators;
         private System.Windows.Forms.Label lblOperator;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.TextBox txtCount;
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using AutoUpdaterDotNET;
 
 namespace _7DaysToDialog
 {
@@ -17,9 +19,18 @@ namespace _7DaysToDialog
         public Statement Temporary = null;
         public NPC SelectedNPC = null;
 
+        String strUpdateURL = "https://raw.githubusercontent.com/7D2DModLauncher/ThickInstaller/master/AutoUpdate.xml";
         public frmMain()
         {
             InitializeComponent();
+
+            lblVersion.Text = "Version: "+  Assembly.GetEntryAssembly().GetName().Version.ToString();
+            if (Utilities.IsInVisualStudio == false)
+            {
+                AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+                AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+                AutoUpdater.Start(strUpdateURL);
+            }
 
             // Updates the menu with the correct setting
             enabledExtensionsToolStripMenuItem.Checked = (bool)Properties.Settings.Default["Extensions"];
@@ -28,8 +39,81 @@ namespace _7DaysToDialog
             treeReplies.DrawMode = TreeViewDrawMode.OwnerDrawText;
 
             rdoUseExisting_CheckedChanged(null, null);
+            InitMenu();
         }
 
+        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            String strCurrentVersion = args.CurrentVersion.ToString();
+            if (args != null)
+            {
+                // If this is the one ClickInstaller, force it.
+                if (ApplicationDeployment.IsNetworkDeployed)
+                {
+                    args.Mandatory = true;
+                    args.IsUpdateAvailable = true;
+
+                }
+                if (args.IsUpdateAvailable)
+                {
+                    DialogResult dialogResult;
+                    if (args.Mandatory)
+                    {
+                        dialogResult =
+                            MessageBox.Show(
+                                $@"There is new version {strCurrentVersion} available. You are using version {args.InstalledVersion}. This is required update. Press Ok to begin updating the application.", @"Update Available",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        dialogResult =
+                            MessageBox.Show(
+                                $@"There is new version {strCurrentVersion} available. You are using version {
+                                        args.InstalledVersion
+                                    }. Do you want to update the application now?", @"Update Available",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information);
+                    }
+
+                    // Uncomment the following line if you want to show standard update dialog instead.
+                    AutoUpdater.ShowUpdateForm();
+
+                    if (dialogResult.Equals(DialogResult.Yes))
+                    {
+                        try
+                        {
+                            if (AutoUpdater.DownloadUpdate())
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                //else
+                //{
+                //    UpdateStatusLabel("No Updates Available.");
+                //}
+
+            }
+            else
+            {
+                MessageBox.Show(
+                        @"There is a problem reaching update server please check your internet connection and try again later.",
+                        @"Update check failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            Application.Restart();
+        }
         private void OpenFile_Click(object sender, EventArgs e)
         {
             String strFilename = sender.ToString().Remove(0,4);
@@ -74,6 +158,8 @@ namespace _7DaysToDialog
                 response = txtResponseID.Tag as Response;
             }
             response.ID = txtResponseID.Text.Trim();
+            if (String.IsNullOrEmpty(response.ID))
+                response.ID = "response_" + Utilities.RandomString().GetHashCode();
             response.Text = txtResponse.Text;
 
             if(this.rdoUseExisting.Checked)
@@ -627,6 +713,13 @@ namespace _7DaysToDialog
                 treeReplies.SelectedNode = ClickNode;
                 if(ClickNode.Tag is Statement)
                     SetStatement(ClickNode.Tag as Statement);
+
+                if (ClickNode.Tag is Response)
+                    SetStatement(ClickNode.Parent.Tag as Statement);
+                if (ClickNode.Tag is Requirement)
+                    SetStatement(ClickNode.Parent.Parent.Tag as Statement);
+                if (ClickNode.Tag is Action)
+                    SetStatement(ClickNode.Parent.Parent.Tag as Statement);
             }
         }
 
@@ -801,11 +894,12 @@ namespace _7DaysToDialog
                         XmlNode npcNode = saveDoc.CreateElement("dialog");
                         XmlAttribute npcID = saveDoc.CreateAttribute("id");
                         XmlAttribute startStatement = saveDoc.CreateAttribute("startstatementid");
-                        startStatement.Value = "start";
-                        npcNode.Attributes.Append(startStatement);
 
                         npcID.Value = npc.Name;
                         npcNode.Attributes.Append(npcID);
+
+                        startStatement.Value = "start";
+                        npcNode.Attributes.Append(startStatement);
 
                         append.AppendChild(npcNode);
 
@@ -876,11 +970,19 @@ namespace _7DaysToDialog
                         foreach(Requirement requirement in response.Value.Requirements)
                         {
                             TreeNode requirementNode = new TreeNode();
+                            requirementNode.Text = requirement.ToString();
                             requirementNode.Tag = requirement;
                             responseNode.Nodes.Add(requirementNode);
                         }
+                        foreach (Action action in response.Value.Actions)
+                        {
+                            TreeNode actionNode = new TreeNode();
+                            actionNode.Text = action.ToString();
+                            actionNode.Tag = action;
+                            responseNode.Nodes.Add(actionNode);
+                        }
 
-                        //  statementNode.Nodes.Add(responseNode);
+                        statementNode.Nodes.Add(responseNode);
                     }
                     npcNode.Nodes.Add(statementNode);
                 }
@@ -1127,7 +1229,7 @@ namespace _7DaysToDialog
 
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InitMenu()
         {
             string[] recents = Properties.Settings.Default["Recent"].ToString().Split(';');
             while (recents.Length > 5)

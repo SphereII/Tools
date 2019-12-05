@@ -58,6 +58,8 @@ namespace _7DaysToDialog
                 item = new ActionItem("AddCVar, Mods", "CVar: ", "Enter a CVar and its value.");
                 this.cboActions.Items.Add(item);
 
+                item = new ActionItem("GiveToNPC, Mods", "Item", "An item for the NPC to take from you. Only shows when Requirement is set for HasItemsSDX.");
+                this.cboActions.Items.Add(item);
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -73,6 +75,13 @@ namespace _7DaysToDialog
 
                 if (String.IsNullOrEmpty(action.Hash))
                     action.Hash = "Action_" + Utilities.RandomString().GetHashCode();
+
+                if (!String.IsNullOrEmpty(this.txtCount.Text))
+                    action.Value = this.txtCount.Text;
+
+                if (this.cboOperators.Visible)
+                    action.Operator = this.cboOperators.SelectedItem.ToString();
+
                 this.DialogResult = DialogResult.OK;
             }
             this.Close();
@@ -82,9 +91,22 @@ namespace _7DaysToDialog
         {
             this.cboActions.SelectedIndex = this.cboActions.FindStringExact(action.ActionType);
             this.txtID.Text = action.ID;
-            this.action.Hash = action.Hash;
             this.txtID.Visible = true;
+            this.action.Hash = action.Hash;
+            if (!String.IsNullOrEmpty(action.Value))
+            {
+                this.lblCount.Visible = true;
+                this.lblText.Visible = true;
+                this.txtCount.Text = action.Value;
+                this.txtCount.Visible = true;
+            }
 
+            if (!string.IsNullOrEmpty(action.Operator))
+            {
+                this.cboOperators.Visible = true;
+                this.cboOperators.SelectedIndex = this.cboOperators.FindStringExact(action.Operator);
+                this.lblOperator.Visible = true;
+            }
         
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -119,12 +141,21 @@ namespace _7DaysToDialog
                 {
                     this.lblOperator.Visible = true;
                     this.cboOperators.Visible = true;
+                    this.lblCount.Visible = true;
+                    this.txtCount.Visible = true;
                 }
                 else
                 {
                     this.lblOperator.Visible = false;
                     this.cboOperators.Visible = false;
                 }
+
+                if (item.Text.Contains("GiveToNPC"))
+                {
+                    this.lblCount.Visible = true;
+                    this.txtCount.Visible = true;
+                }
+      
             }
 
         }

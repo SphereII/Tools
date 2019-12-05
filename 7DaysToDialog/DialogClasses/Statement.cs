@@ -23,12 +23,17 @@ namespace _7DaysToDialog
 
         public XmlNode GenerateXMLNode( XmlDocument doc)
         {
+            XmlAttribute value;
+
             XmlNode statementNode = doc.CreateElement("statement");
             statementNode.Attributes.Append(Utilities.GenerateAttribute("id", ID, doc));
             statementNode.Attributes.Append(Utilities.GenerateAttribute("text", Text, doc));
-            statementNode.Attributes.Append(Utilities.GenerateAttribute("nextstatementid", NextStatement, doc));
+            value = Utilities.GenerateAttribute("nextstatementid", NextStatement, doc);
+            if (value != null)
+                statementNode.Attributes.Append(value);
           //  statementNode.Attributes.Append(Utilities.GenerateAttribute("previousstatement", PreviousStatement, doc));
 
+            
             foreach(KeyValuePair<string, Response> response in Responses)
             {
                 XmlNode responseNode = doc.CreateElement("response_entry");

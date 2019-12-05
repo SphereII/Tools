@@ -60,11 +60,14 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.localizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enabledExtensionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,9 +77,7 @@
             this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.dialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.localizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.pnlCreateNew.SuspendLayout();
@@ -389,7 +390,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // openFileToolStripMenuItem
             // 
@@ -400,6 +400,20 @@
             this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openFileToolStripMenuItem.Text = "&Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // dialogToolStripMenuItem
+            // 
+            this.dialogToolStripMenuItem.Name = "dialogToolStripMenuItem";
+            this.dialogToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.dialogToolStripMenuItem.Text = "Dialog...";
+            this.dialogToolStripMenuItem.Click += new System.EventHandler(this.dialogToolStripMenuItem_Click);
+            // 
+            // localizationToolStripMenuItem
+            // 
+            this.localizationToolStripMenuItem.Name = "localizationToolStripMenuItem";
+            this.localizationToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.localizationToolStripMenuItem.Text = "Localization...";
+            this.localizationToolStripMenuItem.Click += new System.EventHandler(this.localizationToolStripMenuItem_Click);
             // 
             // closeFileToolStripMenuItem
             // 
@@ -417,13 +431,13 @@
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
             this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.saveFileToolStripMenuItem.Text = "Save File As...";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -431,6 +445,11 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // settingsToolStripMenuItem
             // 
@@ -503,6 +522,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblVersion);
             this.splitContainer1.Panel1.Controls.Add(this.treeDialogs);
             this.splitContainer1.Panel1.Controls.Add(this.txtAddNewNPC);
             this.splitContainer1.Panel1.Controls.Add(this.btnAddNewNPC);
@@ -515,24 +535,14 @@
             this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 6;
             // 
-            // toolStripSeparator3
+            // lblVersion
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // dialogToolStripMenuItem
-            // 
-            this.dialogToolStripMenuItem.Name = "dialogToolStripMenuItem";
-            this.dialogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dialogToolStripMenuItem.Text = "Dialog...";
-            this.dialogToolStripMenuItem.Click += new System.EventHandler(this.dialogToolStripMenuItem_Click);
-            // 
-            // localizationToolStripMenuItem
-            // 
-            this.localizationToolStripMenuItem.Name = "localizationToolStripMenuItem";
-            this.localizationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.localizationToolStripMenuItem.Text = "Localization...";
-            this.localizationToolStripMenuItem.Click += new System.EventHandler(this.localizationToolStripMenuItem_Click);
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(289, 9);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(48, 13);
+            this.lblVersion.TabIndex = 5;
+            this.lblVersion.Text = "Version: ";
             // 
             // frmMain
             // 
@@ -616,6 +626,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem dialogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localizationToolStripMenuItem;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 
