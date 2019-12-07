@@ -61,8 +61,8 @@ namespace _7DaysToDialog
         {
             if (Localization.ContainsKey(strText))
                 return Localization[strText];
-            if (LocalizationQuest.ContainsKey(strText))
-                return LocalizationQuest[strText];
+            //if (LocalizationQuest.ContainsKey(strText))
+            //    return LocalizationQuest[strText];
             return strText;
         }
         public static void InitLocalization(String strPath)
