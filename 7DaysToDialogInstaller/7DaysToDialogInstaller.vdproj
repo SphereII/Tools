@@ -46,13 +46,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_55F051E7A15913054649C89083F9BAD6"
+        "OwnerKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E6787BBCF17CF679FC778A012BA293F7"
+        "OwnerKey" = "8:_55F051E7A15913054649C89083F9BAD6"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -278,15 +278,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{D843231D-77D6-4DD5-8F74-53727EF690A8}"
-        "PackageCode" = "8:{E5A44A43-48F1-47F0-B7F7-9A4DE85207C1}"
+        "ProductCode" = "8:{F8A08B1A-8F12-4568-B912-7DEA22500ABE}"
+        "PackageCode" = "8:{288CCF2B-018A-48C7-9895-45D8F8289195}"
         "UpgradeCode" = "8:{EB85F102-50CA-49E1-875F-C67034B77581}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.7"
+        "ProductVersion" = "8:1.0.8"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
