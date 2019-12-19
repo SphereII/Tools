@@ -37,7 +37,7 @@ namespace _7DaysToDialog
             String strDisplay = "Action: " + ActionType + ": " + ID;
             if (String.IsNullOrEmpty(Value))
                 return strDisplay;
-            return strDisplay + " ( " + Operator + " " + Value + " )";
+            return strDisplay + " when " + Operator + " " + Value + " )";
         }
     }
 }

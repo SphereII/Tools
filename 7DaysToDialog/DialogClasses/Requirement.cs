@@ -33,12 +33,13 @@ namespace _7DaysToDialog
         
         public override string ToString()
         {
-            String strDisplay = Type + " : " + requirementType + " if not " + ID  ;
+            String strDisplay = Type + " : Show When is " + ID  ;
             if (!String.IsNullOrEmpty(Operator))
                 strDisplay += " is " + Operator;
             if (!String.IsNullOrEmpty(Value))
                 strDisplay += " " + Value;
-            return strDisplay;
+            
+            return strDisplay + " true";
         }
     }
 
