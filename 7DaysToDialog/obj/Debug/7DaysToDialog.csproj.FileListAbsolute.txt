@@ -2,7 +2,6 @@ C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialo
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmMain.resources
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmRequirement.resources
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.GenerateResource.cache
-C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CoreCompileInputs.cache
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\_7DaysToDialog.frmAction.resources
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\bin\Debug\7DaysToDialog.exe.config
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\bin\Debug\7DaysToDialog.exe

@@ -81,19 +81,30 @@ namespace _7DaysToDialog
             foreach(Action action in Actions)
             {
                 XmlNode actionNode = doc.CreateElement("action");
-                value = Utilities.GenerateAttribute("type", action.ActionType, doc);
-                if (value != null)
-                    actionNode.Attributes.Append(value);
-                value = Utilities.GenerateAttribute("id", action.ID, doc);
-                if (value != null)
-                    actionNode.Attributes.Append(value);
-                value = Utilities.GenerateAttribute("value", action.Value.ToString(), doc);
-                if (value != null)
-                    actionNode.Attributes.Append(value);
-
-                value = Utilities.GenerateAttribute("operator", action.Operator.ToString(), doc);
-                if (value != null)
-                    actionNode.Attributes.Append(value);
+                if (action.ActionType != null)
+                {
+                    value = Utilities.GenerateAttribute("type", action.ActionType, doc);
+                    if (value != null)
+                        actionNode.Attributes.Append(value);
+                }
+                if (action.ID != null)
+                {
+                    value = Utilities.GenerateAttribute("id", action.ID, doc);
+                    if (value != null)
+                        actionNode.Attributes.Append(value);
+                }
+                if (action.Value != null)
+                {
+                    value = Utilities.GenerateAttribute("value", action.Value.ToString(), doc);
+                    if (value != null)
+                        actionNode.Attributes.Append(value);
+                }
+                if (action.Operator != null)
+                {
+                    value = Utilities.GenerateAttribute("operator", action.Operator.ToString(), doc);
+                    if (value != null)
+                        actionNode.Attributes.Append(value);
+                }
                 responseNode.AppendChild(actionNode);
             }
 

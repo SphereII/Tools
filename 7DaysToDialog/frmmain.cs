@@ -69,14 +69,14 @@ namespace _7DaysToDialog
             }
             else
             {
-                if(btnAdd.Text == "Add")
+                if (btnAdd.Text == "Add")
                     txtResponseID.Text = "responseID_" + Utilities.RandomString().GetHashCode();
             }
 
             // Generate a new response.
             Response response = new Response();
 
-            if (btnAdd.Text == "Save" && txtResponseID.Tag is Response)
+            if (txtResponseID.Tag is Response)
             {
                 response = txtResponseID.Tag as Response;
             }
@@ -669,6 +669,7 @@ namespace _7DaysToDialog
             txtResponse.Focus();
             txtResponse.Text = "";
             txtResponseID.Text = "";
+            txtResponseID.Tag = null;
             this.cmbStatements.SelectedIndex = 0;
         }
         private void SetStatement()

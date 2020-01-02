@@ -58,7 +58,13 @@ namespace _7DaysToDialog
                 item = new ActionItem("AddCVar, Mods", "CVar: ", "Enter a CVar and its value.");
                 this.cboActions.Items.Add(item);
 
+                item = new ActionItem("RemoveBuffSDX, Mods", "Buff: ", "Buff to Remove:");
+                this.cboActions.Items.Add(item);
+
                 item = new ActionItem("GiveToNPC, Mods", "Item", "An item for the NPC to take from you. Only shows when Requirement is set for HasItemsSDX.");
+                this.cboActions.Items.Add(item);
+
+                item = new ActionItem("GetItemSDX, Mods", "Item: ", "Item To Give:");
                 this.cboActions.Items.Add(item);
             }
         }
