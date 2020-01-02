@@ -70,7 +70,7 @@ namespace _7DaysToDialog
             else
             {
                 if(btnAdd.Text == "Add")
-                    txtResponseID.Text = "responseID_" + txtResponse.Text.GetHashCode();
+                    txtResponseID.Text = "responseID_" + Utilities.RandomString().GetHashCode();
             }
 
             // Generate a new response.
@@ -106,6 +106,7 @@ namespace _7DaysToDialog
 
             txtResponse.Text = "";
             txtResponseID.Text = "";
+            txtResponseID.Tag = null;
             btnAdd.Text = "Add";
             this.txtCreateNewStatement.Text = "";
             this.cmbStatements.SelectedIndex = 0;
