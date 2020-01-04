@@ -14,7 +14,8 @@ namespace _7DaysToDialog
     public static class Utilities
     {
         public static Dictionary<string, string> Localization = new Dictionary<string, string>();
-        public static Dictionary<string, string> LocalizationQuest = new Dictionary<string, string>();
+        public static Dictionary<string, string> NewLocalization = new Dictionary<string, string>();
+        public static int LanguageIndex = -1;
 
         private static Random random = new Random();
         public static string RandomString(int length = 16)
@@ -70,9 +71,6 @@ namespace _7DaysToDialog
             if (File.Exists(strPath))
                 Localization = LoadCsv(strPath);
 
-            if (File.Exists(Path.Combine(strPath, "Localization - Quest.txt")))
-                LocalizationQuest = LoadCsv(Path.Combine(strPath, "Localization - Quest.txt"));
-
             if (File.Exists(Path.Combine(strPath, "Localization.txt")))
                 Localization = LoadCsv(Path.Combine(strPath, "Localization.txt"));
         }
@@ -89,8 +87,23 @@ namespace _7DaysToDialog
             while (!parser.EndOfData)
             {
                 fields = parser.ReadFields();
+
+                // We need to find out which column is the english
+                if (LanguageIndex == -1)
+                {
+                    for (int x = 0; x < fields.Length; x++)
+                    {
+                        if (fields[x].ToLower() == "english")
+                        {
+                            LanguageIndex = x;
+                            break;
+                        }
+                    }
+                }
+
+
                 if (!Temp.ContainsKey(fields[0].ToString()))
-                    Temp.Add(fields[0], fields[5]);
+                    Temp.Add(fields[0], fields[LanguageIndex]);
             }
 
             parser.Close();
@@ -98,12 +111,76 @@ namespace _7DaysToDialog
             return Temp;
         }
 
+        static public bool AddToLocalization(String strKey, String strEntry)
+        {
+            if (NewLocalization.ContainsKey(strKey))
+            {
+                NewLocalization[strKey] = strEntry;
+                return true;
+            }
+            NewLocalization.Add(strKey, strEntry);
+            return true;
+        }
+
+        static public void WriteLocalization(String strFile)
+        {
+            // No Localization loaded.
+            if (Localization.Count == 0)
+            {
+                String Header = "Key,English";
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile))
+                {
+                    file.WriteLine(Header);
+                    foreach (KeyValuePair<string, string> local in NewLocalization)
+                    {
+                        if (local.Value.Contains("dialog_trader_"))
+                            continue;
+                        file.WriteLine("\"" + local.Key + "\"," + "\"" + local.Value + "\"");
+                    }
+                }
+            }
+            else
+            {
+                TextFieldParser parser = new TextFieldParser(new StreamReader(strFile));
+
+                parser.HasFieldsEnclosedInQuotes = true;
+                parser.SetDelimiters(",");
+
+                string[] fields;
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile + "_New"))
+                {
+
+                    while (!parser.EndOfData)
+                    {
+                        String strWriteLine = "";
+                        fields = parser.ReadFields();
+                        for (int x = 0; x < fields.Length; x++)
+                        {
+                            if (strWriteLine.Length == 0)
+                                strWriteLine += "\"" + fields[x] + "\"";
+                            else
+                                strWriteLine += "," + "\"" + fields[x] + "\"";
+
+                        }
+                        // Exception to skil vanilla localization
+                        if (!strWriteLine.Contains("dialog_trader_"))
+                            file.WriteLine(strWriteLine);
+
+                    }
+                    parser.Close();
+                }
+                if (File.Exists(strFile))
+                    File.Delete(strFile);
+                File.Move(strFile + "_New", strFile);
+
+            }
+        }
         static public TreeNode FromID(string itemId, TreeNode rootNode)
         {
             foreach (TreeNode node in rootNode.Nodes)
             {
                 if (node.Tag is Statement)
-                    if ((node.Tag as Statement).ID == itemId) 
+                    if ((node.Tag as Statement).ID == itemId)
                         return node;
                 TreeNode next = FromID(itemId, node);
                 if (next != null)
@@ -140,5 +217,5 @@ namespace _7DaysToDialog
     }
 
 
-  
+
 }
