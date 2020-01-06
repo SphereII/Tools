@@ -61,6 +61,10 @@ namespace _7DaysToDialog
                 item = new ActionItem("RemoveBuffSDX, Mods", "Buff: ", "Buff to Remove:");
                 this.cboActions.Items.Add(item);
 
+                item = new ActionItem("GiveQuestSDX, Mods", "Quest: ", "Quest To Get:");
+                this.cboActions.Items.Add(item);
+
+
                 item = new ActionItem("GiveToNPC, Mods", "Item", "An item for the NPC to take from you. Only shows when Requirement is set for HasItemsSDX.");
                 this.cboActions.Items.Add(item);
 

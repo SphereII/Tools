@@ -51,7 +51,7 @@ namespace _7DaysToDialog
 
                 item = new RequirementItem("HasBuffSDX, Mods", "", "The buff name. This can include more than one buff, seperated by a comma. Requirement is true if any of them are found on the player.", "");
                 item.Value.strLabelValue = "Buff(s):";
-                item.Value.strLabelID = "";
+                item.Value.strLabelID = "Match: ";
                 RequirementTypes.Add(item);
 
                 item = new RequirementItem("HasItemSDX, Mods", "", "How many of the item does the player need to have? Defaults to 1.", "The name of the item to require the player to have.");
@@ -62,6 +62,16 @@ namespace _7DaysToDialog
                 item = new RequirementItem("HasQuestSDX, Mods", "","","");
                 item.Value.strLabelID = "";
                 item.Value.strLabelValue = "";
+                RequirementTypes.Add(item);
+
+                item = new RequirementItem("HasFailedQuestSDX, Mods", "", "Quest", "");
+                item.Value.strLabelID = "";
+                item.Value.strLabelValue = "Quest: ";
+                RequirementTypes.Add(item);
+
+                item = new RequirementItem("HasCompletedQuestSDX, Mods", "", "Quest", "");
+                item.Value.strLabelID = "";
+                item.Value.strLabelValue = "Quest: ";
                 RequirementTypes.Add(item);
 
                 item = new RequirementItem("HasTaskSDX, Mods", "", "NPC Only: Check if the NPC has a particular AI Task.", "");
