@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,13 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -115,14 +115,6 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
-            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
-            {
-            "Enabled" = "11:TRUE"
-            "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
-            "Url" = "8:"
-            "ComponentsUrl" = "8:"
-            }
         }
         "Release"
         {
@@ -139,14 +131,6 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
-            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
-            {
-            "Enabled" = "11:TRUE"
-            "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
-            "Url" = "8:"
-            "ComponentsUrl" = "8:"
-            }
         }
     }
     "Deployable"
@@ -183,6 +167,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_05295E77AFFB04ED21046A6E4107FC7C"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -209,6 +198,11 @@
             "AssemblyAsmDisplayName" = "8:AutoUpdater.NET, Version=1.5.8.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E08EC1114776D3D31CC27D89D87C48D9"
+                    {
+                    "Name" = "8:AutoUpdater.NET.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:AutoUpdater.NET.dll"
             "TargetName" = "8:"
@@ -294,20 +288,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{B487954A-BBD2-443F-B3D2-C8B1EEBB9473}"
-        "PackageCode" = "8:{9447F1FF-672D-4DA8-986F-B0D01CA2C297}"
+        "ProductName" = "8:7DaysToDialogSetup"
+        "ProductCode" = "8:{64A4EB98-6092-439E-B65E-6061F053B252}"
+        "PackageCode" = "8:{7516364D-B62C-45D0-976D-A8D0A7C0CA35}"
         "UpgradeCode" = "8:{8E2C1194-CF76-4A34-A0EB-53DC5452B83C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.10"
+        "ProductVersion" = "8:1.0.9"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:7 Days To Dialog"
+        "Title" = "8:7DaysToDialogSetup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:sphereii"
         "Keywords" = "8:"

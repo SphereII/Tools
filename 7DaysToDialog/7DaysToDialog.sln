@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7DaysToDialog", "7DaysToDialog.csproj", "{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "7DaysToDialogInstaller", "..\7DaysToDialogInstaller\7DaysToDialogInstaller.vdproj", "{F79A1345-2153-4E54-B346-2F28B0BCA063}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "7DaysToDialogSetup", "..\7DaysToDialogInstaller\7DaysToDialogInstaller.vdproj", "{C69C3FD2-5662-47F5-8936-E1F1DC530CE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,10 @@ Global
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F79A1345-2153-4E54-B346-2F28B0BCA063}.Debug|Any CPU.ActiveCfg = Debug
-		{F79A1345-2153-4E54-B346-2F28B0BCA063}.Release|Any CPU.ActiveCfg = Release
+		{C69C3FD2-5662-47F5-8936-E1F1DC530CE3}.Debug|Any CPU.ActiveCfg = Debug
+		{C69C3FD2-5662-47F5-8936-E1F1DC530CE3}.Debug|Any CPU.Build.0 = Debug
+		{C69C3FD2-5662-47F5-8936-E1F1DC530CE3}.Release|Any CPU.ActiveCfg = Release
+		{C69C3FD2-5662-47F5-8936-E1F1DC530CE3}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
