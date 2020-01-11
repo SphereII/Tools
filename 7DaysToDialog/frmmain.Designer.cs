@@ -78,6 +78,9 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.btnAddNewResponse = new System.Windows.Forms.Button();
+            this.lblAddNewResponse = new System.Windows.Forms.Label();
+            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.pnlCreateNew.SuspendLayout();
@@ -102,7 +105,7 @@
             this.grpConversation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpConversation.Location = new System.Drawing.Point(0, 0);
             this.grpConversation.Name = "grpConversation";
-            this.grpConversation.Size = new System.Drawing.Size(553, 641);
+            this.grpConversation.Size = new System.Drawing.Size(553, 716);
             this.grpConversation.TabIndex = 0;
             this.grpConversation.TabStop = false;
             this.grpConversation.Text = "Conversation";
@@ -147,12 +150,13 @@
             this.grpAddNewResponse.Controls.Add(this.chkResponseID);
             this.grpAddNewResponse.Controls.Add(this.lblNewResponse);
             this.grpAddNewResponse.Controls.Add(this.txtResponse);
-            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 375);
+            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 439);
             this.grpAddNewResponse.Name = "grpAddNewResponse";
-            this.grpAddNewResponse.Size = new System.Drawing.Size(518, 251);
+            this.grpAddNewResponse.Size = new System.Drawing.Size(518, 272);
             this.grpAddNewResponse.TabIndex = 2;
             this.grpAddNewResponse.TabStop = false;
             this.grpAddNewResponse.Text = "Add New Response";
+            this.grpAddNewResponse.Visible = false;
             // 
             // pnlCreateNew
             // 
@@ -239,7 +243,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(210, 214);
+            this.btnAdd.Location = new System.Drawing.Point(218, 242);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 1;
@@ -281,12 +285,14 @@
             // 
             // grpResponses
             // 
+            this.grpResponses.Controls.Add(this.lblAddNewResponse);
+            this.grpResponses.Controls.Add(this.btnAddNewResponse);
             this.grpResponses.Controls.Add(this.btnDown);
             this.grpResponses.Controls.Add(this.btnUp);
             this.grpResponses.Controls.Add(this.treeReplies);
             this.grpResponses.Location = new System.Drawing.Point(17, 152);
             this.grpResponses.Name = "grpResponses";
-            this.grpResponses.Size = new System.Drawing.Size(518, 217);
+            this.grpResponses.Size = new System.Drawing.Size(518, 281);
             this.grpResponses.TabIndex = 1;
             this.grpResponses.TabStop = false;
             this.grpResponses.Text = "You Can Say...";
@@ -358,7 +364,7 @@
             this.treeDialogs.Location = new System.Drawing.Point(0, 37);
             this.treeDialogs.Name = "treeDialogs";
             this.treeDialogs.ShowNodeToolTips = true;
-            this.treeDialogs.Size = new System.Drawing.Size(422, 599);
+            this.treeDialogs.Size = new System.Drawing.Size(422, 674);
             this.treeDialogs.TabIndex = 1;
             this.treeDialogs.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeDialogs_DrawNode);
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_AfterSelect);
@@ -471,7 +477,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.checkForUpdateToolStripMenuItem});
+            this.checkForUpdateToolStripMenuItem,
+            this.tutorialToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
@@ -510,7 +517,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 24);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 643);
+            this.splitter1.Size = new System.Drawing.Size(3, 718);
             this.splitter1.TabIndex = 5;
             this.splitter1.TabStop = false;
             // 
@@ -532,7 +539,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grpConversation);
-            this.splitContainer1.Size = new System.Drawing.Size(981, 643);
+            this.splitContainer1.Size = new System.Drawing.Size(981, 718);
             this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -545,11 +552,37 @@
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: ";
             // 
+            // btnAddNewResponse
+            // 
+            this.btnAddNewResponse.Location = new System.Drawing.Point(205, 217);
+            this.btnAddNewResponse.Name = "btnAddNewResponse";
+            this.btnAddNewResponse.Size = new System.Drawing.Size(130, 23);
+            this.btnAddNewResponse.TabIndex = 3;
+            this.btnAddNewResponse.Text = "Add New Response";
+            this.btnAddNewResponse.UseVisualStyleBackColor = true;
+            this.btnAddNewResponse.Click += new System.EventHandler(this.btnAddNewResponse_Click);
+            // 
+            // lblAddNewResponse
+            // 
+            this.lblAddNewResponse.AutoSize = true;
+            this.lblAddNewResponse.Location = new System.Drawing.Point(157, 255);
+            this.lblAddNewResponse.Name = "lblAddNewResponse";
+            this.lblAddNewResponse.Size = new System.Drawing.Size(210, 13);
+            this.lblAddNewResponse.TabIndex = 4;
+            this.lblAddNewResponse.Text = "Right click on a Response for more options";
+            // 
+            // tutorialToolStripMenuItem
+            // 
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 667);
+            this.ClientSize = new System.Drawing.Size(984, 742);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.menuStrip);
@@ -566,6 +599,7 @@
             this.pnlLinkExisting.ResumeLayout(false);
             this.pnlLinkExisting.PerformLayout();
             this.grpResponses.ResumeLayout(false);
+            this.grpResponses.PerformLayout();
             this.grpNPC.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -629,6 +663,9 @@
         private System.Windows.Forms.ToolStripMenuItem localizationToolStripMenuItem;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
+        private System.Windows.Forms.Label lblAddNewResponse;
+        private System.Windows.Forms.Button btnAddNewResponse;
+        private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
     }
 }
 

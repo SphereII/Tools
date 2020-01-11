@@ -49,9 +49,8 @@ namespace _7DaysToDialog
                 item.Value.strExample = @"<requirement type='HasCVarSDX, Mods' requirementtype='Hide' id='cursesamaramorgan' operator='gte' value='1' />";
                 RequirementTypes.Add( item);
 
-                item = new RequirementItem("HasBuffSDX, Mods", "", "The buff name. This can include more than one buff, seperated by a comma. Requirement is true if any of them are found on the player.", "");
+                item = new RequirementItem("HasBuffSDX, Mods", "", "The buff name. This can include more than one buff, seperated by a comma. Requirement is true if any of them are found on the player. Buffs with leading ! returns true if the buff does not exist.", "");
                 item.Value.strLabelValue = "Buff(s):";
-                item.Value.strLabelID = "Match: ";
                 RequirementTypes.Add(item);
 
                 item = new RequirementItem("HasItemSDX, Mods", "", "How many of the item does the player need to have? Defaults to 1.", "The name of the item to require the player to have.");

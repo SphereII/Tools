@@ -134,8 +134,7 @@ namespace _7DaysToDialog
                             String listindex = ReadAttribute(responseEntry, "listindex");
                             if (string.IsNullOrEmpty(listindex))
                                 listindex = "1";
-                            QuestEntry newquestEntry = new QuestEntry(strType, listindex);
-                            statement.AddQuest(listindex, newquestEntry);
+                            statement.AddQuest(listindex, strType);
 
                         }
 

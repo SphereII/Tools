@@ -490,7 +490,16 @@ namespace _7DaysToDialog
         }
         private void AddQuestEntry(object sender, EventArgs e)
         {
-
+            if(this.rtbStatement.Tag is Statement)
+            {
+                Statement statement = this.rtbStatement.Tag as Statement;
+                statement.AddQuest("0", "add");
+                statement.AddQuest("1", "add");
+                statement.AddQuest("2", "add");
+                statement.AddQuest("3", "add");
+                statement.AddQuest("4", "add");
+                
+            }
         }
         private void AddRequirement(object sender, EventArgs e)
         {
@@ -685,20 +694,20 @@ namespace _7DaysToDialog
                         Statement statement = ClickNode.Tag as Statement;
                         SetStatement(statement);
 
-                        // If there's no replies, then it's just an empty statement that returns back to the main statement.
-                        //if (this.treeReplies.Nodes.Count == 0)
-                        //{
-                        //    Response temp = new Response();
-                        //    temp.ID = statement.NextStatement;
-                        //    temp.Text = "Next";
-                        //    temp.NextStatement = statement.NextStatement;
+                        //If there's no replies, then it's just an empty statement that returns back to the main statement.
+                        if(this.treeReplies.Nodes.Count == 0)
+                        {
+                            Response temp = new Response();
+                            temp.ID = statement.NextStatement;
+                            temp.Text = "Next";
+                            temp.NextStatement = statement.NextStatement;
 
-                        //    TreeNode node = new TreeNode();
-                        //    node.Text = temp.Text;
-                        //    node.Tag = temp;
-                        //    this.treeReplies.Nodes.Add(node);
+                            TreeNode node = new TreeNode();
+                            node.Text = temp.Text;
+                            node.Tag = temp;
+                            this.treeReplies.Nodes.Add(node);
 
-                        //}
+                        }
                     }
                 }
             }
@@ -886,6 +895,16 @@ namespace _7DaysToDialog
                     TreeNode statementNode = new TreeNode();
                     statementNode.Tag = statement.Value;
                     statementNode.Text = Utilities.GetLocalization(statement.Value.Text).Replace("\n", "") + " ( " + statement.Value.ID + " )";
+
+                    foreach(KeyValuePair<string, string> Quests in statement.Value.QuestEntries)
+                    {
+                        TreeNode questNode = new TreeNode();
+                        questNode.Text = "Quest Entry ( " + Quests.Key + " )";
+                        questNode.Tag = Quests;
+                        statementNode.Nodes.Add(questNode);
+
+                    }
+
                     foreach(KeyValuePair<string, Response> response in statement.Value.Responses)
                     {
                         TreeNode responseNode = new TreeNode();
@@ -906,10 +925,11 @@ namespace _7DaysToDialog
                             actionNode.Tag = action;
                             responseNode.Nodes.Add(actionNode);
                         }
-
                         statementNode.Nodes.Add(responseNode);
                     }
-                    npcNode.Nodes.Add(statementNode);
+
+               
+                        npcNode.Nodes.Add(statementNode);
                 }
                 treeDialogs.Nodes.Add(npcNode);
             }
@@ -977,6 +997,7 @@ namespace _7DaysToDialog
             }
             npc.AddStatement(newStatement);
             RebuildTreeNode();
+            grpAddNewResponse.Visible = false;
         }
 
         private void treeDialogs_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1256,6 +1277,16 @@ namespace _7DaysToDialog
         {
             AutoUpdater.ReportErrors = true;
             AutoUpdater.Start("https://raw.githubusercontent.com/SphereII/Tools/master/7DaysToDialogInstaller/AutoUpdate.xml");
+
+        }
+
+        private void btnAddNewResponse_Click(object sender, EventArgs e)
+        {
+            grpAddNewResponse.Visible = true;
+        }
+
+        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

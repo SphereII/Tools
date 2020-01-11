@@ -14,7 +14,7 @@ namespace _7DaysToDialog
         public String NextStatement = "";
         public String PreviousStatement ="";
         public Dictionary<String, Response> Responses = new Dictionary<string, Response>();
-        public Dictionary<String, QuestEntry> QuestEntries = new Dictionary<string, QuestEntry>();
+        public Dictionary<String, String> QuestEntries = new Dictionary<string, String>();
 
         public Statement()
         {
@@ -41,11 +41,11 @@ namespace _7DaysToDialog
                 responseNode.Attributes.Append(Utilities.GenerateAttribute("ref_text", response.Value.Text, doc));
                 statementNode.AppendChild(responseNode);
             }
-            foreach(KeyValuePair<string, QuestEntry> QuestEntry in QuestEntries)
+            foreach(KeyValuePair<string, String> QuestEntry in QuestEntries)
             {
                 XmlNode questNode = doc.CreateElement("quest_entry");
-                questNode.Attributes.Append(Utilities.GenerateAttribute("type",QuestEntry.Value.QuestType, doc));
-                questNode.Attributes.Append(Utilities.GenerateAttribute("id", QuestEntry.Value.ListIndex, doc));
+                questNode.Attributes.Append(Utilities.GenerateAttribute("type",QuestEntry.Value, doc));
+                questNode.Attributes.Append(Utilities.GenerateAttribute("id", QuestEntry.Key, doc));
                 statementNode.AppendChild(questNode);
             }
 
@@ -81,12 +81,13 @@ namespace _7DaysToDialog
         }
 
    
+        
 
-        public void AddQuest(String id, QuestEntry quest )
+        public void AddQuest(String listIndex, String type )
         {
-            if (QuestEntries.ContainsKey(id))
+            if (QuestEntries.ContainsKey(listIndex))
                 return;
-            QuestEntries.Add(id, quest);
+            QuestEntries.Add(listIndex, type);
         }
     }
 }

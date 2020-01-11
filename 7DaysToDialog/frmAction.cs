@@ -18,6 +18,7 @@ namespace _7DaysToDialog
         {
             InitializeComponent();
 
+            // Supported Operators
             this.cboOperators.Items.Clear();
             this.cboOperators.Items.Add("set");
             this.cboOperators.Items.Add("add");
@@ -27,7 +28,7 @@ namespace _7DaysToDialog
 
             this.cboActions.Items.Clear();
 
-            // An action is a drop down value and description.
+            // An action is a drop down value and description. These are all vanilla options
             ActionItem item = new ActionItem("Trader", "Trader Options:", "Valid Options: restock, trader, reset_quests" );
             this.cboActions.Items.Add(item);
             item = new ActionItem("AddJournalEntry", "Journal ID:", "This should match a Localization entry for a journal tip.");
@@ -140,11 +141,9 @@ namespace _7DaysToDialog
                 }
                 else
                 {
-
                     this.lblText.Visible = true;
                     this.txtID.Visible = true;
                     this.lblText.Text = item.Value;
-                  
                 }
 
                 if (item.Text.Contains("AddCVar"))
