@@ -591,6 +591,8 @@ namespace _7DaysToDialog
             Response response = ClickNode.Tag as Response;
             if(response == null)
                 return;
+
+            this.grpAddNewResponse.Visible = true;
             txtResponse.Text = Utilities.GetLocalization(response.Text);
             txtResponseID.Text = response.ID;
             txtResponseID.Tag = response;
