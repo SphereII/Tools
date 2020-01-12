@@ -15,25 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
+        "MsmKey" = "8:_164A5197FAA2D0DB93C5806649215E9C"
         "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
+        "MsmKey" = "8:_164A5197FAA2D0DB93C5806649215E9C"
         "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
+        "MsmKey" = "8:_1E29AC442D53431AA49CF70A7B5FFB16"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -51,26 +45,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
+        "MsmKey" = "8:_D0A436B060BB53590BE370FA2F163619"
         "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
+        "MsmKey" = "8:_D0A436B060BB53590BE370FA2F163619"
         "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,19 +64,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
+        "OwnerKey" = "8:_164A5197FAA2D0DB93C5806649215E9C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D0A436B060BB53590BE370FA2F163619"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -192,15 +174,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_05295E77AFFB04ED21046A6E4107FC7C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_164A5197FAA2D0DB93C5806649215E9C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:AutoUpdater.NET, Version=1.5.8.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_164A5197FAA2D0DB93C5806649215E9C"
+                    {
+                    "Name" = "8:AutoUpdater.NET.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:System.Net.Http.dll"
+            "SourcePath" = "8:AutoUpdater.NET.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_563822EA5FB24590BCDDC199CF083714"
@@ -218,15 +205,40 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E08EC1114776D3D31CC27D89D87C48D9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E29AC442D53431AA49CF70A7B5FFB16"
+            {
+            "SourcePath" = "8:..\\7DaysToDialog\\chat-48_icon-icons.com_65995.ico"
+            "TargetName" = "8:chat-48_icon-icons.com_65995.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_9C31A0A2F6834EF98974998BACC9D9C3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D0A436B060BB53590BE370FA2F163619"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AutoUpdater.NET, Version=1.5.8.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_D0A436B060BB53590BE370FA2F163619"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:AutoUpdater.NET.dll"
+            "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_563822EA5FB24590BCDDC199CF083714"
@@ -311,15 +323,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{9605B089-52AD-405E-8BA9-1C8DC1DB1C88}"
-        "PackageCode" = "8:{D8430ED8-AA3B-41BB-8857-04EB8F6ED690}"
+        "ProductCode" = "8:{B591551D-15D4-4DA9-A1CA-600853170F5D}"
+        "PackageCode" = "8:{D744AFFC-7E2A-4150-84C4-4FD006800A84}"
         "UpgradeCode" = "8:{8E2C1194-CF76-4A34-A0EB-53DC5452B83C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.11"
+        "ProductVersion" = "8:1.0.12"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -432,6 +444,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A977D398FD20405280D143CDF754BD4E"
+            {
+            "Name" = "8:7 Days To Dialog"
+            "Arguments" = "8:"
+            "Description" = "8:A 7 Days to Dialog Conversation Tool"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_64861A0B7B3C46968970DA0943917DEE"
+            "Folder" = "8:_CA6C307E4836439CAF34185F4AB439D9"
+            "WorkingFolder" = "8:_9C31A0A2F6834EF98974998BACC9D9C3"
+            "Icon" = "8:_1E29AC442D53431AA49CF70A7B5FFB16"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -831,34 +857,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3580CF0EDA074CE0A9E4BBBCA759407E"
-            {
-            "SourcePath" = "8:..\\7DaysToDialog\\obj\\Debug\\7DaysToDialog.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_CA6C307E4836439CAF34185F4AB439D9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{ED475DDF-2E95-481F-9BA3-FB5B7FDA25B7}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_64861A0B7B3C46968970DA0943917DEE"
             {
             "SourcePath" = "8:..\\7DaysToDialog\\obj\\Debug\\7DaysToDialog.exe"

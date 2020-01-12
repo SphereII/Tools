@@ -163,6 +163,7 @@
     <None Include="Resources\multiply-3.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutoUpdate.xml" />
     <Content Include="chat-48_icon-icons.com_65995.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
