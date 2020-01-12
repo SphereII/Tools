@@ -129,6 +129,36 @@
   <metadata name="DialogsContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>363, 17</value>
   </metadata>
+  <data name="rtbInformation.Text" xml:space="preserve">
+    <value>This will will help generate conversations to be added to NPCs, allowing a richer, more interactive 
+	experience for the players.
+
+Getting Started:
+	Enter an NPC name, then click Add New NPC.
+
+Definitions:
+	A Statement is what the NPC can say to you
+	A Response is what you can say to the NPC
+	A Requirement is a check to see if the Response should show up or not
+	An Action is an event that will be triggered when that Response is selected
+
+Tips:
+	Right Clicking on a Response will allow you to add Actions, Requirements, And Quests.
+
+	Keep Responses relatively short, so they fit on the screen!
+
+	A Response does not need a Requirement. It can have more than one though.
+     
+	Multiple Responses can have the same display text. Clever use of requirements will
+		help filter, so the player will only see one at a time, but get different answers!
+		
+	Using Actions such as AddBuff and Set CVars and Requirements on them let's the player
+		learn a story over time, by unlocking new dialog as time goes on.
+	
+	This wool will write a dialogs.xml and a Localization.txt, formatted to append as a modlet.
+	
+	Link the dialog to an NPC using the npc.xml's dialog_id.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

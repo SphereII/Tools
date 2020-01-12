@@ -613,13 +613,15 @@ namespace _7DaysToDialog
 
         private void treeDialogs_Click(object sender, EventArgs e)
         {
-
+            this.pnlInformation.SendToBack();
 
         }
 
 
         private void treeDialogs_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            this.pnlInformation.SendToBack();
+
             if(e.Button == MouseButtons.Right)
             {
                 Point ClickPoint = new Point(e.X, e.Y);
@@ -644,6 +646,8 @@ namespace _7DaysToDialog
                     return;
 
                 treeReplies.SelectedNode = ClickNode;
+                if (ClickNode.Tag is NPC)
+                    this.pnlInformation.BringToFront();
                 if(ClickNode.Tag is Statement)
                     SetStatement(ClickNode.Tag as Statement);
 
@@ -843,8 +847,12 @@ namespace _7DaysToDialog
                         foreach(KeyValuePair<string, Response> response in npc.Responses)
                             npcNode.AppendChild(response.Value.GenerateXMLNode(saveDoc));
 
-                        saveDoc.Save(saveFileDialog.FileName);
+               
                     }
+
+                    String strLocalizationFile = Path.Combine(Path.GetDirectoryName(saveFileDialog.FileName), "Localization.txt");
+                    Utilities.WriteLocalization(strLocalizationFile);
+                    saveDoc.Save(saveFileDialog.FileName);
                 }
             }
             SelectedNPC = null;
@@ -872,6 +880,7 @@ namespace _7DaysToDialog
                 treeDialogs.Nodes.Add(newNPC.Name);
                 RebuildTreeNode();
                 SetStatement(newNPC.Statements["start"]);
+                this.treeDialogs.Visible = true;
             }
             else
             {
@@ -881,11 +890,21 @@ namespace _7DaysToDialog
         }
         void RebuildTreeNode()
         {
+            this.treeDialogs.Visible = true;
+            
             treeDialogs.Nodes.Clear();
-            if(NPCs.Count == 0)
-                return;
 
-            foreach(NPC npc in NPCs)
+            if (NPCs.Count == 0)
+            {
+                this.pnlInformation.BringToFront();
+                return;
+            }
+            else
+            {
+                this.pnlInformation.SendToBack();
+            }
+            treeDialogs.SuspendLayout();
+            foreach (NPC npc in NPCs)
             {
                 TreeNode npcNode = new TreeNode(npc.Name);
                 npcNode.Tag = npc;
@@ -895,7 +914,6 @@ namespace _7DaysToDialog
                     TreeNode statementNode = new TreeNode();
                     statementNode.Tag = statement.Value;
                     statementNode.Text = Utilities.GetLocalization(statement.Value.Text).Replace("\n", "") + " ( " + statement.Value.ID + " )";
-
                     foreach(KeyValuePair<string, string> Quests in statement.Value.QuestEntries)
                     {
                         TreeNode questNode = new TreeNode();
@@ -925,20 +943,31 @@ namespace _7DaysToDialog
                             actionNode.Tag = action;
                             responseNode.Nodes.Add(actionNode);
                         }
-                        statementNode.Nodes.Add(responseNode);
-                    }
 
-               
-                        npcNode.Nodes.Add(statementNode);
+                         statementNode.Nodes.Add(responseNode);
+
+                    }
+                    npcNode.Nodes.Add(statementNode);
                 }
                 treeDialogs.Nodes.Add(npcNode);
             }
 
             
             UpdateNPCs();
-            treeDialogs.ExpandAll();
+            if (chkStatementOnly.Checked)
+            {
+                treeDialogs.CollapseAll();
+                foreach (TreeNode node in this.treeDialogs.Nodes)
+                {
+                    if (node.Tag is Statement || node.Tag is NPC)
+                        node.Expand();
+                }
+            }
+            else
+            {
 
-
+                treeDialogs.ExpandAll();
+            }
             cmbStatements.Items.Clear();
             ComboboxItem item = new ComboboxItem();
             item.Text = "None";
@@ -953,6 +982,7 @@ namespace _7DaysToDialog
             }
 
             cmbStatements.SelectedIndex = 0;
+            treeDialogs.ResumeLayout();
         }
 
         // Update the NPC combo box
@@ -1286,6 +1316,21 @@ namespace _7DaysToDialog
         }
 
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkStatementOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            RebuildTreeNode();
+        }
+
+        private void rtbInformation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

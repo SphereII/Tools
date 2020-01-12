@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_05295E77AFFB04ED21046A6E4107FC7C"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_3580CF0EDA074CE0A9E4BBBCA759407E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,13 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
+        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_64861A0B7B3C46968970DA0943917DEE"
+        "OwnerKey" = "8:_8B930F4E5BBF4B0583E4ABA5B28C5A7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E08EC1114776D3D31CC27D89D87C48D9"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -122,6 +122,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -146,6 +154,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -295,15 +311,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:7 Days To Dialog"
-        "ProductCode" = "8:{B487954A-BBD2-443F-B3D2-C8B1EEBB9473}"
-        "PackageCode" = "8:{9447F1FF-672D-4DA8-986F-B0D01CA2C297}"
+        "ProductCode" = "8:{9605B089-52AD-405E-8BA9-1C8DC1DB1C88}"
+        "PackageCode" = "8:{D8430ED8-AA3B-41BB-8857-04EB8F6ED690}"
         "UpgradeCode" = "8:{8E2C1194-CF76-4A34-A0EB-53DC5452B83C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.10"
+        "ProductVersion" = "8:1.0.11"
         "Manufacturer" = "8:SphereII Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

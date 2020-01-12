@@ -48,7 +48,12 @@ namespace _7DaysToDialog
             XmlAttribute value;
             XmlNode responseNode = doc.CreateElement("response");
             responseNode.Attributes.Append(Utilities.GenerateAttribute("id", ID, doc));
-            responseNode.Attributes.Append(Utilities.GenerateAttribute("text", Text, doc));
+
+            // Start to Generate Localization text file
+            Utilities.AddToLocalization(ID, Text);
+            responseNode.Attributes.Append(Utilities.GenerateAttribute("text", ID, doc));
+//            responseNode.Attributes.Append(Utilities.GenerateAttribute("text", Text, doc));
+
              value = Utilities.GenerateAttribute("nextstatementid", NextStatement, doc);
             if (value != null)
                 responseNode.Attributes.Append(value);

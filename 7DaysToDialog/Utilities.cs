@@ -125,24 +125,9 @@ namespace _7DaysToDialog
         static public void WriteLocalization(String strFile)
         {
             // No Localization loaded.
-            if (Localization.Count == 0)
-            {
-                String Header = "Key,English";
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile))
-                {
-                    file.WriteLine(Header);
-                    foreach (KeyValuePair<string, string> local in NewLocalization)
-                    {
-                        if (local.Value.Contains("dialog_trader_"))
-                            continue;
-                        file.WriteLine("\"" + local.Key + "\"," + "\"" + local.Value + "\"");
-                    }
-                }
-            }
-            else
+            if (File.Exists(strFile))
             {
                 TextFieldParser parser = new TextFieldParser(new StreamReader(strFile));
-
                 parser.HasFieldsEnclosedInQuotes = true;
                 parser.SetDelimiters(",");
 
@@ -173,6 +158,20 @@ namespace _7DaysToDialog
                     File.Delete(strFile);
                 File.Move(strFile + "_New", strFile);
 
+            }
+            else
+            {
+                String Header = "Key,English";
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile))
+                {
+                    file.WriteLine(Header);
+                    foreach (KeyValuePair<string, string> local in NewLocalization)
+                    {
+                        if (local.Value.Contains("dialog_trader_"))
+                            continue;
+                        file.WriteLine("\"" + local.Key + "\"," + "\"" + local.Value + "\"");
+                    }
+                }
             }
         }
         static public TreeNode FromID(string itemId, TreeNode rootNode)

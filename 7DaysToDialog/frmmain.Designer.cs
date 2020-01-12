@@ -49,6 +49,8 @@
             this.lblNewResponse = new System.Windows.Forms.Label();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.grpResponses = new System.Windows.Forms.GroupBox();
+            this.lblAddNewResponse = new System.Windows.Forms.Label();
+            this.btnAddNewResponse = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
             this.treeReplies = new System.Windows.Forms.TreeView();
@@ -72,15 +74,18 @@
             this.enabledExtensionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddNewNPC = new System.Windows.Forms.Button();
             this.txtAddNewNPC = new System.Windows.Forms.TextBox();
             this.DialogsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.chkStatementOnly = new System.Windows.Forms.CheckBox();
+            this.lblNPCs = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.btnAddNewResponse = new System.Windows.Forms.Button();
-            this.lblAddNewResponse = new System.Windows.Forms.Label();
-            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlInformation = new System.Windows.Forms.Panel();
+            this.rtbInformation = new System.Windows.Forms.RichTextBox();
+            this.lblAddNewNPC = new System.Windows.Forms.Label();
             this.grpConversation.SuspendLayout();
             this.grpAddNewResponse.SuspendLayout();
             this.pnlCreateNew.SuspendLayout();
@@ -92,6 +97,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.pnlInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpConversation
@@ -150,7 +156,7 @@
             this.grpAddNewResponse.Controls.Add(this.chkResponseID);
             this.grpAddNewResponse.Controls.Add(this.lblNewResponse);
             this.grpAddNewResponse.Controls.Add(this.txtResponse);
-            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 439);
+            this.grpAddNewResponse.Location = new System.Drawing.Point(17, 427);
             this.grpAddNewResponse.Name = "grpAddNewResponse";
             this.grpAddNewResponse.Size = new System.Drawing.Size(518, 272);
             this.grpAddNewResponse.TabIndex = 2;
@@ -235,7 +241,7 @@
             // 
             // txtResponseID
             // 
-            this.txtResponseID.Location = new System.Drawing.Point(291, 217);
+            this.txtResponseID.Location = new System.Drawing.Point(338, 217);
             this.txtResponseID.Name = "txtResponseID";
             this.txtResponseID.ReadOnly = true;
             this.txtResponseID.Size = new System.Drawing.Size(165, 20);
@@ -256,7 +262,7 @@
             this.chkResponseID.AutoSize = true;
             this.chkResponseID.Checked = true;
             this.chkResponseID.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkResponseID.Location = new System.Drawing.Point(290, 194);
+            this.chkResponseID.Location = new System.Drawing.Point(346, 194);
             this.chkResponseID.Name = "chkResponseID";
             this.chkResponseID.Size = new System.Drawing.Size(166, 17);
             this.chkResponseID.TabIndex = 2;
@@ -292,10 +298,29 @@
             this.grpResponses.Controls.Add(this.treeReplies);
             this.grpResponses.Location = new System.Drawing.Point(17, 152);
             this.grpResponses.Name = "grpResponses";
-            this.grpResponses.Size = new System.Drawing.Size(518, 281);
+            this.grpResponses.Size = new System.Drawing.Size(518, 267);
             this.grpResponses.TabIndex = 1;
             this.grpResponses.TabStop = false;
-            this.grpResponses.Text = "You Can Say...";
+            this.grpResponses.Text = "Response ( You Can Say... )";
+            // 
+            // lblAddNewResponse
+            // 
+            this.lblAddNewResponse.AutoSize = true;
+            this.lblAddNewResponse.Location = new System.Drawing.Point(159, 243);
+            this.lblAddNewResponse.Name = "lblAddNewResponse";
+            this.lblAddNewResponse.Size = new System.Drawing.Size(210, 13);
+            this.lblAddNewResponse.TabIndex = 4;
+            this.lblAddNewResponse.Text = "Right click on a Response for more options";
+            // 
+            // btnAddNewResponse
+            // 
+            this.btnAddNewResponse.Location = new System.Drawing.Point(205, 217);
+            this.btnAddNewResponse.Name = "btnAddNewResponse";
+            this.btnAddNewResponse.Size = new System.Drawing.Size(130, 23);
+            this.btnAddNewResponse.TabIndex = 3;
+            this.btnAddNewResponse.Text = "Add New Response";
+            this.btnAddNewResponse.UseVisualStyleBackColor = true;
+            this.btnAddNewResponse.Click += new System.EventHandler(this.btnAddNewResponse_Click);
             // 
             // btnDown
             // 
@@ -340,7 +365,7 @@
             this.grpNPC.Size = new System.Drawing.Size(518, 101);
             this.grpNPC.TabIndex = 0;
             this.grpNPC.TabStop = false;
-            this.grpNPC.Text = "NPC Says...";
+            this.grpNPC.Text = "Statement: ( NPC Says... )";
             // 
             // rtbStatement
             // 
@@ -361,11 +386,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeDialogs.HideSelection = false;
-            this.treeDialogs.Location = new System.Drawing.Point(0, 37);
+            this.treeDialogs.Location = new System.Drawing.Point(0, 84);
             this.treeDialogs.Name = "treeDialogs";
             this.treeDialogs.ShowNodeToolTips = true;
-            this.treeDialogs.Size = new System.Drawing.Size(422, 674);
+            this.treeDialogs.Size = new System.Drawing.Size(422, 627);
             this.treeDialogs.TabIndex = 1;
+            this.treeDialogs.Visible = false;
             this.treeDialogs.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeDialogs_DrawNode);
             this.treeDialogs.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDialogs_AfterSelect);
             this.treeDialogs.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeDialogs_NodeMouseClick);
@@ -467,7 +493,9 @@
             // 
             // enabledExtensionsToolStripMenuItem
             // 
+            this.enabledExtensionsToolStripMenuItem.Checked = true;
             this.enabledExtensionsToolStripMenuItem.CheckOnClick = true;
+            this.enabledExtensionsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.enabledExtensionsToolStripMenuItem.Name = "enabledExtensionsToolStripMenuItem";
             this.enabledExtensionsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.enabledExtensionsToolStripMenuItem.Text = "Enabled Extensions";
@@ -486,13 +514,20 @@
             // checkForUpdateToolStripMenuItem
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.checkForUpdateToolStripMenuItem.Text = "Check For Update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
+            // tutorialToolStripMenuItem
+            // 
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            // 
             // btnAddNewNPC
             // 
-            this.btnAddNewNPC.Location = new System.Drawing.Point(180, 8);
+            this.btnAddNewNPC.Location = new System.Drawing.Point(275, 27);
             this.btnAddNewNPC.Name = "btnAddNewNPC";
             this.btnAddNewNPC.Size = new System.Drawing.Size(102, 23);
             this.btnAddNewNPC.TabIndex = 3;
@@ -502,7 +537,7 @@
             // 
             // txtAddNewNPC
             // 
-            this.txtAddNewNPC.Location = new System.Drawing.Point(8, 8);
+            this.txtAddNewNPC.Location = new System.Drawing.Point(103, 27);
             this.txtAddNewNPC.Name = "txtAddNewNPC";
             this.txtAddNewNPC.Size = new System.Drawing.Size(166, 20);
             this.txtAddNewNPC.TabIndex = 4;
@@ -530,53 +565,82 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblAddNewNPC);
+            this.splitContainer1.Panel1.Controls.Add(this.chkStatementOnly);
+            this.splitContainer1.Panel1.Controls.Add(this.lblNPCs);
             this.splitContainer1.Panel1.Controls.Add(this.lblVersion);
             this.splitContainer1.Panel1.Controls.Add(this.treeDialogs);
             this.splitContainer1.Panel1.Controls.Add(this.txtAddNewNPC);
             this.splitContainer1.Panel1.Controls.Add(this.btnAddNewNPC);
             this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnlInformation);
             this.splitContainer1.Panel2.Controls.Add(this.grpConversation);
             this.splitContainer1.Size = new System.Drawing.Size(981, 718);
             this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 6;
             // 
+            // chkStatementOnly
+            // 
+            this.chkStatementOnly.AutoSize = true;
+            this.chkStatementOnly.Location = new System.Drawing.Point(309, 67);
+            this.chkStatementOnly.Name = "chkStatementOnly";
+            this.chkStatementOnly.Size = new System.Drawing.Size(103, 17);
+            this.chkStatementOnly.TabIndex = 7;
+            this.chkStatementOnly.Text = "Statements Only";
+            this.chkStatementOnly.UseVisualStyleBackColor = true;
+            this.chkStatementOnly.CheckedChanged += new System.EventHandler(this.chkStatementOnly_CheckedChanged);
+            // 
+            // lblNPCs
+            // 
+            this.lblNPCs.AutoSize = true;
+            this.lblNPCs.Location = new System.Drawing.Point(157, 68);
+            this.lblNPCs.Name = "lblNPCs";
+            this.lblNPCs.Size = new System.Drawing.Size(73, 13);
+            this.lblNPCs.TabIndex = 6;
+            this.lblNPCs.Text = "Loaded NPCs";
+            // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(289, 9);
+            this.lblVersion.Location = new System.Drawing.Point(8, 5);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(48, 13);
             this.lblVersion.TabIndex = 5;
             this.lblVersion.Text = "Version: ";
             // 
-            // btnAddNewResponse
+            // pnlInformation
             // 
-            this.btnAddNewResponse.Location = new System.Drawing.Point(205, 217);
-            this.btnAddNewResponse.Name = "btnAddNewResponse";
-            this.btnAddNewResponse.Size = new System.Drawing.Size(130, 23);
-            this.btnAddNewResponse.TabIndex = 3;
-            this.btnAddNewResponse.Text = "Add New Response";
-            this.btnAddNewResponse.UseVisualStyleBackColor = true;
-            this.btnAddNewResponse.Click += new System.EventHandler(this.btnAddNewResponse_Click);
+            this.pnlInformation.Controls.Add(this.rtbInformation);
+            this.pnlInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlInformation.Location = new System.Drawing.Point(0, 0);
+            this.pnlInformation.Name = "pnlInformation";
+            this.pnlInformation.Size = new System.Drawing.Size(553, 716);
+            this.pnlInformation.TabIndex = 6;
             // 
-            // lblAddNewResponse
+            // rtbInformation
             // 
-            this.lblAddNewResponse.AutoSize = true;
-            this.lblAddNewResponse.Location = new System.Drawing.Point(157, 255);
-            this.lblAddNewResponse.Name = "lblAddNewResponse";
-            this.lblAddNewResponse.Size = new System.Drawing.Size(210, 13);
-            this.lblAddNewResponse.TabIndex = 4;
-            this.lblAddNewResponse.Text = "Right click on a Response for more options";
+            this.rtbInformation.BackColor = System.Drawing.SystemColors.Control;
+            this.rtbInformation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbInformation.Location = new System.Drawing.Point(29, 111);
+            this.rtbInformation.Name = "rtbInformation";
+            this.rtbInformation.ReadOnly = true;
+            this.rtbInformation.Size = new System.Drawing.Size(482, 418);
+            this.rtbInformation.TabIndex = 0;
+            this.rtbInformation.Text = resources.GetString("rtbInformation.Text");
+            this.rtbInformation.TextChanged += new System.EventHandler(this.rtbInformation_TextChanged);
             // 
-            // tutorialToolStripMenuItem
+            // lblAddNewNPC
             // 
-            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
-            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tutorialToolStripMenuItem.Text = "Tutorial";
-            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            this.lblAddNewNPC.AutoSize = true;
+            this.lblAddNewNPC.Location = new System.Drawing.Point(8, 32);
+            this.lblAddNewNPC.Name = "lblAddNewNPC";
+            this.lblAddNewNPC.Size = new System.Drawing.Size(88, 13);
+            this.lblAddNewNPC.TabIndex = 8;
+            this.lblAddNewNPC.Text = "New NPC Name:";
             // 
             // frmMain
             // 
@@ -608,6 +672,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.pnlInformation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,6 +731,11 @@
         private System.Windows.Forms.Label lblAddNewResponse;
         private System.Windows.Forms.Button btnAddNewResponse;
         private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
+        private System.Windows.Forms.Label lblNPCs;
+        private System.Windows.Forms.CheckBox chkStatementOnly;
+        private System.Windows.Forms.Panel pnlInformation;
+        private System.Windows.Forms.RichTextBox rtbInformation;
+        private System.Windows.Forms.Label lblAddNewNPC;
     }
 }
 
