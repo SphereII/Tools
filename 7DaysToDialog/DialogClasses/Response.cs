@@ -68,7 +68,7 @@ namespace _7DaysToDialog
                 if (require.Type == "HasBuffSDX, Mods")
                 {
                     if (value != null)
-                        value = Utilities.GenerateAttribute("match", require.Value, doc);
+                        value = Utilities.GenerateAttribute("value", require.Value, doc);
                 }
                 if (value != null)
                     requireNode.Attributes.Append(value);

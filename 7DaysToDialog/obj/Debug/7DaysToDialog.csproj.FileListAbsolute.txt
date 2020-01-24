@@ -47,3 +47,5 @@ C:\Users\kilpa\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.cspr
 C:\Users\kilpa\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.exe
 C:\Users\kilpa\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.pdb
 C:\Users\jkilpatrick\Documents\GitHub\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csproj.CoreCompileInputs.cache
+D:\Github\Tools\7DaysToDialog\bin\Debug\Microsoft.VisualBasic.dll
+D:\Github\Tools\7DaysToDialog\obj\Debug\7DaysToDialog.csprojAssemblyReference.cache

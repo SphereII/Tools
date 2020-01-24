@@ -125,41 +125,53 @@ namespace _7DaysToDialog
         static public void WriteLocalization(String strFile)
         {
             // No Localization loaded.
-            if (File.Exists(strFile))
-            {
-                TextFieldParser parser = new TextFieldParser(new StreamReader(strFile));
-                parser.HasFieldsEnclosedInQuotes = true;
-                parser.SetDelimiters(",");
+            //if (File.Exists(strFile))
+            //{
+            //    TextFieldParser parser = new TextFieldParser(new StreamReader(strFile));
+            //    parser.HasFieldsEnclosedInQuotes = true;
+            //    parser.SetDelimiters(",");
 
-                string[] fields;
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile + "_New"))
-                {
+            //    string[] fields;
+            //    int KeyIndex = 0;
+            //    int EnglishIndex = 0;
+            //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile + "_New"))
+            //    {
 
-                    while (!parser.EndOfData)
-                    {
-                        String strWriteLine = "";
-                        fields = parser.ReadFields();
-                        for (int x = 0; x < fields.Length; x++)
-                        {
-                            if (strWriteLine.Length == 0)
-                                strWriteLine += "\"" + fields[x] + "\"";
-                            else
-                                strWriteLine += "," + "\"" + fields[x] + "\"";
+            //        while (!parser.EndOfData)
+            //        {
+            //            String strWriteLine = "";
+            //            fields = parser.ReadFields();
+            //            for (int x = 0; x < fields.Length; x++)
+            //            {
+            //                if (strWriteLine.Length == 0)
+            //                    strWriteLine += "\"" + fields[x] + "\"";
+            //                else
+            //                    strWriteLine += "," + "\"" + fields[x] + "\"";
 
-                        }
-                        // Exception to skil vanilla localization
-                        if (!strWriteLine.Contains("dialog_trader_"))
-                            file.WriteLine(strWriteLine);
+            //                if (fields[x].ToLower() == "english")
+            //                    EnglishIndex = x;
+            //            }
+            //            // Exception to skil vanilla localization
+            //            if (!strWriteLine.Contains("dialog_trader_"))
+            //                file.WriteLine(strWriteLine);
 
-                    }
-                    parser.Close();
-                }
-                if (File.Exists(strFile))
-                    File.Delete(strFile);
-                File.Move(strFile + "_New", strFile);
+            //        }
+            //        parser.Close();
 
-            }
-            else
+            //        foreach (KeyValuePair<string, string> local in NewLocalization)
+            //        {
+            //            if (local.Value.Contains("dialog_trader_"))
+            //                continue;
+            //            file.WriteLine("\"" + local.Key + "\"," + "\"" + local.Value + "\"");
+            //        }
+
+            //    }
+            //    if (File.Exists(strFile))
+            //        File.Delete(strFile);
+            //    File.Move(strFile + "_New", strFile);
+
+            //}
+            //else
             {
                 String Header = "Key,English";
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(strFile))
