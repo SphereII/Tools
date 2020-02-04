@@ -79,7 +79,7 @@ namespace _7DaysToDialog
                 RequirementTypes.Add(item);
 
                 // For NPC's that are hired.
-                item = new RequirementItem("Hired, Mods", "", "Optional: Set to not to show the response if the NPC is not hired.", "");
+                item = new RequirementItem("HiredSDX, Mods", "", "Optional: Set to not to show the response if the NPC is not hired.", "");
                 item.Value.strLabelValue = "Set to Not to reverse condition:";
                 item.Value.strLabelID = "";
                 RequirementTypes.Add(item);
