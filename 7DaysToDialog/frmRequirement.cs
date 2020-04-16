@@ -49,6 +49,17 @@ namespace _7DaysToDialog
                 item.Value.strExample = @"<requirement type='HasCVarSDX, Mods' requirementtype='Hide' id='cursesamaramorgan' operator='gte' value='1' />";
                 RequirementTypes.Add( item);
 
+                item = new RequirementItem("FactionValue, Mods", "Condition to determine which faction to show using the faction value", "The faction to pass the check", "The faction name");
+                item.Value.strLabelValue = "Faction Value:";
+                item.Value.strLabelID = "Faction Name:";
+                item.Value.strExample = @"<requirement type='FactionValue, Mods' requirementtype='Hide' id='undead' operator='gte' value='100' />";
+                RequirementTypes.Add(item);
+
+                item = new RequirementItem("Faction, Mods", "", "", "The faction to pass the check");
+                item.Value.strLabelID = "Faction Name:";
+                item.Value.strExample = @"<requirement type='Faction, Mods' requirementtype='Hide' id='undead'  />";
+                RequirementTypes.Add(item);
+
                 item = new RequirementItem("HasBuffSDX, Mods", "", "The buff name. This can include more than one buff, seperated by a comma. Requirement is true if any of them are found on the player. Buffs with leading ! returns true if the buff does not exist.", "");
                 item.Value.strLabelValue = "Buff(s):";
                 RequirementTypes.Add(item);
